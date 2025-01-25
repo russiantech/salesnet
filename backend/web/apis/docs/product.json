@@ -1,0 +1,146 @@
+{
+    "message": "Products fetched successfully.",
+    "page_meta": {
+        "current_page_number": 2,
+        "has_next_page": true,
+        "has_prev_page": true,
+        "next_page_url": "/api/products?page=3&page_size=5",
+        "offset": 5,
+        "prev_page_url": "/api/products?page=1&page_size=5",
+        "requested_page_size": 5,
+        "total_items_count": 23,
+        "total_pages_count": 5
+    },
+    "products": [
+        {
+            "categories": [
+                {
+                    "id": 4,
+                    "name": "Teenagers"
+                }
+            ],
+            "comments_count": 5,
+            "id": 9,
+            "image_urls": [
+                "https://placekitten.com/934/906"
+            ],
+            "name": "Early budget develop central commercial material could mother.",
+            "price": 1065,
+            "slug": "early-budget-develop-central-commercial-material-could-mother",
+            "stock": 104,
+            "tags": [
+                {
+                    "id": 2,
+                    "name": "Jeans"
+                }
+            ]
+        },
+        
+        {
+            "categories": [
+                {
+                    "id": 3,
+                    "name": "Kids"
+                }
+            ],
+            "comments_count": 0,
+            "id": 10,
+            "image_urls": [
+                "https://picsum.photos/70/874"
+            ],
+            "name": "Happy even on.",
+            "price": 127,
+            "slug": "happy-even-on",
+            "stock": 228,
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "Shoes"
+                },
+                {
+                    "id": 2,
+                    "name": "Jeans"
+                }
+            ]
+        },
+        {
+            "categories": [
+                {
+                    "id": 3,
+                    "name": "Kids"
+                }
+            ],
+            "comments_count": 3,
+            "id": 11,
+            "image_urls": [
+                "https://dummyimage.com/134x125"
+            ],
+            "name": "Safe toward guy bed sell gas.",
+            "price": 1130,
+            "slug": "safe-toward-guy-bed-sell-gas",
+            "stock": 587,
+            "tags": [
+                {
+                    "id": 2,
+                    "name": "Jeans"
+                },
+                {
+                    "id": 3,
+                    "name": "Jackets"
+                }
+            ]
+        },
+        {
+            "categories": [
+                {
+                    "id": 3,
+                    "name": "Kids"
+                }
+            ],
+            "comments_count": 0,
+            "id": 12,
+            "image_urls": [
+                "https://picsum.photos/217/891"
+            ],
+            "name": "Leave which never model.",
+            "price": 76,
+            "slug": "leave-which-never-model",
+            "stock": 241,
+            "tags": [
+                {
+                    "id": 4,
+                    "name": "Shorts"
+                },
+                {
+                    "id": 1,
+                    "name": "Shoes"
+                }
+            ]
+        },
+        {
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "Men"
+                }
+            ],
+            "comments_count": 0,
+            "id": 13,
+            "image_urls": [
+                "https://picsum.photos/411/286",
+                "https://placekitten.com/897/364"
+            ],
+            "name": "Career significant practice today.",
+            "price": 1423,
+            "slug": "career-significant-practice-today",
+            "stock": 956,
+            "tags": [
+                {
+                    "id": 2,
+                    "name": "Jeans"
+                }
+            ]
+        }
+    ],
+    "success": true
+}

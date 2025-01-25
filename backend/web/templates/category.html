@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Category</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], textarea, input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        .success {
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Create New Category</h2>
+        <form id="categoryForm">
+            <label for="name">Category Name</label>
+            <input type="text" id="name" name="name" required placeholder="Enter category name">
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="Enter category description"></textarea>
+
+            <label for="images">Category Images</label>
+            <input type="file" id="images" name="images[]" multiple>
+
+            <button type="submit">Create Category</button>
+            <div id="errorMessage" class="error"></div>
+            <div id="successMessage" class="success"></div>
+        </form>
+    </div>
+
+    <script>
+        // Grab the form and the error/success message divs
+        const form = document.getElementById("categoryForm");
+        const errorMessageDiv = document.getElementById("errorMessage");
+        const successMessageDiv = document.getElementById("successMessage");
+
+        // Handle form submission
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault();
+            
+            // Clear previous messages
+            errorMessageDiv.innerText = "";
+            successMessageDiv.innerText = "";
+
+            // Prepare form data
+            const formData = new FormData(form);
+
+            try {
+                // Send the POST request
+                const response = await fetch("http://localhost:5000/api/categories", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjM0NTY3MSwianRpIjoiYjUwZGIyNDYtYzYwMS00OWRiLTgyMzUtYWE1MTc3M2I3NTI2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MzQ1NjcxLCJjc3JmIjoiZDM1NjkyODItYTU4ZC00NWZhLWI3NjQtMzk1Njk1NGZjNmQ4IiwiZXhwIjoxNzM2MzQ5MjcxLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.KTJ-N4bNuHUDD4uWWFtf-3fG0-1RQw7atFm7GEnzaws" // Insert JWT Token
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    successMessageDiv.innerText = response.message || "Category created successfully!";
+                } else {
+                    errorMessageDiv.innerText = data.error || "An error occurred while creating the category.";
+                }
+            } catch (error) {
+                errorMessageDiv.innerText = "Unexpected error: " + error.error;
+            }
+        });
+    </script>
+</body>
+</html>

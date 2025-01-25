@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Product</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #218838;
+        }
+        
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        
+        .success {
+            color: green;
+            margin-top: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Product</h1>
+        <form id="productForm">
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required>
+
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" required>
+
+            <label for="tags">Tags (comma separated):</label>
+            <input type="text" id="tags" name="tags">
+
+            <label for="categories">Categories:</label>
+            <input type="text" id="categories" name="categories">
+
+            <label for="images">Upload Images:</label>
+            <input type="file" id="images" name="images[]" multiple accept="image/*">
+
+            <button type="submit">Create Product</button>
+            <div id="error" class="error"></div>
+            <div id="success" class="success"></div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+
+    <script>
+        document.getElementById('productForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+        
+            const formData = new FormData();
+            const name = document.getElementById('name').value.trim();
+            const description = document.getElementById('description').value.trim();
+            const price = parseFloat(document.getElementById('price').value);
+            const stock = parseInt(document.getElementById('stock').value, 10);
+            
+            const tagsInput = document.getElementById('tags').value.split(',').map(tag => tag.trim()).filter(Boolean);
+            const categoriesInput = document.getElementById('categories').value.split(',').map(cat => cat.trim()).filter(Boolean);
+            const imagesInput = document.getElementById('images').files;
+            console.log("imagesInput", imagesInput);  // Check the list of files
+
+            // Validate required fields
+            if (!name || !description || isNaN(price) || isNaN(stock)) {
+                document.getElementById('error').textContent = 'Please fill in all required fields correctly.';
+                return; // Prevent submission if validation fails
+            }
+        
+            // Add product details to formData
+            formData.append('name', name);
+            formData.append('description', description);
+            formData.append('price', price);
+            formData.append('stock', stock);
+        
+            // Add tags to formData
+            /*tagsInput.forEach((tag, index) => {
+                formData.append(`tags[${index}]`, tag);
+            });*/
+            tagsInput.forEach((tag, index) => {
+                formData.append(`tags[${index}][name]`, tag);
+                formData.append(`tags[${index}][description]`, tag || ""); // Default to empty if no description
+            });
+            
+            // Add categories to formData
+            categoriesInput.forEach((category, index) => {
+                formData.append(`categories[${index}]`, category);
+            });
+        
+            // Add images to formData
+            for (let i = 0; i < imagesInput.length; i++) {
+                formData.append('images[]', imagesInput[i]);
+            }
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/products', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjIyOTg3MCwianRpIjoiMGU2MGRmYTYtMjE1OS00MjBmLWJkYzctOTMzZmIxMzlkNjg0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MjI5ODcwLCJjc3JmIjoiMzZlMTlkZmQtNzQ4Zi00MWIyLTg2YmEtMGVmOTA5MjNhOGIyIiwiZXhwIjoxNzM2MjMzNDcwLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.ifdpZxh9jELH0c7yZkrE9PS8NhBSpKZicmkEsn8rV8M`
+                    },
+                    body: formData
+                });
+                
+                console.log(response);
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || errorData.error || 'Something went wrong.');
+                }
+        
+                const data = await response.json();
+                document.getElementById('success').textContent = data.message || 'Product created successfully!';
+                document.getElementById('error').textContent = ''; // Clear any previous error messages
+
+            } catch (error) {
+                document.getElementById('error').textContent = error.message;
+                document.getElementById('success').textContent = ''; // Clear any previous success messages
+            }
+        });
+        
+    </script>
+</body>
+</html>

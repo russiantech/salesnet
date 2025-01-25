@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <style>
+        .chat-body {
+            height: 400px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        .message-out {
+            text-align: right;
+        }
+        .message-text p {
+            margin: 0;
+        }
+        .text-danger {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Chat Application</h2>
+        <div class="chat-body" id="messages"></div>
+        <form id="chat_form" class="form-inline">
+            <input type="text" id="chat_content" class="form-control mr-2" placeholder="Type your message..." data-to_username="user" data-from_username="edet" required>
+            <input type="file" id="chat_file" class="form-control mr-2">
+            <button type="submit" id="save_chat_request_btn" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+
+    <script>
+        const socket = io.connect('http://localhost:5000'); // Adjust the port if necessary
+
+        $(document).ready(() => {
+            
+            const username = "edet";
+
+            try {
+                socket.on('connect', () => {
+                    console.log('Connected to Socket.IO server with session ID:', socket.id);
+                });
+
+                socket.on('disconnect', () => {
+                    console.log('Disconnected from Socket.IO server');
+                });
+
+                const validate = (data) => {
+                    if (typeof data === 'object' && !Array.isArray(data)) {
+                        return JSON.stringify(data);
+                    } else {
+                        console.error('Data must be a dictionary.');
+                        return null;
+                    }
+                };
+
+                $('#chat_form').on('submit', (e) => {
+                    e.preventDefault();
+                    const content = $('#chat_content');
+                    const files = $('#chat_file')[0].files;
+
+                    let data = {
+                        'to_username': $(content).attr("data-to_username").toString(),
+                        'from_username': $(content).attr("data-from_username").toString(),
+                        'text': $(content).val().toString(),
+                        'sticker': files.length > 0 ? files[0] : null,
+                        'media_url': files.length > 0 ? files[0] : null,
+                    };
+
+                    socket.emit('save_chat_request', validate(data), (response) => {
+                        console.log("Received acknowledgment from server:", response);
+                        $(content).val('').focus();
+                        $('#save_chat_request_btn').removeClass('disabled');
+                        
+                    });
+
+                    socket.on('save_chat_response', (response) => {
+                        console.log("save_chat_response", response);
+                        if (response && (response.message || response.error_message)) {
+                            const responseData = response.success ? response.data : null;
+                            const responseFromUsername = responseData ? responseData.from_username : '...';
+                            const responseMessage = responseData ? (responseData.text || response.message) : response.error_message;
+                            const responseTime = responseData ? moment(responseData.updated).fromNow() : moment(new Date()).fromNow();
+
+                            const serverSid = response.server_sid;
+                            const messagesDiv = $('#messages');
+                            const clonedMessage = $('<div class="message"></div>').removeClass('d-none');
+
+                            if (socket.id === serverSid) {
+                                clonedMessage.addClass('message-out');
+                            }
+
+                            clonedMessage.append(`<h6 class="text-reset">${responseFromUsername}</h6>`);
+                            clonedMessage.append(`<span class="extra-small text-muted">${responseTime}</span>`);
+                            clonedMessage.append(`<div class="message-text"><p>${responseMessage}</p></div>`);
+
+                            if (response.success === false && responseMessage) {
+                                clonedMessage.find('div.message-text p').addClass('text-danger');
+                            }
+
+                            $(messagesDiv).append(clonedMessage);
+                            $('.chat-body').animate({ scrollTop: messagesDiv.prop("scrollHeight") }, 500);
+                            $(content).val('').focus();
+                            $('#save_chat_request_btn').removeClass('disabled');
+                        }
+                    });
+                });
+
+                socket.emit('fetch_chat_request', username);
+
+            } catch (e) {
+                console.error('Error:', e);
+            }
+        });
+    </script>
+</body>
+</html>

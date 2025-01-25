@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+	{% include 'incs/metas.html' %}
+</head>
+
+<body class="font-sans">
+
+	{% include 'incs/modals.html' %}
+
+	<div id="app" class="">
+
+		{% include 'incs/topnav.html' %}
+
+		<main>
+
+		<section class="pt-10 pb-8 py-md-10 py-lg-8 position-relative overflow-hidden">
+			<div class="container-xxl max-w-screen-xl">
+				<div class="row g-10 align-items-center">
+					<div class="col-lg-6 mb-16 mb-lg-0">
+
+						<h1 class="lh-tight ls-tighter font-bolder display-1 mb-7 mt-5">
+							Techa.
+							<!-- <span class="d-lg-block text-transparent bg-clip-text gradient-bottom-right start-indigo-500 end-cyan-500 position-relative"> -->
+							<span
+								class="d-lg-block text-transparent bg-clip-text gradient-bottom-right start-indigo-500 position-relative">
+								Advanced Technologies.
+							</span>
+						</h1>
+						
+						<p class="text-lg font-regular mb-7 mb-md-10 pe-lg-24">
+							Techa m-powers people & powers businesses to stay relevant with technologies and
+							advancements.
+							<!-- Production-ready components and products with guides and examples to quickly
+							build and customize fast, responsive websites and apps. -->
+						</p>
+						<div class="hstack gap-3">
+							<a data-bs-toggle="modal" data-bs-target="#modalRequest" aria-label="modalRequest"
+								class="btn btn-dark rounded-pill font-bold my-2 w-full w-md-auto transform scale-105-hover transition ease-in">
+								Custom Softwares
+								<i class="far fa-angle-right ms-3"></i>
+							</a>
+							<a href="#showcase"
+								class="btn btn-neutral rounded-pill font-bold my-2 w-full w-md-auto transform scale-105-hover transition ease-in">
+								Explore Products
+								<i class="far fa-angle-right ms-3"></i>
+							</a>
+						</div>
+						<div class="d-flex align-items-center mt-10">
+							<div
+								class="d-inline-flex flex-none w-16 h-16 p-4 rounded-circle bg-surface-secondary svg-fluid">
+								<img src="./static/showcase/img/brand/favicon.svg" alt="">
+							</div>
+							<div class="ms-4 w-sm-1/2">
+								<p class="text-muted text-sm">
+									<a href="{{site_link}}" class="font-bold text-heading"
+										target="_blank">Experts</a> - elite software engr team with
+									special interest in artificial intelligence, data and hacking.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 ms-lg-auto d-none d-md-block">
+						<div class="mb-5 mb-lg-0 position-relative">
+							<img src="static/showcase/img/brand/techa_hero.png"
+								class="img-fluid position-relative overlap-10" alt="Techa component library" />
+							<div class="position-absolute top-1/2 start-1/2 h-2/3 w-2/3 transform translate-y-n1/2 translate-x-n1/2 scale-lg-105 
+								gradient-bottom-right start-cyan-100 end-indigo-500 filter blur-100 opacity-60 rounded-4 p-5">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-8 py-md-12 pt-lg-10 pb-lg-16 position-relative">
+			<div class="container-xxl max-w-screen-xl">
+				<!-- Title -->
+				<div class="row align-items-center mb-16">
+					<div class="col-12 col-md-10 col-lg-9 mx-auto text-lg-center">
+						<section>
+							<h1 class="lh-tight ls-tighter font-bolder display-5 mb-8">
+								What most of our clients ask for
+							</h1>
+							<p class="text-lg px-lg-32">
+								We work with ambitious founders to build successful companies from the ground up.
+								Increasing their chances of success.
+							</p>
+						</section>
+					</div>
+				</div>
+				<!-- Content -->
+				<div class="row g-7 g-lg-10">
+					<div class="col-12 col-md-6 col-lg-4">
+						<div class="position-relative bg-surface-secondary rounded-4 shadow-6-hover">
+							<div class="p-5 p-md-5 p-xl-10">
+								<section>
+									<header>
+										<div class="icon icon-xl mb-8">
+											<i
+												class="far fa-lightbulb text-transparent bg-clip-text gradient-bottom-right start-pink-500 end-purple-500"></i>
+										</div>
+										<h1 class="h3 mb-5">
+											Custom softwares
+										</h1>
+									</header>
+									<p class="text-muted mb-4">
+										I want to develop,deploy & go to market quick with my web, mobile or desktop
+										application.
+									</p>
+									<footer>
+										<a href="components.html"
+											class="font-semibold text-transparent bg-clip-text gradient-bottom-right start-pink-500 end-purple-400 end-pink-500-hover stretched-link">
+											Start Building -></a>
+									</footer>
+								</section>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-lg-4">
+						<div class="position-relative bg-surface-secondary rounded-4 shadow-6-hover">
+							<div class="p-5 p-md-5 p-xl-10">
+								<section>
+									<header>
+										<div class="icon icon-xl mb-8">
+											<i
+												class="fab fa-searchengin text-transparent bg-clip-text gradient-bottom-right start-purple-500 end-cyan-500"></i>
+										</div>
+										<h1 class="h3 mb-4">
+											Digital advertising
+										</h1>
+									</header>
+									<!-- Text -->
+									<p class="text-muted mb-5">
+										I want to take my business online or increase sales.
+									</p>
+									<footer>
+										<a data-bs-toggle="modal" data-bs-target="#modalRequest" aria-label="modalRequest"
+											class="font-semibold text-transparent bg-clip-text gradient-bottom-right start-purple-500 end-cyan-500 end-purple-500-hover stretched-link cursor-pointer">
+											Boast my brand</a>
+									</footer>
+								</section>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-lg-4">
+						<div class="position-relative bg-surface-secondary rounded-4 shadow-6-hover">
+							<div class="p-5 p-md-5 p-xl-10">
+								<section>
+									<header>
+										<div class="icon icon-xl mb-8">
+											<i
+												class="far fa-rocket text-transparent bg-clip-text gradient-bottom-right start-orange-500 end-yellow-400"></i>
+										</div>
+										<h1 class="h3 mb-4">
+											Business automation
+										</h1>
+									</header>
+									<p class="text-muted mb-5">
+										I want to eliminate repetitive tasks and unnecessary operational cost.
+									</p>
+									<footer>
+										<a data-bs-toggle="modal" data-bs-target="#modalRequest" aria-label="modalRequest"
+											class="font-semibold text-transparent bg-clip-text gradient-bottom-right start-orange-500 end-yellow-400 end-orange-500-hover stretched-link cursor-pointer">
+											Get in touch -></a>
+									</footer>
+								</section>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 col-lg-4">
+						<div class="position-relative bg-surface-secondary rounded-4 shadow-6-hover">
+							<div class="p-5 p-md-5 p-xl-10">
+								<section>
+									<header>
+										<div class="icon icon-xl mb-8"><i
+												class="fa fa-hands-helping text-transparent bg-clip-text gradient-bottom-right start-red-500 end-orange-500"></i>
+										</div>
+										<h1 class="h3 mb-4">Support</h1>
+									</header>
+									<!-- Text -->
+									<p class="text-muted mb-5">
+										Want to extend your team without breaking the bank..?
+									</p>
+									<footer>
+										<a data-bs-toggle="modal" data-bs-target="#modalRequest" aria-label="modalRequest"
+											class="font-semibold text-transparent bg-clip-text gradient-bottom-right start-red-500 end-orange-400 end-red-500-hover stretched-link cursor-pointer">
+											Let us know -></a>
+									</footer>
+								</section>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-lg-4">
+						<div class="position-relative bg-surface-secondary rounded-4 shadow-6-hover">
+							<div class="p-5 p-md-5 p-xl-10">
+								<section>
+									<header>
+										<div class="icon icon-xl mb-8">
+											<i
+												class="far fa-moon text-transparent bg-clip-text gradient-bottom-right start-blue-500 end-cyan-500"></i>
+										</div>
+										<h1 class="h3 mb-4">
+											Building for the moon
+										</h1>
+									</header>
+									<!-- Text -->
+									<p class="text-muted mb-5">
+
+										Whether scratch, or transforming existing ones,
+										we know what it takes to make a digital product succeed at scale.
+
+									</p>
+									<footer>
+										<a data-bs-toggle="modal" data-bs-target="#modalRequest" aria-label="modalRequest"
+											class="font-semibold text-transparent bg-clip-text gradient-bottom-right start-blue-500 end-cyan-500 end-blue-500-hover stretched-link  cursor-pointer">
+											Get Started -></a>
+									</footer>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--  -->
+		<section class="pt-8 pt-md-8">
+			<div class="container-xxl max-w-screen-xl">
+				<div class="row align-items-center mb-20">
+					<div class="col-lg-6 mb-4 mb-lg-0">
+						<h1 class="display-5 ls-tight mb-5">The design pattern & product library</h1>
+						<div class="row mx-n2 mt-12">
+							<div class="col-sm-4 mb-3 mb-sm-0">
+								<h2 class="text-secondary mb-1"><span
+										class="display-6 fw-semibold text-warning">100</span> <span
+										class="counter-extra text-warning">+</span></h2>
+								<p class="text-muted">Elite developers</p>
+							</div>
+							<div class="col-sm-3 mb-3 mb-sm-0">
+								<h2 class="text-secondary mb-1"><span
+										class="display-6 fw-semibold text-danger">4.9</span></h2>
+								<p class="text-muted">Average Rating</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-5 ms-lg-auto">
+						<div class="vstack gap-8">
+							<div>
+								<div class="d-flex align-items-center gap-4 mb-4">
+									<div class="icon icon-shape text-bg-primary text-lg rounded-circle"><i
+											class="bi bi-door-open"></i>
+									</div>
+									<h3 class="fw-semibold">Efficiency and Time Savings</h3>
+								</div>
+								<p class="">Reduce the time and effort needed for creating a website from scratch
+									with
+									pre-designed layouts, styles, and components.</p>
+							</div>
+							<hr class="my-0">
+							<div>
+								<div class="d-flex align-items-center gap-4 mb-4">
+									<!-- <div class="icon icon-shape text-bg-warning text-lg rounded-circle"><i
+											class="bi bi-rocket-takeoff"></i></div> -->
+									<div class="icon icon-lg text-warning mb-5">
+										<i class="fas fa-palette"></i>
+									</div>
+									<h3 class="fw-semibold">Professional Appearance & Consistency</h3>
+								</div>
+								<p class="">Our projects are designed by professionals, to ensure consistent, modern
+									look-and-feel throughout your UI.</p>
+							</div>
+
+							<hr class="my-0">
+							<div>
+								<div class="d-flex align-items-center gap-4 mb-4">
+									<div class="icon icon-shape text-bg-secondary text-lg rounded-circle"><i
+											class="fa fa-rocket text-success"></i></div>
+									<h3 class="fw-semibold">Readily Scalable.</h3>
+								</div>
+								<p class="">
+									Be prepared to handle any new requirements at scale without hazzle.</p>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="row g-8 justify-content-center">
+					<div class="col-md-6 col-xl-4 ">
+						<div class="card shadow-soft-2 text-white h-md-100 place-content-center h-full rounded-4 gradient-bottom-right 
+						start-pink-500 end-purple-500 transform rotate-lg-n2 
+						rotate-lg-0-hover scale-105-hover transition ease-in-out duration-base">
+							<a href="{{intellect_link}}" class="cursor-pointer">
+								<div class="card-body d-flex flex-column p-8 text-white">
+									<h5 class="h4 mb-4 text-white">
+										<i class="fa fa-graduation-cap me-3 fw-bold"></i>
+										Intellect
+									</h5>
+									<p class="text-md">Your digital learning companion.</p>
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-xl-4">
+						<div
+							class="card disaled shadow-soft-2 h-md-100 place-content-center h-full rounded-4 
+						gradient-bottom-right start-orange-100 end-yellow-400 transform rotate-lg-2 rotate-lg-0-hover scale-105-hover transition ease-in-out duration-base">
+							<a href="{{paysafe_link}}" class="disabled cursor-pointer">
+								<div class="card-body d-flex flex-column p-8">
+									<h5 class="h4 mb-4 text-warning">
+										<i class="fa fa-wallet me-3 fw-bold"></i> PaySafe
+									</h5>
+									<p class="text-md text-warning">Payment Security.</p>
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-xl-4">
+						<div class="card shadow-soft-2 h-md-100 place-content-center h-full rounded-4 bg-default
+						gradient-bottom-right start-purple-500
+						transform rotate-lg-2 rotate-lg-0-hover scale-105-hover transition ease-in-out duration-base">
+							<a href="{{salesnet_link}}" class="cursor-pointer">
+								<div class="card-body d-flex flex-column p-8">
+									<h5 class="h4 mb-4 text-white">
+										<i class="bi bi-cart me-3 fw-bold text-white"></i> Salesnet.
+									</h5>
+									<p class="text-md text-white">Internet of sales..</p>
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-xl-4">
+						<div class="card shadow-soft-2 h-md-100 place-content-center h-full rounded-4 bg-surface-secondary
+						transform rotate-lg-2 rotate-lg-0-hover scale-105-hover transition ease-in-out duration-base">
+							<a href="{{barman_link}}" class="cursor-pointer">
+								<div class="card-body d-flex flex-column p-8">
+									<h5 class="h4 mb-4  text-primary">
+										<i class="bi bi-bar-chart me-3 fw-bold"></i> Barman.
+									</h5>
+									<p class="text-md  text-primary">
+										Precision in profits, inventory & insights for growth.</p>
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-xl-4">
+						<div class="card shadow-soft-2 h-md-100 place-content-center h-full rounded-4 bg-success
+						transform rotate-lg-2 rotate-lg-0-hover scale-105-hover transition ease-in-out duration-base">
+							<a href="{{workforce_link}}" class="cursor-pointer">
+								<div class="card-body d-flex flex-column p-8">
+									<h5 class="h4 mb-4 text-white">
+										<i class="bi bi-building me-3"></i>
+										Workforce
+									</h5>
+									<p class="text-md text-white"> Management & Scaling the work-space..</p>
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-xl-4">
+						<div class="card shadow-soft-2 h-md-100 place-content-center h-full rounded-4 bg-surface-dark
+						transform rotate-lg-2 rotate-lg-0-hover scale-105-hover transition ease-in-out duration-base">
+							<a data-bs-toggle="modal" data-bs-target="#modalRequest" class="text-white cursor-pointer">
+								<div class="card-body d-flex flex-column p-8">
+									<h5 class="h4 mb-4 text-muted">
+										<i class="bi bi-app me-3"></i>
+										Russian developers
+									</h5>
+									<p class="text-md text-white1">Empowering people & Powering businesses.</p>
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-xl-4">
+						<div class="card shadow-soft-2 h-md-100 place-content-center h-full rounded-4 bg-soft-primary
+						transform rotate-lg-2 rotate-lg-0-hover scale-105-hover transition ease-in-out duration-base">
+							<a data-bs-toggle="modal" data-bs-target="#modalRequest" class="cursor-pointer text-white">
+								<div class="card-body d-flex flex-column p-8">
+									<h5 class="h4 mb-4 text-primary">
+										<i class="bi bi-app me-3"></i>
+										Artificial intelligence
+									</h5>
+									<p class="text-md text-primary">Build and scale AI models like a pro.</p>
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-xl-4">
+						<div class="card shadow-soft-2 h-md-100 place-content-center h-full rounded-4 bg-surface-dark
+						transform rotate-lg-2 rotate-lg-0-hover scale-105-hover transition ease-in-out duration-base">
+							<a data-bs-toggle="modal" data-bs-target="#modalRequest" class="cursor-pointer text-white">
+								<div class="card-body d-flex flex-column p-8">
+									<h5 class="h4 mb-4 text-white">
+										<i class="bi bi-app me-3"></i>
+										Hacking & Security
+									</h5>
+									<p class="text-md text-white">Build security into your digital infrastructures
+										and prevent
+										data bridges & losses.
+									</p>
+								</div>
+							</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<section class="pt-24 pt-lg-40">
+			<div class="container-xxl max-w-screen-xl">
+				<div class="row align-items-center mb-10">
+					<div class="col-lg-7">
+						<h1 class="lh-tight ls-tighter font-bolder display-5 mb-5">
+							Recent products showcase
+						</h1>
+						<p class="text-lg pe-lg-24">
+							Techa aims to support designers and developers build fully responsive & outstanding
+							websites and apps.
+						</p>
+					</div>
+				</div>
+				<div id="showcase" class="hstack scrollable-x gap-4">
+					<a href="#"
+						class="btn btn-sm bg-secondary bg-opacity-20 bg-opacity-40-hover text-heading text-opacity-80 text-opacity-100-hover font-bold rounded-pill">
+						<i class="fas fa-image me-2"></i>
+						Dashboard
+					</a>
+					<a href="#"
+						class="btn btn-sm bg-secondary bg-opacity-20 bg-opacity-40-hover text-heading text-opacity-80 text-opacity-100-hover font-bold rounded-pill">
+						<i class="fas fa-image me-2"></i>
+						Banking & Fintech
+					</a>
+					<a href="#"
+						class="btn btn-sm bg-secondary bg-opacity-20 bg-opacity-40-hover text-heading text-opacity-80 text-opacity-100-hover font-bold rounded-pill">
+						<i class="fas fa-image me-2"></i>
+						Management Tools
+					</a>
+					<a href="#"
+						class="btn btn-sm bg-secondary bg-opacity-20 bg-opacity-40-hover text-heading text-opacity-80 text-opacity-100-hover font-bold rounded-pill">
+						<i class="fas fa-image me-2"></i>
+						Landing Pages
+					</a>
+				</div>
+				<div class="row mt-8">
+					<div class="col-lg-12 mx-auto">
+						<div class="screens-showcase-container position-relative rounded-5 gradient-bottom-right start-purple-500 overflow-hidden h-lg-calc"
+							style="--x-h-lg: 200px;">
+							<div class="w-full h-full p-6 p-lg-0 transform translate-x-n1/2 translate-y-lg-n1/2 rotate-lg-30"
+								style="width: 1000px;">
+								<div class="screens-showcase d-flex mb-6 mb-lg-12 animation-move-slow-left">
+									<div class="col-10 col-md-7 px-3 px-lg-6">
+										<a href="intellect.techa.tech">
+											<img src="static/showcase/img/products/intellect.png"
+												class="img-fluid rounded-4 transform  scale-105-hover"
+												alt="Your digital learning Companion" />
+										</a>
+									</div>
+									<div class="col-10 col-md-7 px-3 px-lg-6">
+										<a href="{{barman_link}}">
+											<img src="static/showcase/img/products/barman.png"
+												class="img-fluid rounded-4 transform scale-100 scale-105-hover transition duration-base ease-in"
+												alt="Barman" />
+										</a>
+									</div>
+									<div class="col-10 col-md-7 px-3 px-lg-6">
+										<a href="{{barman_link}}">
+											<img src="static/showcase/img/products/barman_0.png"
+												class="img-fluid rounded-4 transform scale-100 scale-105-hover transition duration-base ease-in"
+												alt="Precision in profits, inventory & insights for growth" />
+										</a>
+									</div>
+
+									<div class="col-10 col-md-7 px-3 px-lg-6">
+										<a href="{{barman_link}}">
+											<img src="static/showcase/img/products/barman.png"
+												class="img-fluid rounded-4 transform scale-100 scale-105-hover transition duration-base ease-in"
+												alt="Precision in profits, inventory & insights for growth" />
+										</a>
+									</div>
+									<div class="col-10 col-md-7 px-3 px-lg-6">
+										<a href="{{barman_link}}">
+											<img src="static/showcase/img/products/barman_0.png"
+												class="img-fluid rounded-4 transform scale-100 scale-105-hover transition duration-base ease-in"
+												alt="Precision in profits, inventory & insights for growth" />
+										</a>
+									</div>
+
+								</div>
+
+								<div class="screens-showcase d-flex animation-move-slow-right">
+
+
+									<div class="col-10 col-md-7 px-3 px-lg-6">
+										<a href="{{barman_link}}">
+											<img src="static/showcase/img/products/barman_0.png"
+												class="img-fluid rounded-4 transform scale-100 scale-105-hover transition duration-base ease-in"
+												alt="Precision in profits, inventory & insights for growth" />
+										</a>
+									</div>
+
+									<div class="col-10 col-md-7 px-3 px-lg-6">
+										<a href="{{barman_link}}">
+											<img src="static/showcase/img/products/barman.png"
+												class="img-fluid rounded-4 transform scale-100 scale-105-hover transition duration-base ease-in"
+												alt="Precision in profits, inventory & insights for growth" />
+										</a>
+									</div>
+									<div class="col-10 col-md-7 px-3 px-lg-6">
+										<a href="{{barman_link}}">
+											<img src="static/showcase/img/products/barman_0.png"
+												class="img-fluid rounded-4 transform scale-100 scale-105-hover transition duration-base ease-in"
+												alt="Precision in profits, inventory & insights for growth" />
+										</a>
+									</div>
+									<div class="col-10 col-md-7 px-3 px-lg-6"></div>
+									<a href="intellect.techa.tech">
+										<img src="static/showcase/img/products/intellect.png"
+											class="img-fluid rounded-4 transform  scale-105-hover"
+											alt="Your digital learning Companion" />
+									</a>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</section>
+
+		<section class="py-16 py-md-24 pt-lg-32 pb-lg-16 position-relative">
+			<div class="container-xxl max-w-screen-xl">
+				<div class="row align-items-center mb-24">
+					<div class="col-12 col-md-10 col-lg-9 mx-auto text-lg-center">
+						<section>
+
+							<h1 class="lh-tight ls-tighter font-bolder display-5 mb-5">
+								🌎 Stay hyper-focused & Connect.
+							</h1>
+							<p class="text-lg px-lg-32">
+								Hundreds of developers and businesses use our solutions to create responsive, mobile-first
+								products, integrate AI, and make smarter business decisions.
+							</p>
+						</section>
+						<div class="hstack gap-10 gap-lg-16 justify-content-lg-center mt-20 mx-auto scrollable-x">
+							<div class="flex-none">
+								<img src="static/showcase/img/partners/bizoo-dark.png" class="h-6 w-auto img-grayscale opacity-70" />
+							</div>
+							<div class="flex-none">
+								<img src="static/showcase/img/partners/coinbase.png" class="h-6 w-auto img-grayscale opacity-70" />
+							</div>
+							<div class="flex-none">
+								<img src="static/showcase/img/partners/speckyboy.png" class="h-6 w-auto img-grayscale opacity-70" />
+							</div>
+							<div class="flex-none">
+								<img src="static/showcase/img/partners/google.png" class="h-6 w-auto img-grayscale opacity-70" />
+							</div>
+							<div class="flex-none">
+								<img src="static/showcase/img/partners/y-combinator.png"
+									class="h-6 w-auto img-grayscale opacity-70" />
+							</div>
+							<div class="flex-none">
+								<img src="static/showcase/img/partners/oblio-dark.png" class="h-6 w-auto img-grayscale opacity-70" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Testimonials -->
+				<div class="row g-4" data-masonry='{"percentPosition": true }'>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Lu
+									</span>
+								</div>
+								<div class="">
+									<h5>Luis</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									I saw it and fell in love. Absolutely beautiful design. And great docs too! I
+									love that when making use of the plugins they actually thought of speed and
+									development by not to cluttering all the components and examples with ALL the
+									plugins (cause lets get real, you never use em all), but giving you the
+									instructions on how to add the SPECIFIC plugin you need in case you need it.
+									That level of detail says much about the quality of service and the product.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Ro
+									</span>
+								</div>
+								<div class="">
+									<h5>Rob</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									I purchased this product about a week ago and I have to say it’s been absolutely
+									brilliant. Besides a few minor niggles, I can’t really fault it. It’s really
+									easy to customise and make your own. I don’t see any issues incorporating it
+									into any CMS or web app. Great job, thanks guys.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Hu
+									</span>
+								</div>
+								<div class="">
+									<h5>Hunter</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									Background images are SVG making it almost too-easy to change the colors and
+									customize!
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										St
+									</span>
+								</div>
+								<div class="">
+									<h5>Steffen</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									I am working with this product now for about 2 months on my new quite big
+									project and I still love every bit of it. While the great design convinced me in
+									the first place, it is also a professional solution to work with in the long run
+									- structured very well, responsive and a lot of elements to choose from for your
+									project.
+									Best thing for me are the many pre-designed pages that I can use for my project
+									with just a few changes + the recent update added a lot more of awesome
+									templates!
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										To
+									</span>
+								</div>
+								<div class="">
+									<h5>Tolgahan</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									I really like this theme and the team are awesome, they're really doing a great
+									job with this theme. However, they're kinda slow to response. But it's
+									acceptable.
+									They accepted most of my requests and also solved bunch of bugs that are found
+									on the latest version.
+									I can't wait to see the v1.2. I guess it's gonna be lit!
+									Also, looks like these guys changed the game. Now every theme maker following
+									Purpose and doing similar stuff like pages, landings etc. Awesome!
+									Keep up the good work! ?
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Vi
+									</span>
+								</div>
+								<div class="">
+									<h5>Vincent</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									I highly recommend this library if you suck at design (like me) and wanna build
+									something great. Some templates I used to download are too complicated for what
+									they are. The price is worth it :)
+									In my case, the support I had from the team was awesome! The team helped me to
+									figure out an issue that I couldn't explain. I highly recommend Techa for
+									your next big project.
+									Thank you so much for your good work ! :)
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Rh
+									</span>
+								</div>
+								<div class="">
+									<h5>Rhonda</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									I can't say how happy I am for using this template
+									Really a great job!
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Ky
+									</span>
+								</div>
+								<div class="">
+									<h5>Kyle</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									This is by far the best theme i have come across. The code is beautifully
+									organised and uses all the latest design techniques. Support for me was very
+									quick and very thorough. So, I couldn't be more happy with the Purpose theme.
+									Well done guys and thanks for providing such a clean codebase to work off.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Pa
+									</span>
+								</div>
+								<div class="">
+									<h5>Pavel</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									The UI design is fresh and relevant for 2022. I am new to Bootstrap and it helps
+									me a lot of examples to build an interesting page. I think that I can use this
+									theme not only in the current project.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Ma
+									</span>
+								</div>
+								<div class="">
+									<h5>Mathias</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									What I really appreciate about this UI library is the fact that it contains
+									hundreds of different opportunities to create beautiful webpages. I would start
+									use this more and more!
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Br
+									</span>
+								</div>
+								<div class="">
+									<h5>Brandon</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									The template is not only visually appealing, but the modular structure makes it
+									easy to add and remove components in any web page. It's a really nice product.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Sa
+									</span>
+								</div>
+								<div class="">
+									<h5>Saif</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									Amazing looking theme and instantly turns your application into a professional
+									looking one. Really shows that professionals have built this theme up. Very
+									happy with the way the theme looks and the example pages are very good.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Ne
+									</span>
+								</div>
+								<div class="">
+									<h5>Nelson</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									I have worked with different UI products, but this one stands out in terms of
+									beautiful organization. The library also has many example pages and a lot of
+									components to choose from. Can't thank you enough!
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Ne
+									</span>
+								</div>
+								<div class="">
+									<h5>Neville</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									Beautifully organised library with lots of components, nice typography and
+									standout colours. Really makes a website pop!
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="card shadow-soft-4 flex-column gap-4 p-6 rounded-4">
+							<div class="hstack align-items-center gap-4">
+								<div class="">
+									<span
+										class="avatar avatar-sm rounded-circle bg-soft-primary text-primary text-uppercase">
+										Ma
+									</span>
+								</div>
+								<div class="">
+									<h5>Magic</h5>
+								</div>
+							</div>
+							<div class="">
+								<p class="text-sm">
+									I really like the design and concept approach. The results are mind blowing.
+									Just a little request: Please integrate more from data tables examples. Great
+									job guys!
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="pb-8">
+			<div class="container max-w-screen-lg">
+				<div class="p-8 p-md-16 rounded-5 gradient-bottom-right start-indigo-500 middle-purple-500 end-cyan-500">
+					<div class="row justify-content-center">
+						<div class="col-12 col-md-11 col-lg-10 text-md-center">
+							<h1 class="lh-tight ls-tighter font-bolder display-5 text-white mb-5">
+								Have an idea?
+							</h1>
+							<p class="text-lg text-white mb-7">
+								Let's build and scale it or subscribe to instantly unlock and leverage our dev team.
+							</p>
+							<div class="mx-sm-n3">
+								<a data-bs-toggle="modal" data-bs-target="#modalRequest" aria-label="modalRequest"
+									class="btn btn-lg btn-dark rounded-pill font-bold my-2 mx-sm-3 w-full w-md-auto transform scale-105-hover transition ease-in">
+									Get started now
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		</main>
+
+		{% include 'incs/footer.html' %}
+
+	</div>
+		
+		<!-- modals -->
+		{% include 'incs/pages/us.html' %}
+		{% include 'incs/pages/pricing.html' %}
+		{% include 'incs/cookie.html' %}
+
+	{% include 'incs/bottom_js.html' %}
+
+</html>

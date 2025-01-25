@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <!-- Include Socket.IO client library -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        // Fetch JWT from localStorage
+        // const JWT_TOKEN = localStorage.getItem('jwt_token');  // Assuming JWT is stored in localStorage
+        const JWT_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzM1OTk2OSwianRpIjoiMjhlZDliMmUtMTRkNS00MTMwLTg3NTYtOTc3MjA4MmM4MTM4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3MzU5OTY5LCJjc3JmIjoiMWUzZmMzNzItMjk1OC00NDQzLWI0ZTQtYjM4ZWJjZWRlODYyIiwiZXhwIjoxNzM3MzYzNTY5LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.eiOB2_cS1nm8SpO348jn0dC7uNm8KCSTNhoWYdqkoS0'
+
+        // Connect to the Socket.IO server with JWT token passed in the 'auth' object
+        const socket = io('http://localhost:5000/api/chats', {
+            auth: {
+                token: JWT_TOKEN  // Sending token in the authentication object
+            }
+        });
+
+        // Emit a save chat request
+        socket.emit('save_chat_request', {
+            text: 'Hello, World!',
+            to_username: 'recipient_username'
+        });
+
+        // Handle socket connection
+        socket.on('connect', () => {
+            console.log('Connected to /chats namespace with ', socket.id);
+            socket.emit('connected', socket.id); // Send socket id on connect
+        });
+
+        // Handle disconnection
+        socket.on('disconnect', () => {
+            console.log('Disconnected from /chats namespace');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+    
+    <!-- Include Socket.IO client library -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        // script.js
+
+// Assuming you have a token stored in local storage
+// const token = localStorage.getItem('token');
+const JWT_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzQ2MTI4NiwianRpIjoiY2E4MzE1YmQtNjY5Mi00MmI4LWJjZWItZGI4OGRiNTQzOThiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3NDYxMjg2LCJjc3JmIjoiYTk2OWM3NmItZDdiMi00YzkxLTkwNDYtMjUwNDM4YzdhZmNlIiwiZXhwIjoxNzM3NDY0ODg2LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.s_2tQPMQ154EY5hE2DMMPlHqtHbK0FlLOQx3QZTDZFU"
+// const socket = io(`http://localhost:5000/api/chats`); // Adjust the URL as necessary
+const socket = io(`http://localhost:5000/api/chats?jwt=${JWT_TOKEN}`); //append jwt when your sending token for authentication via query params. jwt is default.
+// const socket = io('http://localhost:5000/api/chats', {
+//     auth: {
+//         // token: localStorage.getItem('jwt_token')  // Assuming the JWT is stored in localStorage or sessionStorage
+//         token: JWT_TOKEN
+//     }
+// });
+
+// const socket = io(`http://localhost:5000/api/chats`); // Adjust the URL as necessary
+// // Set the authorization header
+// socket.io.opts.headers = {
+//   Authorization: `Bearer ${JWT_TOKEN}`
+// };
+
+// const socket = io('http://localhost:5000/api/chats', {
+//     auth: {
+//         access_token: JWT_TOKEN  // Sending token in the authentication object
+//     }
+// });
+
+// const socket = io('http://localhost:5000/api/chats', {
+//     auth: {
+
+//         Authorization: `Bearer ${JWT_TOKEN}`
+//     }
+// });
+
+const messagesContainer = document.getElementById('messages');
+const messageInput = document.getElementById('message-input');
+const sendButton = document.getElementById('send-button');
+
+// Function to append messages to the chat
+function appendMessage(message) {
+    const messageElement = document.createElement('div');
+    messageElement.textContent = message;
+    messagesContainer.appendChild(messageElement);
+}
+
+// Handle socket connection
+socket.on('connect', () => {
+    console.log('Connected to /chats namespace with ', socket.id);
+    // const username = prompt("Enter your username:"); // Prompt for username
+    socket.emit('connected', socket.id); // Send username on connect
+});
+
+// Handle incoming messages
+socket.on('save_chat_response', (data) => {
+    if (data.success) {
+        appendMessage(`You: ${data.data.text}`);
+    } else {
+        appendMessage(`Error: ${data.message}`);
+    }
+});
+
+// Send message on button click
+sendButton.addEventListener('click', () => {
+    alert('licked')
+    const messageText = messageInput.value;
+    if (messageText) {
+        
+        // const messageData = {
+        //     text: messageText,
+        //     to_usernames: ['edet'], // Replace with actual recipient usernames
+        //     group_name: 'Chat Group' // Optional group name
+        // };
+
+        const data = {
+            // 'access_token': JWT_TOKEN, 
+            'id': self.id,
+            // 'user_id': user_id,
+            'text': messageText,
+            'sticker': self.sticker || null,
+            'media': self.media || null,
+            'from_deleted': false,
+            'to_deleted': false,
+
+            'to_username': 'edet', // Replace with actual recipient usernames
+            'group_name': 'Chat Group' // Optional group name
+        }
+
+        // socket.emit('save_chat_request', messageData);
+
+        //emit `save-chat-request` event to the server
+        socket.emit('save_chat_request',  data, (response) => {
+            console.log("save_chat_request:", (response));
+            // messageInput.val('').focus(); //reset input box
+            messageInput.value = ''; // Clear input
+        });
+        // Handling the response for the 'save-chat-request' event
+        socket.on('save_chat_response', function(response) {
+            // Handle the response here
+            console.log("save_chat_response", response);
+        });
+
+        
+    }
+});
+
+// Handle disconnection
+socket.on('disconnect', () => {
+    console.log('Disconnected from api/chats namespace');
+});
+
+
+// export const connect = (username) => {
+//     socket.emit('connect', username);
+// };
+
+// export const sendMessage = (data) => {
+//     socket.emit('save_chat_request', data);
+// };
+
+// export const fetchChats = (username) => {
+//     socket.emit('fetch_chat_request', username);
+// };
+
+// export const onChatReceived = (callback) => {
+//     socket.on('fetch_chat_response', callback);
+// };
+
+// export const onMessageSaved = (callback) => {
+//     socket.on('save_chat_response', callback);
+// };
+
+// export const onTyping = (callback) => {
+//     socket.on('typing_response', callback);
+// };
+    </script>
+</body>
+</html>

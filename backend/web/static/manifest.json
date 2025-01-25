@@ -1,0 +1,22 @@
+{
+    "name": "Barman . Techa - Precision in profits, inventory, & insights for Growth!.",
+    "short_name": "Barman",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1d1d1d",
+    "theme_color": "#9e62c7",
+    "description": "Barman . Techa - Precision in profits, inventory, & insights for Growth!. Learn programming online on mobile or desktop for free.",
+    "icons": [
+      {
+        "src": "/static/images/logo.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/static/images/logo_0.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  

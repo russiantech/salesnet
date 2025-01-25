@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- You can add your own styles -->
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" name="username" placeholder="Username or Email" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p id="errorMessage" style="color: red;"></p> <!-- Error message will be displayed here -->
+        </form>
+    </div>
+
+    <!-- <script src="app.js"></script> Your JS file -->
+     <script>
+        // app.js
+
+// Handle form submission
+document.getElementById('loginForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const errorMessageElement = document.getElementById('errorMessage');
+    errorMessageElement.textContent = ''; // Clear previous error messages
+
+    // Validate input
+    if (!username || !password) {
+        errorMessageElement.textContent = 'Both username and password are required.';
+        return;
+    }
+
+    fetch('http://localhost:5000/api/users/signin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            errorMessageElement.textContent = `${data.success ? (data.message) : (data.error)}`;
+
+            if (data.success) {
+                // Store JWT tokens in cookies (secure, HTTP-only)
+                document.cookie = `access_token_cookie=${data.access_token}; path=/; secure; HttpOnly; SameSite=Strict`;
+                document.cookie = `refresh_token_cookie=${data.refresh_token}; path=/; secure; HttpOnly; SameSite=Strict`;
+
+                // Store JWT tokens in localStorage (accessible via JavaScript)
+                localStorage.setItem('access_token', data.access_token);
+                localStorage.setItem('refresh_token', data.refresh_token);
+
+                // Redirect to a different page (e.g., dashboard or homepage)
+                // window.location.href = data.redirect || '/dashboard';  // Default to /dashboard if no redirect provided
+            } 
+        })
+        .catch(error => {
+
+            console.log(error);
+            errorMessageElement.textContent = 'Network error: ' + error.message;
+        });
+
+});
+
+// 
+// Utility function to get a cookie by name
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+// Function to refresh the access token
+function refreshToken() {
+    const refreshToken = getCookie('refresh_token_cookie'); // Get refresh token from cookies
+
+    if (!refreshToken) {
+        console.error('No refresh token available!');
+        return Promise.reject('No refresh token available');
+    }
+
+    return fetch('/users/refresh-token', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ refresh_token: refreshToken })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update the access token in the cookies
+            document.cookie = `access_token_cookie=${data.data.access_token}; path=/; secure; HttpOnly; SameSite=Strict`;
+
+            // Optionally, update the refresh token as well if you decide to rotate it
+            // document.cookie = `refresh_token_cookie=${data.data.refresh_token}; path=/; secure; HttpOnly; SameSite=Strict`;
+
+            return data.data.access_token;
+        } else {
+            throw new Error('Unable to refresh token');
+        }
+    })
+    .catch(error => {
+        console.error('Error refreshing token:', error);
+        return null; // Return null if the refresh fails
+    });
+}
+
+// request protected routes
+// Example of an API call that requires an access token
+function fetchData() {
+    const accessToken = getCookie('access_token_cookie'); // Get the access token from cookies
+
+    if (!accessToken) {
+        console.error('No access token available!');
+        return;
+    }
+
+    fetch('/api/users', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.status === 401) {
+            // If the token is expired (401 Unauthorized), try to refresh the token
+            return refreshToken().then(newAccessToken => {
+                if (newAccessToken) {
+                    // Retry the original request with the new access token
+                    return fetch('/api/users', {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${newAccessToken}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                } else {
+                    throw new Error('Unable to refresh token');
+                }
+            });
+        } else {
+            return response.json(); // If the response is successful, parse the JSON data
+        }
+    })
+    .then(data => {
+        console.log('Fetched data:', data);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+}
+
+</script>
+
+</body>
+</html>

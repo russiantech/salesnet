@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+    
+    <!-- Include Socket.IO client library -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+// const JWT_TOKEN = localStorage.getItem('jwt_token'); 
+// const JWT_TOKEN = localStorage.getItem('access_token_cookie'); 
+// // Retrieve from localStorage
+const accessTokenFromLS = localStorage.getItem('access_token');
+const JWT_TOKEN = accessTokenFromLS;
+// const refreshTokenFromLS = localStorage.getItem('refresh_token');
+// // Retrieve from Cookies
+// const accessTokenFromCookies = getCookie('access_token_cookie');
+// const refreshTokenFromCookies = getCookie('refresh_token_cookie');
+// const JWT_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzY0MzI0MywianRpIjoiNjIzMWUyOGItZGU2NS00Y2RiLWI0ZDItYTBmNDM2YzdjMmUyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3NjQzMjQzLCJjc3JmIjoiNzM1ZDk0ZGYtMDg0Yi00ZDQ4LThmNGItMmMxYTUwMWQzYmVjIiwiZXhwIjoxNzM3NjQ2ODQzLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.6_jLK7F9pWMutlzgKp8XvIAEpn7Wepu9n9ne-wXd0LA"
+const socket = io(`http://localhost:5000/api/chats?jwt=${JWT_TOKEN}`); //append jwt when your sending token for authentication via query params. jwt is default.
+// const socket = io(`http://localhost:5000/api/chats`); //append jwt when your sending token for authentication via query params. jwt is default.
+// console.log(socket)
+const messagesContainer = document.getElementById('messages');
+const messageInput = document.getElementById('message-input');
+const sendButton = document.getElementById('send-button');
+
+// Function to append messages to the chat
+function appendMessage(message) {
+    const messageElement = document.createElement('div');
+    messageElement.textContent = message;
+    messagesContainer.appendChild(messageElement);
+}
+
+// Handle socket connection
+socket.on('connect', () => {
+    console.log('Connected to api/chats namespace with ', socket.id);
+    // const username = prompt("Enter your username:"); // Prompt for username
+    socket.emit('connected', socket.id); // Send username on connect
+});
+
+// Handle disconnection
+socket.on('disconnect', () => {
+    console.log('Disconnected from api/chats namespace');
+});
+
+socket.on('connect_response', (response) => {
+    console.log('connect_response', response);
+});
+
+// --------------------------------=++++++++++++++++++++++++++++
+// Handle incoming messages
+socket.on('save_chat_response', (data) => {
+    console.log(JSON.stringify(data));
+    appendMessage(`You: ${data.success ? (data.text ?? data.message) : (data.error ?? data.message)}`);
+});
+
+
+// socket.on('save_chat_response', (data) => {
+//     alert(JSON.stringify(data));
+//     if (data.success) {
+//         console.log(data.message);
+//         appendMessage(`You: ${data.text && data.error || data.message}`);
+//     }else{
+//         appendMessage(`Error: ${data.error}`);
+//     }
+
+// });
+
+// Send message on button click
+sendButton.addEventListener('click', () => {
+    const messageText = messageInput.value;
+    if (messageText) {
+        
+        const data = {
+            'id': 20,
+            'user_id': 21,
+            'from_username': "edet",
+            'to_username': "edet",
+            'group_name': 'Chat Group', // Optional group name
+            'text': messageText,
+            'sticker':  null,
+            'media_url': null,
+            'from_deleted': false,
+            'to_deleted': false,
+        }
+
+        //emit `save-chat-request` event to the server
+        socket.emit('save_chat_request',  data);
+        messageInput.value = ''; // Clear input
+    }
+});
+
+    </script>
+</body>
+</html>

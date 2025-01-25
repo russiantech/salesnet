@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Techa - Advanced Technologies.</title>
+{% include 'incs/metas.html' %}
+{{ moment.include_moment() }}
+
+</head>
+<body class="">
+    <!-- loader Start -->
+    <div id="loading"><div id="loading-center"></div></div>
+    <!-- loader END -->
+
+    <!-- Wrapper Start -->
+    {% block content %}
+
+    {% endblock content %}
+    <!-- Wrapper End-->
+    {% include "incs/response_modal.html" %}
+
+    {% include 'incs/footer.html' %}
+    
+    {% include 'incs/bottom_js.html' %}
+
+    {% block page_js %} {% endblock page_js %}
+    <script>
+
+        $('.table-responsive').on('show.bs.dropdown', function () {
+           $('.table-responsive').css( "overflow", "inherit" );
+      });
+      
+      $('.table-responsive').on('hide.bs.dropdown', function () {
+           $('.table-responsive').css( "overflow", "auto" );
+      })
+
+      function response_modal(message) {
+        document.getElementById('response_text').innerText = message;
+        $('#response_modal').modal('show');
+    }
+    
+      </script>
+</body>
+</html>

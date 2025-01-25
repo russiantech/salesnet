@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <!-- Include Socket.IO client library -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        // Fetch JWT from localStorage
+        const JWT_TOKEN = localStorage.getItem('jwt_token');  // Assuming JWT is stored in localStorage
+
+        // Connect to the Socket.IO server with JWT token passed in the 'auth' object
+        const socket = io('http://localhost:5000/api/chats', {
+            auth: {
+                token: JWT_TOKEN  // Sending token in the authentication object
+            }
+        });
+
+        const messagesContainer = document.getElementById('messages');
+        const messageInput = document.getElementById('message-input');
+        const sendButton = document.getElementById('send-button');
+
+        // Function to append messages to the chat
+        function appendMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            messagesContainer.appendChild(messageElement);
+        }
+
+        // Handle socket connection
+        socket.on('connect', () => {
+            console.log('Connected to /chats namespace with ', socket.id);
+            socket.emit('connected', socket.id); // Send socket id on connect
+        });
+
+        // Handle incoming messages
+        socket.on('save_chat_response', (data) => {
+            if (data.success) {
+                appendMessage(`You: ${data.data.text}`);
+            } else {
+                appendMessage(`Error: ${data.message}`);
+            }
+        });
+
+        // Send message on button click
+        sendButton.addEventListener('click', () => {
+            const messageText = messageInput.value;
+            if (messageText) {
+                const data = {
+                    'text': messageText,
+                    'to_username': 'edet', // Replace with the actual recipient
+                    'group_name': 'Chat Group' // Optional group name
+                };
+
+                // Emit the 'save_chat_request' event to the server
+                socket.emit('save_chat_request', data, (response) => {
+                    console.log("save_chat_request:", response);
+                    messageInput.value = ''; // Clear input
+                });
+            }
+        });
+
+        // Handle disconnection
+        socket.on('disconnect', () => {
+            console.log('Disconnected from /chats namespace');
+        });
+    </script>
+</body>
+</html>

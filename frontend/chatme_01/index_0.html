@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <style>
+        /* styles.css */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #chat-container {
+            background: white;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+
+        #messages {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        #message-input {
+            width: calc(100% - 80px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #send-button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #send-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+
+    <script>
+
+        // script.js
+        const JWT_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzQ3NTI5NywianRpIjoiZGE2MWVlOTctNWNkOS00YWU3LWIzMjItYzFkMWI2NTA0Zjg1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3NDc1Mjk3LCJjc3JmIjoiNTFiZmFiOWMtNTM1ZS00YWYxLTllZWQtYzcyNGI1NjI2ZTk2IiwiZXhwIjoxNzM3NDc4ODk3LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.NJiJJFJa6eZttHsoKX922WfIcYkGohM1ecAlTtpYFTk"
+const socket = io(`http://localhost:5000/api/chats?jwt=${JWT_TOKEN}`); //append jwt when your sending token for authentication via query params. jwt is default.
+
+        const messagesContainer = document.getElementById('messages');
+        const messageInput = document.getElementById('message-input');
+        const sendButton = document.getElementById('send-button');
+
+        // Function to append messages to the chat
+        function appendMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            messagesContainer.appendChild(messageElement);
+        }
+
+        // Handle socket connection
+        socket.on('connect', () => {
+            socket.emit('connected', socket.id); // Send username on connect
+        });
+
+        // Handle incoming messages
+        socket.on('save_chat_response', (data) => {
+            if (data.success) {
+                appendMessage(`You: ${data.data.text}`);
+            } else {
+                appendMessage(`Error: ${data.message}`);
+            }
+        });
+
+        // Handle typing indication
+        messageInput.addEventListener('input', () => {
+            socket.emit('typing_request', { "from_username": "edet", "to_username": 'abiola' }); // Replace with actual recipient
+            // socket.emit('typing_request', { from_username: username, to_username: 'abiola' }); // Replace with actual recipient
+            console.log('typing');
+        });
+
+        // 
+        // socket.on('typing_request', (data) => {
+        //     console.log(`${data.from_username} is typing to ${data.to_username}`);
+        //     // You can broadcast the typing status to the other user
+        //     socket.to(data.to_username).emit('typing_indication', { from_username: data.from_username });
+        // });
+        
+        // Assuming socket is already initialized and connected
+        let isTyping = false;  // To track if the user is typing
+        let typingTimeout;  // To handle the typing timeout
+
+        // const typingInput = document.getElementById('typingInput');  // Input field for typing
+        const typingInput = messageInput // Input field for typing
+        const recipientUser = 'user2';  // Example recipient user
+        const username = 'user1';  // Example logged-in username
+
+        // Function to send typing data when user is typing
+        function handleTyping() {
+            if (!socket.connected) {
+                console.log('User is not connected.');
+                return;
+            }
+
+            // Check if user is typing
+            if (typingInput.value.trim() !== '') {
+                if (!isTyping) {
+                    isTyping = true;
+                    console.log('User started typing');
+                    socket.emit('typing_request', {
+                        username: username,
+                        message: typingInput.value,
+                        to: recipientUser,
+                    });
+                }
+
+                // Reset the timeout each time the user types
+                clearTimeout(typingTimeout);
+                typingTimeout = setTimeout(() => {
+                    isTyping = false;  // User has stopped typing
+                    socket.emit('stopTyping', { username: username, to: recipientUser });
+                }, 1000); // Adjust the time threshold as needed
+            } else {
+                // If the input is empty, stop emitting typing
+                if (isTyping) {
+                    isTyping = false;
+                    socket.emit('stopTyping', { username: username, to: recipientUser });
+                }
+            }
+        }
+
+        // Event listener for typing in the input field
+        typingInput.addEventListener('input', handleTyping);
+
+
+        // Send message on button click
+        sendButton.addEventListener('click', () => {
+            const messageText = messageInput.value;
+            if (messageText) {
+                const messageData = {
+                    text: messageText,
+                    to_usernames: ['recipient_username'], // Replace with actual recipient usernames
+                    group_name: 'Chat Group' // Optional group name
+                };
+                socket.emit('save_chat_request', messageData);
+                messageInput.value = ''; // Clear input
+            }
+        });
+
+        // Handle disconnection
+        socket.on('disconnect', () => {
+            console.log('Disconnected from chat server');
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,437 @@
+<!-- GTM (noscript) -->
+<noscript>
+    <!-- <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MF4DZVH----" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe> -->
+</noscript>
+
+<script src="./static/showcase/js/jquery-3.6.0.min.js"></script>
+<script src="static/showcase/npm/masonry-layout-4.2.2/dist/masonry.pkgd.min.js" async></script>
+<script src="static/showcase/js/app.js" defer></script>
+<script src="static/showcase/livewire/livewire.js" data-turbo-eval="false" data-turbolinks-eval="false"></script>
+
+<script data-turbo-eval="false" data-turbolinks-eval="false">
+    window.livewire = new Livewire();
+    window.Livewire = window.livewire; window.livewire_app_url = '';
+    window.livewire_token = 'D5oyu20MjTFHnpuqxPYxshtFGNq0xBfDT4vKYtZM';
+    window.deferLoadingAlpine = function (callback) {
+        window.addEventListener('livewire:load', function () { callback(); });
+    };
+
+    let started = false; window.addEventListener('alpine:initializing',
+        function () {
+            if (!started) { window.livewire.start(); started = true; }
+        });
+    document.addEventListener("DOMContentLoaded",
+        function () {
+            if (!started) { window.livewire.start(); started = true; }
+        });
+</script>
+
+{# COOKIE #}
+<script>	
+    window.flaskCookieConsent = (function () {
+        const COOKIE_VALUE = 1;
+        const COOKIE_DOMAIN = '.techa.tech';
+        function consentWithCookies() {
+            setCookie('techa_cookie_consent', COOKIE_VALUE, 7300);
+            hideCookieDialog();
+            console.log('accpet cookie clicked')
+        }
+        function cookieExists(name) {
+            return (document.cookie.split('; ').indexOf(name + '=' + COOKIE_VALUE) !== -1);
+        }
+
+        function hideCookieDialog() {
+            const dialogs = document.getElementsByClassName('js-cookie-consent');
+            // alert(`${dialogs}`);
+            for (let i = 0; i < dialogs.length; ++i) {
+                dialogs[i].style.display = 'none';
+            }
+        }
+
+        function setCookie(name, value, expirationInDays) {
+            const date = new Date();
+            date.setTime(date.getTime() + (expirationInDays * 24 * 60 * 60 * 1000));
+            document.cookie = name + '=' + value
+                + ';expires=' + date.toUTCString()
+                + ';domain=' + COOKIE_DOMAIN
+                + ';path=/'
+                + ';samesite=lax';
+        }
+
+        if (cookieExists('techa_cookie_consent')) {
+            // alert(true)
+            hideCookieDialog();
+        }
+        const buttons = document.getElementsByClassName('js-cookie-consent-agree');
+        // alert(buttons)
+        for (let i = 0; i < buttons.length; ++i) {
+            //console.log(buttons[i]);
+            buttons[i].addEventListener('click', consentWithCookies);
+        }
+
+        return {
+            consentWithCookies: consentWithCookies,
+            hideCookieDialog: hideCookieDialog
+        };
+
+    })();
+</script>
+
+{# COPYRIGHT #}
+<script>
+    /*
+    // Get the element where the copyright year is displayed
+    var copyrightElement = document.querySelector('.copyright_year');
+    
+    // Prepend the current year to the content (if not already present)
+    if (copyrightElement) {
+        var currentYear = new Date().getFullYear();
+        // Check if the current year is already displayed
+        if (copyrightElement.innerHTML !== currentYear.toString()) {
+            copyrightElement.innerHTML = currentYear;  // Update the year with the current year
+        }
+    }*/
+
+    
+    function updateCopyrightYear() {
+        var currentYear = new Date().getFullYear();
+        // Find all elements with the 'copyright_year' class
+        var copyrightElements = document.querySelectorAll('.copyright_year');
+        
+        // Update each element with the current year
+        copyrightElements.forEach(function (element) {
+            if (element.innerHTML !== currentYear.toString()) {
+                element.innerHTML = currentYear;
+            }
+        });
+    }
+
+    // Update the year on page load
+    document.addEventListener('DOMContentLoaded', updateCopyrightYear);
+
+    // If the modal is dynamically loaded, update when shown
+    var modalElement = document.getElementById('usModal');
+    if (modalElement) {
+        modalElement.addEventListener('shown.bs.modal', updateCopyrightYear); // Bootstrap-specific event
+    }
+</script>
+
+{# SUBMISSIONS & PLANS #}
+<script>
+    $(document).ready(function() {
+
+    /*
+      function response_modal(message) {
+          // Select or create the modal
+          let modal = $("#response_modal");
+          
+          if (!modal.length) {
+            // Create modal if it doesn't exist
+            $("body").append(`
+              <div class="modal fade" id="response_modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Notification</h5>
+                      <button type="button" class="btn-close btn-outline-warning" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>${message}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `);
+            modal = $("#response_modal");
+          } else {
+            // Update modal content if it already exists
+            modal.find(".modal-body p").text(message);
+          }
+        
+          // Ensure proper lifecycle management
+          const bootstrapModal = new bootstrap.Modal(modal[0], { focus: true });
+          
+          // Show the modal
+          bootstrapModal.show();
+        
+          // Handle cleanup on close to prevent residual state issues
+          modal.off("hidden.bs.modal").on("hidden.bs.modal", function () {
+            // Optional: Clear content or reset modal state
+            modal.find(".modal-body p").text("");
+          });
+          
+        } */
+
+        function response_modal(message) {
+            // Check if the modal exists
+            let modal = $("#response_modal");
+        
+            if (!modal.length) {
+                $("body").append(`
+                <div class="modal fade" id="response_modal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Notification</h5>
+                      <button type="button" class="btn-close btn-outline-warning" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p class="text-warning h5">${message}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                `);
+                modal = $("#response_modal");
+            } else {
+                modal.find(".modal-body p").html(message);
+            }
+        
+            // Use jQuery to show the modal
+            modal.modal('show');
+        
+            // Optional cleanup
+            modal.on("hidden.bs.modal", function () {
+                modal.find(".modal-body p").html(""); // Reset content
+            });
+        }
+        
+        //response_modal("Test message to verify the modal.");
+
+      
+    const root = `${window.location.origin}`;
+    const plan_url = `${root}/api/plans`;
+      
+    function toggleButton(button, disable = true, spinner = true) {
+        if (disable) {
+            button.prop('disabled', true); // Disable the button
+            if (spinner) {
+                // Add spinner to the button
+                button.data('original-text', button.html()); // Save original text
+                button.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
+            }
+        } else {
+            button.prop('disabled', false); // Enable the button
+            if (spinner) {
+                // Restore original button text
+                button.html(button.data('original-text'));
+            }
+        }
+    }
+
+      // Request form handler
+      $('#requestForm').on('submit', function(event) {
+          event.preventDefault();
+  
+          //const submitButton = $(this).find('button[type="submit"]'); // Find the submit button
+          const submitButton = $("form").parent().find('button[type="submit"]'); // Find the submit button
+          toggleButton(submitButton, true, true); // Disable and show spinner
+        
+          console.log('Payload:', {
+            name: $('#clientName').val(),
+            email: $('#clientEmail').val(),
+            phone: $('#clientPhone').val(),
+            concern: $('#concern').val(),
+            request_details: $('#details').val(),
+            budget: parseInt($('#budget').val())
+        });
+        
+          $.ajax({
+              url: `${root}/${$(this).attr('action')}`,
+              method: $(this).attr('method'),
+              contentType: 'application/json',
+              data: JSON.stringify({
+                  name: $('#clientName').val(),
+                  email: $('#clientEmail').val(),
+                  phone: $('#clientPhone').val(),
+                  concern: $('#concern').val(),
+                  details: $('#details').val(),
+                  budget: parseInt($('#budget').val())
+              }),
+              success: function(response) {
+                  response_modal(response.success ? response.message : response.error || 'Request submission failed.');
+              },
+              error: function(jqXHR) {
+                  response_modal(jqXHR.responseJSON?.error || 'An unexpected error occurred.');
+              },
+              complete: function() {
+                  toggleButton(submitButton, false, true); // Re-enable button and restore text
+              }
+          });
+
+      });
+
+      /*
+      // Fetch plans from the API
+      $.getJSON(plan_url, function (data) {
+          if (data.success && data.data) {
+              $(".plans-container").empty();
+  
+              // Iterate through plans and generate HTML
+              $.each(data.data, function (_, plan) {
+                  const cardBackgroundClass = {
+                      weekly: "text-bg-primary",
+                      monthly: "text-bg-dark",
+                      yearly: "text-bg-warning",
+                  }[plan.plan_type.toLowerCase()] || "text-bg-secondary";
+  
+                  const spanText = {
+                      weekly: "Start scaling!",
+                      monthly: "Get started now",
+                      yearly: "Get InventoryPro",
+                  }[plan.plan_type.toLowerCase()] || "Explore the plan";
+  
+                  const planFeatures = plan.plan_features
+                      .map(
+                          (feature) =>
+                              `<li class="py-2 d-flex align-items-center">
+                                  <div class="icon icon-xs text-base icon-shape rounded-circle bg-primary-subtle text-primary me-3">
+                                      <i class="bi bi-check"></i>
+                                  </div>
+                                  <p>${feature}</p>
+                              </li>`
+                      )
+                      .join("");
+  
+                  const planCard = `
+                      <div class="col">
+                          <div class="card card-pricing ${cardBackgroundClass} border-0 shadow-4 shadow-6-hover">
+                              <div class="p-6">
+                                  <h3 class="text-reset ls-tight mb-1">${plan.plan_title}</h3>
+                                  <div class="d-flex align-items-center my-5">
+                                      <span class="d-block display-5 text-reset">${plan.plan_currency} ${plan.plan_amount}</span>
+                                  </div>
+                                  <p class="text-reset text-opacity-75 mb-4">${plan.plan_descr}</p>
+                                  <div class="mt-7 mb-2 d-flex justify-content-between align-items-center">
+                                      <span class="text-sm fw-semibold">${spanText}</span>
+                                      <button class="btn btn-sm btn-square btn-dark stretched-link subscribe-btn" 
+                                              data-plan-id="${plan.id}" 
+                                              data-plan-title="${plan.plan_title}" 
+                                              data-plan-amount="${plan.plan_amount}" 
+                                              data-plan-currency="${plan.plan_currency}" 
+                                              data-plan-duration="${plan.plan_duration}" 
+                                              data-plan-type="${plan.plan_type}">
+                                          <i class="bi bi-arrow-right"></i>
+                                      </button>
+                                  </div>
+                              </div>
+                          </div>
+                          <ul class="list-unstyled mt-7">${planFeatures}</ul>
+                      </div>`;
+  
+                  $(".plans-container").append(planCard);
+              });
+  
+              // Event listener for subscribe buttons
+              $(document).off("click", ".subscribe-btn").on("click", ".subscribe-btn", function () {
+                  const button = $(this);
+                  const planType = button.data("plan-type");
+                  const planAmount = button.data("plan-amount");
+                  const planCurrency = button.data("plan-currency");
+  
+                  const subscr_email_modal_elem = document.querySelector("#subscr_email_modal");
+                  const subscr_email_modal = new bootstrap.Modal(subscr_email_modal_elem, {
+                      focus: true, // Automatically focuses the modal
+                  });
+  
+                  // Focus email input when modal is shown
+                  $(subscr_email_modal_elem).on("shown.bs.modal", function () {
+                      $("#email").focus();
+                  });
+  
+                  subscr_email_modal.show();
+  
+                  // Attach submit handler to the form
+                  $("#subscription-form")//.off("submit") // Ensure no duplicate handlers
+                      .on("submit", function (e) {
+                          const submitButton = $(this).find('button[type="submit"]'); // Find the submit button
+                          toggleButton(submitButton, true, true); // Disable and show spinner
+
+                          e.preventDefault();
+                          const email = $(this).find("#email").val();
+  
+                          $.ajax({
+                              url: `${root}/api/init-subscribe/${planType}`,
+                              method: "POST",
+                              contentType: "application/json",
+                              data: JSON.stringify({
+                                  email: email,
+                                  amount: parseFloat(planAmount),
+                                  currency: planCurrency,
+                                  subscription: planType,
+                              }),
+                              success: function (response) {
+                                  if (response.success) {
+                                      response_modal(response.message || "Processing payment");
+                                      window.location.href = response.data.redirect;
+                                  } else {
+                                      response_modal(response.error || "Error processing payment");
+                                  }
+                              },
+                              error: function (xhr) {
+                                  response_modal(`Error: ${xhr.responseJSON?.error || "Unknown error"}`);
+                              },
+                              complete: function() {
+                                  toggleButton(submitButton, false, true); // Re-enable button and restore text
+                              }
+                          });
+  
+                          //subscr_email_modal.hide(); // i-can-hide-this-optionally-after-submission
+                      });
+              });
+
+          } else {
+              response_modal("Failed to load plans.");
+          }
+      }).fail(function (){
+          response_modal("Error fetching plans.");
+      });
+
+      // verify a transaction
+      // Function to get query parameters
+      function getQueryParams() {
+          const params = new URLSearchParams(window.location.search);
+          return {
+              status: params.get('status'),
+              tx_ref: params.get('tx_ref'),
+          };
+      }
+  
+      const queryParams = getQueryParams();
+  
+      // If callback query params exist, handle them
+      if (queryParams.status && queryParams.tx_ref) {
+          // Display a processing/loading message
+          response_modal("Verifying your transaction, please wait...");
+  
+          // Make a request to the server-side verification endpoint
+          $.ajax({
+              url: `${root}/api/transaction-callback`,
+              method: "GET",
+              data: queryParams, // Pass status and tx_ref
+              success: function (response) {
+                  if (response.success) {
+                      // Transaction was successful
+                      response_modal(response.message || "Transaction completed successfully!");
+                  } else {
+                      // Transaction failed or verification failed
+                      response_modal(response.error || "Error processing transaction.");
+                  }
+              },
+              error: function (xhr) {
+                  response_modal(`Error: ${xhr.responseJSON?.error || "Unknown error occurred."}`);
+              },
+          });
+      }
+      */
+      
+  });
+    
+</script>

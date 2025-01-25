@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+<title>{% block title %} Signin . Africana {% endblock title %}</title>
+{% block content %}
+<div class="wrapper">
+	<section class="login-content">
+	   <div class="container">
+		  <div class="row align-items-center justify-content-center height-self-center">
+			 <div class="col-lg-8">
+				<div class="card auth-card">
+				   <div class="card-body p-0">
+					  <div class="d-flex align-items-center auth-content">
+						 <div class="col-lg-7 align-self-center">
+							<div class="p-3">
+							   <h2 class="mb-2">Create a free africana account</h2>
+							   <p class="text-warning">Register to connect with africana services from anywhere.</p>
+
+							   <form class="form-wrap" method="post" action="">
+								{{ form.hidden_tag() }}
+								  <div class="row">
+									 <div class="col-lg-12">
+										<div class="floating-label form-group">
+										   {% if form.username.errors %}
+												{{ form.username(class="floating-input form-control is-invalid") }}
+												<div class="invalid-feedback">
+													{% for error in form.username.errors %}
+													<span class="link">{{ error }}</span>
+													{% endfor %}
+												</div>
+												{% else %}
+												{{ form.username(class="floating-input form-control", placeholder=" ") }}
+												{% endif %}
+												<label>Username</label>
+										</div>
+									 </div>
+									 <div class="col-lg-12">
+										<div class="floating-label form-group">
+										   {% if form.phone.errors %}
+												{{ form.phone(class="floating-input form-control is-invalid") }}
+												<div class="invalid-feedback">
+													{% for error in form.phone.errors %}
+													<span class="link">{{ error }}</span>
+													{% endfor %}
+												</div>
+												{% else %}
+												{{ form.phone(class="floating-input form-control", placeholder=" ") }}
+												{% endif %}
+												<label>Phone</label>
+										</div>
+									 </div>
+									 <div class="col-lg-12">
+										<div class="floating-label form-group">
+										   {% if form.email.errors %}
+												{{ form.email(class="floating-input form-control is-invalid") }}
+												<div class="invalid-feedback">
+													{% for error in form.email.errors %}
+													<span class="link">{{ error }}</span>
+													{% endfor %}
+												</div>
+												{% else %}
+												{{ form.email(class="floating-input form-control", placeholder=" ") }}
+												{% endif %}
+												<label>Email</label>
+										</div>
+									 </div>
+									 <div class="col-lg-12">
+										<div class="floating-label form-group">
+											{% if form.password.errors %}
+											{% for error in form.password.errors %}<div class="link">{{ error }} !</div>{% endfor %}
+											{% else %}
+											{{ form.password(class="floating-input form-control", placeholder=" ")}}
+											{% endif %}
+
+										   <label>Password</label>
+										</div>
+									 </div>
+									 <div class="col-lg-6">
+										<div class="custom-control custom-checkbox mb-3">
+												{{ form.tnc(class="custom-control-input") }}
+												{{ form.tnc.label(class="custom-control-label control-label-1") }}
+										</div>
+									 </div>
+								  </div>
+								  <button type="submit" class="btn col-12 btn-primary">Register</button>
+								  <p class="mt-3">
+									{% include 'incs/alerts.html' %}
+
+									 You Can <a href="{{url_for('auth.signin')}}" class="text-primary">Login Here</a>
+								  </p>
+							   </form>
+
+							</div>
+						 </div>
+						 <div class="col-lg-5 content-right">
+							<img src="{{url_for('static', filename='images/logo/logo.png')}}" class="img-fluid image-right" alt="">
+						 </div>
+					  </div>
+				   </div>
+				</div>
+			 </div>
+		  </div>
+	   </div>
+	</section>
+	</div>
+
+{% endblock content %}
+

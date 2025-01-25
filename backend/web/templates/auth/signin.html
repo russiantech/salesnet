@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+<title>{% block title %} Signin . Africana {% endblock title %}</title>
+{% block content %}
+<div class="wrapper">
+	<section class="login-content">
+	   <div class="container">
+		  <div class="row align-items-center justify-content-center height-self-center">
+			 <div class="col-lg-8">
+				<div class="card auth-card">
+				   <div class="card-body p-0">
+					  <div class="d-flex align-items-center auth-content">
+						 <div class="col-lg-7 align-self-center">
+							<div class="p-3">
+							   <h2 class="mb-2">Log into ur africana account</h2>
+							   <p class="text-warning">Connect with modern african bar & lounge, feel the vibes.</p>
+
+							   <form class="form-wrap" method="post" action="">
+								{{ form.hidden_tag() }}
+								  <div class="row">
+									 <div class="col-lg-12">
+										<div class="floating-label form-group">
+										   {% if form.signin.errors %}
+												{{ form.signin(class="floating-input form-control is-invalid") }}
+												<div class="invalid-feedback">
+													{% for error in form.signin.errors %}
+													<span class="link">{{ error }}</span>
+													{% endfor %}
+												</div>
+												{% else %}
+												{{ form.signin(class="floating-input form-control", placeholder=" ") }}
+												{% endif %}
+												<label>Username, Email or Phone</label>
+										</div>
+									 </div>
+									 <div class="col-lg-12">
+										<div class="floating-label form-group">
+											{% if form.password.errors %}
+											{% for error in form.password.errors %}<div class="link">{{ error }} !</div>{% endfor %}
+											{% else %}
+											{{ form.password(class="floating-input form-control", placeholder=" ")}}
+											{% endif %}
+
+										   <label>Password</label>
+										</div>
+									 </div>
+									 <div class="col-lg-6">
+										<div class="custom-control custom-checkbox mb-3">
+												{{ form.remember(class="custom-control-input") }}
+												{{ form.remember.label(class="custom-control-label control-label-1") }}
+										</div>
+									 </div>
+									 <div class="col-lg-6">
+										<a tabindex="0" class="text-primary float-right" role="button" data-toggle="popover" data-trigger="focus" title="what to do!" 
+                         data-content="we're sorry you forgot ur logins, kindly reach-out to admin for assistance. " 
+    							    data-original-title="Dismissible popover">Forgot Password?</a>
+									 </div>
+								  </div>
+
+								  <button type="submit" class="btn col-12 btn-primary">Let's login</button>
+								  
+								  <p class="mt-3">
+
+									{% include 'incs/alerts.html' %}
+									 Create an Account <a href="{{url_for('auth.signup')}}" class="text-primary">Sign Up</a>
+								  </p>
+							   </form>
+
+							</div>
+						 </div>
+						 <div class="col-lg-5 content-right">
+							<img src="{{url_for('static', filename='images/logo/logo.png')}}" class="img-fluid image-right" alt="">
+						 </div>
+					  </div>
+				   </div>
+				</div>
+			 </div>
+		  </div>
+	   </div>
+	</section>
+	</div>
+
+{% endblock content %}

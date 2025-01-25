@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Product</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .message { margin-top: 10px; color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+
+<h1>Create New Product</h1>
+<form id="productForm">
+    <label for="name">Product Name:</label><br>
+    <input type="text" id="name" required><br><br>
+
+    <label for="description">Description:</label><br>
+    <textarea id="description" required></textarea><br><br>
+
+    <label for="price">Price:</label><br>
+    <input type="number" id="price" required><br><br>
+
+    <label for="stock">Stock:</label><br>
+    <input type="number" id="stock" required><br><br>
+
+    <label for="tags">Tags (comma separated):</label><br>
+    <input type="text" id="tags" placeholder="e.g., Jackets, Shorts"><br><br>
+
+    <label for="categories">Categories:</label><br>
+    <select id="categories" required>
+        <option value="">Select a category</option>
+        <option value="Men">Men</option>
+        <option value="Women">Women</option>
+        <option value="Kids">Kids</option>
+        <option value="Accessories">Accessories</option>
+        <!-- Add more categories as needed -->
+    </select><br><br>
+
+    <label for="images">Images:</label><br>
+    <input type="file" id="images" multiple accept="image/*"><br><br>
+
+    <button type="submit">Create Product</button>
+</form>
+
+<div id="message" class="message"></div>
+<div id="error" class="error"></div>
+
+<script>
+    document.getElementById('productForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const token = 'your_jwt_token'; // Replace with your actual JWT token
+        const formData = new FormData();
+
+        // Get form values
+        const name = document.getElementById('name').value;
+        const description = document.getElementById('description').value;
+        const price = document.getElementById('price').value;
+        const stock = document.getElementById('stock').value;
+        const tagsInput = document.getElementById('tags').value.split(',').map(tag => tag.trim());
+        const categoryInput = document.getElementById('categories').value; // Single category selection
+        const imagesInput = document.getElementById('images').files;
+
+        // Add product details to formData
+        formData.append('name', name);
+        formData.append('description', description);
+        formData.append('price', price);
+        formData.append('stock', stock);
+
+        // Add tags to formData
+        tagsInput.forEach((tag, index) => {
+            formData.append(`tags[${index}]`, tag);
+        });
+
+        // Add category to formData
+        if (categoryInput) {
+            formData.append('categories[0]', categoryInput); // Single category
+        }
+
+        // Add images to formData
+        for (let i = 0; i < imagesInput.length; i++) {
+            formData.append('images[]', imagesInput[i]);
+        }
+
+        formData.forEach((value, index) => {
+            console.log(value, index);
+        });
+
+
+        try {
+            const response = await fetch('http://localhost:5000/api/products', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: formData
+            });
+
+            const data = await response.json();
+            const messageDiv = document.getElementById('message');
+            const errorDiv = document.getElementById('error');
+
+            // Clear previous messages
+            messageDiv.textContent = '';
+            errorDiv.textContent = '';
+
+            console.log(response)
+
+            if (response.ok) {
+                messageDiv.textContent = 'Product created successfully: ' + JSON.stringify(data);
+            } else {
+                errorDiv.textContent = 'Error creating product: ' + data.message || 'Unknown error';
+            }
+        } catch (error) {
+            console.error('Network error:', error);
+            document.getElementById('error').textContent = 'Network error: ' + error.message;
+        }
+    });
+</script>
+
+</body>
+</html>

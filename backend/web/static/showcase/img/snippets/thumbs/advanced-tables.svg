@@ -1,0 +1,48 @@
+<svg width="293" height="186" viewBox="0 0 293 186" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_dd)">
+<rect x="39" y="21" width="215" height="143" rx="7" fill="white"/>
+</g>
+<circle cx="60.5" cy="140.5" r="9.5" fill="#EFF1F5"/>
+<rect x="92" y="134" width="35" height="4" rx="2" fill="#D3D5DE"/>
+<rect x="92" y="144" width="21" height="4" rx="2" fill="#EFF1F5"/>
+<rect x="229" y="134" width="13" height="13" rx="2" fill="#D3D5DE"/>
+<rect x="212" y="134" width="13" height="13" rx="2" fill="#D3D5DE"/>
+<circle cx="60.5" cy="104.5" r="9.5" fill="#EFF1F5"/>
+<rect x="92" y="98" width="35" height="4" rx="2" fill="#D3D5DE"/>
+<rect x="92" y="108" width="21" height="4" rx="2" fill="#EFF1F5"/>
+<rect x="229" y="98" width="13" height="13" rx="2" fill="#D3D5DE"/>
+<rect x="212" y="98" width="13" height="13" rx="2" fill="#D3D5DE"/>
+<circle cx="60.5" cy="69.5" r="9.5" fill="#EFF1F5"/>
+<rect x="92" y="63" width="35" height="4" rx="2" fill="#D3D5DE"/>
+<rect x="92" y="73" width="21" height="4" rx="2" fill="#EFF1F5"/>
+<rect x="147" y="68" width="48" height="4" rx="2" fill="#EFF1F5"/>
+<rect x="147" y="103" width="48" height="4" rx="2" fill="#EFF1F5"/>
+<rect x="147" y="139" width="48" height="4" rx="2" fill="#EFF1F5"/>
+<rect x="147" y="68" width="33" height="4" rx="2" fill="#5C60F5"/>
+<rect x="147" y="103" width="33" height="4" rx="2" fill="#5C60F5"/>
+<rect x="147" y="139" width="33" height="4" rx="2" fill="#5C60F5"/>
+<rect x="229" y="63" width="13" height="13" rx="2" fill="#D3D5DE"/>
+<rect x="212" y="63" width="13" height="13" rx="2" fill="#D3D5DE"/>
+<line x1="39" y1="46.5" x2="254" y2="46.5" stroke="#EBEEF2"/>
+<rect x="212" y="32" width="17" height="4" rx="2" fill="#EFF1F5"/>
+<rect x="147" y="32" width="17" height="4" rx="2" fill="#EFF1F5"/>
+<rect x="92" y="32" width="17" height="4" rx="2" fill="#EFF1F5"/>
+<rect x="51" y="32" width="17" height="4" rx="2" fill="#EFF1F5"/>
+<defs>
+<filter id="filter0_dd" x="21" y="7" width="251" height="179" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feMorphology radius="2" operator="erode" in="SourceAlpha" result="effect1_dropShadow"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="10"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.196078 0 0 0 0 0.196078 0 0 0 0 0.278431 0 0 0 0.08 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="0.5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.0470588 0 0 0 0 0.101961 0 0 0 0 0.294118 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape"/>
+</filter>
+</defs>
+</svg>

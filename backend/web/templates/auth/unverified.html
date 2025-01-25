@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-footer="true">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %} Unveirified . Russian technologies {% endblock title %}</title>
+    {% include('incs/metas.html') %}
+</head>
+<body>
+    <div id="root">
+        {% block content %}
+        <main style="margin-right:20px">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 mb-5 align-items-center">
+                        <h2 class="small-title">Email Not Verified | ({{current_user.email}})</h2>
+                        <div class="card sh-40 h-lg-100-card">
+                            <div class="card-body d-flex align-items-center justify-content-center h-100">
+                                <div class="text-center">
+                                    <img src="{{url_for('static', filename='img/illustration/icon-analytics.webp')}}"
+                                        class="theme-filter mb-3" alt="launch">
+                                    <h4 class="mb-3">
+                                        <span> Check Your Email ({{current_user.email}}), Click The Link To Get Verified </span>
+                                    </h4>
+
+                                    <div id="response">{% include 'incs/alerts.html' %}</div>
+                                    
+                                    <form method="post">
+                                        <button type="submit" class="btn btn-icon btn-icon-start btn-primary mt-3 stretched-link">
+                                            <i data-acorn-icon="chevron-right" data-acorn-size="20"></i>
+                                            <span>Resend New Verifications</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        {% endblock content %}
+        {% include('incs/footer.html') %}
+    </div>
+    {% include('incs/bottom.html') %}
+</body>
+</html>

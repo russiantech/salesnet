@@ -1,0 +1,134 @@
+<!-- Modal for Displaying Messages -->
+<div id="response_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="responseModalLabel">Response</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="response_text" class="text-warning"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---->
+<!-- update sales modal -->
+<div class="modal fade" id="updateSaleModal"tabindex="-1" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="updateSaleModalLabel">Update Sale</h5>
+        </div>
+        <div class="modal-body">
+        <form id="updateSaleForm">
+            <div class="mb-3">
+            <label for="newQty" class="form-label">New Quantity</label>
+            <input type="number" class="form-control" id="newQty" required>
+            </div>
+            <div class="mb-3">
+            <label for="newPrice" class="form-label">New Price</label>
+            <input type="number" class="form-control" id="newPrice" required>
+            </div>
+
+            <div class="mb-3">
+            <label for="newDept" class="form-label">New Department</label>
+            <select id="update-dept" class="form-control" name="update-dept">
+                <option value="">Choose</option>
+                <option value="b">Bar</option>
+                <option value="k">Kitchen</option>
+                <option value="c">Cocktail</option>
+            </select>
+            </div>
+            <input type="hidden" id="saleId">
+        </form>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-outline-primary" id="saveUpdate">Save changes</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- insert sales modal-->
+<div class="modal fade" id="record-complimentary-sales" tabindex="-1" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="popup text-left">
+                    <h4 class="mb-3">Custom Sales Recordings</h4>
+                    <div class="content create-workform bg-body">
+
+                        <div class="pb-3">
+                            <label class="mb-2">Title Your Sales</label>
+                            <input type="text" name="title" class="form-control" placeholder="Give Your Sales A Name.">
+                        </div>
+
+                        <div class="pb-3">
+                            <select name="item_id" class="selectpicker" id="item_id" required="" data-live-search="true" tabindex="null">
+                                <option class="text-warning disabled" value="">Select Main Stock</option>
+                                <option data-price="1000" data-id="215">chips </option>
+                            </select>
+
+                            <select name="extracted_id" class="selectpicker" id="extracted_id" required data-live-search="true">
+                                <option class="text-warning disabled" value="">Select Apportioned Stock</option>
+                            </select>
+                            
+                        </div>
+
+                        <div class="pb-3">
+                            <label class="mb-2">Quantity Used / Closing Stock </label>
+                            <input type="text" name="quantity_used" class="form-control" placeholder="Quantity Used / Closing Stock">
+                        </div>
+
+                        <div class="pb-3">
+                            <label for="insert-dept">Dept.</label>
+                            <select class="form-control" id="insert-dept" name="insert-dept">
+                            <option value="">Department</option>
+                            <option value="k">Kitchen</option>
+                            <option value="c">Cocktail</option>
+                            <option value="b">Bar</option>
+                        </select>
+                        </div>
+
+                        <div class="pb-3">
+                            <label class="mb-2">Price Sold At</label>
+                            <input type="text" name="price" class="form-control" placeholder="Selling Price">
+                        </div>
+
+                        <div class="col-lg-12 mt-4">
+                            <div class="d-flex flex-wrap align-items-ceter justify-content-center">
+                                <div class="btn btn-outline-danger mr-4" data-dismiss="modal">Cancel</div>
+                                <button class="btn btn-outline-primary submit">Save Sales</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Install app Prompt Modal -->
+<div class="modal fade" id="installModal" tabindex="-1" aria-labelledby="installModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title h4" id="installModalLabel">Install Barman</h5>
+        </div>
+        <div class="modal-body">
+          <p class="h5 text-warning">To enjoy a better experience, install Barman on your device.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="installButton">Install</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

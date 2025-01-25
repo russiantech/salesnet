@@ -1,0 +1,11 @@
+
+Hello {{user.name or user.username}} ,
+
+Thank you for joining our global tech community.
+
+Kindly confirm your email address just by clicking below;
+
+{{url_for('apis.process_token', token=token,  email=user.email, _external=True) }}
+
+
+Techa . ...dvanced Technologies

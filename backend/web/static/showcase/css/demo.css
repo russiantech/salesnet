@@ -1,0 +1,276 @@
+body {
+    background-color: transparent
+}
+
+.group-column-layouts,
+.group-sidebar-layouts,
+.group-vertical-navbar {
+    min-height: 780px
+}
+
+.group-column-layouts .main-content,
+.group-sidebar-layouts .main-content,
+.group-vertical-navbar .main-content {
+    min-height: 100vh
+}
+
+.group-navbar {
+    background-color: var(--x-surface-secondary);
+    padding-bottom: 80px
+}
+
+.component-header-1 {
+    min-height: 800px
+}
+
+.component-header-1b {
+    min-height: 600px
+}
+
+.component-header-2,
+.component-header-3 {
+    min-height: 700px
+}
+
+.component-header-4 {
+    min-height: 650px
+}
+
+.component-header-4b {
+    min-height: 750px
+}
+
+.component-header-6 {
+    min-height: 600px
+}
+
+.component-header-7 {
+    min-height: 500px
+}
+
+.component-header-megamenu-1 {
+    min-height: 600px
+}
+
+.component-header-megamenu-2 {
+    min-height: 750px
+}
+
+.group-page-headings {
+    padding: 2rem
+}
+
+.component-heading-page-6 {
+    min-height: 266px;
+    padding: 0
+}
+
+.component-heading-page-6:after {
+    background: var(--x-surface-secondary);
+    content: "";
+    display: block;
+    height: 100px
+}
+
+.group-section-headings {
+    margin: auto;
+    max-width: 60rem;
+    padding: 2rem
+}
+
+.component-heading-profile-2 {
+    background: var(--x-surface-secondary);
+    padding: 2rem
+}
+
+.component-heading-profile-3 {
+    min-height: 530px
+}
+
+.component-heading-profile-3:after {
+    background: var(--x-surface-primary);
+    content: "";
+    display: block;
+    height: 30px
+}
+
+.group-card-headings,
+.group-cards {
+    background-color: var(--x-surface-secondary);
+    padding: 4rem 2rem
+}
+
+.group-card-headings>*,
+.group-cards>* {
+    margin: auto;
+    max-width: 28rem
+}
+
+.group-atoms {
+    padding: 4rem 2rem
+}
+
+.group-alerts,
+.group-large-lists {
+    margin: auto;
+    max-width: 1200px;
+    padding: 4rem 2rem
+}
+
+.group-large-lists,
+.group-list-groups,
+.group-spaced-rows-tables {
+    margin: auto;
+    padding: 2rem
+}
+
+.group-list-groups {
+    max-width: 36rem
+}
+
+.group-navs {
+    margin: auto;
+    max-width: 1200px;
+    padding: 4rem 2rem
+}
+
+.group-pagination {
+    padding: 2rem
+}
+
+.group-dropdowns {
+    margin: auto;
+    max-width: 16rem
+}
+
+.group-dropdowns .dropdown-menu {
+    margin-top: -24px !important;
+    position: static !important
+}
+
+.group-menu-dropdowns {
+    margin: auto;
+    padding: 2rem
+}
+
+.group-menu-dropdowns .dropdown-menu {
+    display: block;
+    left: 0;
+    position: static !important
+}
+
+.group-modals {
+    min-height: 900px
+}
+
+.group-modals .modal {
+    display: block;
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.component-modal-notifications-tabs {
+    min-height: 750px
+}
+
+.group-offcanvas {
+    min-height: 800px
+}
+
+.group-offcanvas>.offcanvas {
+    display: flex;
+    position: absolute;
+    transform: translate(0);
+    visibility: visible
+}
+
+.group-form-groups {
+    margin: auto;
+    max-width: 25rem;
+    padding: 2rem
+}
+
+.component-form-group-stacked {
+    max-width: 40rem
+}
+
+.group-form-checks {
+    max-width: 16rem
+}
+
+.group-file-inputs {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 2rem
+}
+
+.component-form-file-dropbox {
+    display: block;
+    max-width: 40rem
+}
+
+.component-form-group-card-1 {
+    max-width: 35rem
+}
+
+.group-auth-forms {
+    margin: auto;
+    max-width: 30rem;
+    padding: 4rem 2rem
+}
+
+.group-creation-forms,
+.group-payment-forms {
+    margin: auto;
+    max-width: 50rem;
+    padding: 4rem 2rem
+}
+
+.component-card-list-9 {
+    margin: auto;
+    max-width: 1200px
+}
+
+.component-card-list-12 {
+    max-width: 460px
+}
+
+.component-card-horizontal-1 {
+    max-width: 44rem
+}
+
+.group-avatar,
+.group-badge,
+.group-buttons {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 2rem
+}
+
+.group-avatar>.btn,
+.group-badge>.btn,
+.group-buttons>.btn {
+    margin: 0 1rem
+}
+
+.group-media-objects {
+    margin: auto;
+    max-width: 30rem;
+    padding: 4rem 2rem
+}
+
+[class*=component-media-chat] {
+    max-width: 40rem
+}
+
+[class*=component-media-mail] {
+    max-width: 60rem
+}
+
+.group-application-pages {
+    min-height: 850px
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-footer="true">
+<head>
+    <meta charset="utf-8">
+    <title> Settings . Russian Developers </title>
+    {% include('incs/metas.html') %}
+    <link rel="stylesheet" href="{{url_for('static', filename='setting/font/CS-Interface/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='setting/css/vendor/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='setting/css/vendor/OverlayScrollbars.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='setting/css/vendor/select2.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='setting/css/vendor/select2-bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='setting/css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='setting/css/main.css')}}">
+    <!---->
+    <script src="{{url_for('static', filename='setting/js/base/loader.js')}}"></script>
+</head>
+
+<body>
+    <div id="root">
+
+        {% include 'incs/nav.html' %}
+
+        <main>
+            <div class="container">
+
+                <div class="col">
+                    <div class="page-title-container mb-3">
+                        <div class="row">
+                            <div class="col mb-2">
+                                <h1 class="mb-2 pb-0 display-4" id="title">Reset password</h1>
+                                <div class="text-muted font-heading text-small">Password compromised ? Update it now.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="small-title">Personal Info</h2>
+                    <div class="card mb-5">
+                        <div class="card-body">
+
+                            <h5 class="text-danger">{% include('incs/alerts.html') %}</h5>
+                            
+                            <form class="d-flex flex-column mb-4" method="post" >
+                                {{ form.hidden_tag() }}
+                                <div class="mb-3 mx-auto position-relative" id="singleImageUploadExample">
+                                    <img src="{{url_for('static', filename='img/profile/'+ user.photo )}}"
+                                        alt="alternate text" class="rounded-xl border border-separator-light border-4 sw-12 sh-12"
+                                        id="contactThumbModal">
+                                    <button class="btn btn-sm btn-icon btn-icon-only btn-separator-light position-absolute rounded-xl e-0 
+                                    b-0" type="button"><i data-acorn-icon="upload"></i> </button> 
+                                </div>
+
+                                <div class="mb-3 filled w-100 d-flex flex-column">
+                                    <i data-acorn-icon="lock-off" class="text-primary" data-acorn-size="20"></i>
+                                    {{ form.password(class="form-control", placeholder="Set A New Password" ) }}
+                                    {% if form.password.errors %}
+                                    {% for error in form.password.errors %}<div class="error">{{ error }} !</div> {%
+                                    endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <div class="mb-3 filled w-100 d-flex flex-column">
+                                    <i data-acorn-icon="lock-off" class="text-primary" data-acorn-size="20"></i>
+                                    {{ form.confirm(class="form-control", placeholder="Confirm Your New Password" ) }}
+                                    {% if form.confirm.errors %}
+                                    {% for error in form.confirm.errors %}<div class="error">{{ error }} !</div> {% endfor
+                                    %}
+                                    {% endif %}
+                                </div>
+
+                                <div class="mb-3 filled w-50 d-flex flex-column">
+                                    {{ form.submit(class="btn btn-lg btn-primary") }}
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+    </main>
+
+    {% include('incs/footer.html') %}
+    </div>
+    {% include('incs/settings.html') %}
+    {% include('incs/search.html') %}
+
+    <script src="{{url_for('static', filename='setting/js/vendor/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/vendor/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/vendor/OverlayScrollbars.min.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/vendor/autoComplete.min.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/vendor/clamp.min.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/icon/acorn-icons.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/icon/acorn-icons-interface.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/icon/acorn-icons-commerce.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/vendor/select2.full.min.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/vendor/singleimageupload.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/base/helpers.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/base/globals.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/base/nav.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/base/search.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/base/settings.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/pages/account.settings.js')}}"></script>
+    <script src="{{url_for('static', filename='setting/js/common.js')}}"></script>
+    
+    <!--use-general-script-here-for-consistency-in-UI-->
+    <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+    <!--use-general-script-here-for-consistency-in-UI-->
+
+</body>
+
+</html>
