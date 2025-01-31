@@ -26,9 +26,9 @@ def create_app(config_name=None):
         from web.apis.errors.handlers import error_bp
         app.register_blueprint(error_bp)
 
-        # front-pages
-        from web.showcase.routes import showcase_bp
-        app.register_blueprint(showcase_bp)
+        # front-pages blueprints
+        # from web.showcase.routes import showcase_bp
+        # app.register_blueprint(showcase_bp)
         
         with app.app_context():
             db.create_all()  # Create all tables
