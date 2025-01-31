@@ -449,8 +449,7 @@ def process_token(token: str = None):
         # Find the user by email
         user = User.query.filter_by(email=valid_token['email']).first()
         if not user:
-            return error_response(f'User not found with this email address: {valid_token['email']}')
-        
+            return error_response(f"User not found with this email address: {valid_token['email']}")
         # Handle token types (email verification, password reset, etc.)
         token_type = valid_token["token_type"]
         
