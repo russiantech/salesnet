@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta, timezone
 import traceback
+from flask import request
 from flask_jwt_extended import create_access_token, create_refresh_token, decode_token
 from jwt import ExpiredSignatureError
 from sqlalchemy import func, or_
@@ -29,6 +30,7 @@ class User(db.Model):
     phone = db.Column(db.String(120), index=True, unique=True)
     password = db.Column(db.String(512), nullable=False)
     about_me = db.Column(db.String(300))
+    is_guest = db.Column(db.Boolean, default=False)
     oauth_providers = db.Column(db.String(300)) # google, github, email etc.
     ip = db.Column(db.String(50), nullable=True)
     last_seen = db.Column(db.DateTime, nullable=True)
@@ -62,12 +64,25 @@ class User(db.Model):
     @staticmethod
     def get_user(username: str):
         """
-        Static method to fetch a user from the database by username.
+        Static method to fetch a user from the database by username or user ID or user email.
+        
+        Args:
+            username (str): The username or user ID or user email to search for.
+        
+        Returns:
+            User: The user object if found, otherwise None.
+        
+        Raises:
+            ValueError: If the username is empty.
         """
         if not username:
             raise ValueError("Username cannot be empty")
-        return db.session.query(User).filter_by(username=username).first()
-    
+        
+        # Attempt to fetch the user by either username or user ID or email
+        user = db.session.query(User).filter(or_(User.username == username, User.id == username, User.email == username)).first()
+        
+        return user
+
     def set_password(self, password: str) -> None:
         """Hashes the password using bcrypt/scrypt and stores it."""
         if not password:
@@ -256,7 +271,9 @@ def check_if_token_revoked(jwt_header, jwt_payload: dict) -> bool:
 # Custom error response for missing token
 @jwt.unauthorized_loader
 def unauthorized_callback(error):
-    connection_manager.notify('socket_response', data=error)
+    if 'socketio' in request.environ:
+        # Handle WebSocket specific logic if needed
+        connection_manager.notify('socket_response', data=error)
     return error_response(f'valid token required - {error}', status_code=401)
 
 # Custom error response for expired token

@@ -1,5 +1,5 @@
 from slugify import slugify
-from sqlalchemy import event, func
+from sqlalchemy import event, func, or_
 from sqlalchemy.orm import relationship
 
 from web.extensions import db
@@ -34,9 +34,30 @@ class Product(db.Model):
     
     def __repr__(self):
         return '<Product %r>' % self.name
-
-    def __str__(self):
-        return '<Product {}>'.format(self.name)
+    
+    @staticmethod
+    def get_product(identifier: str):
+        """
+        Static method to fetch a product from the database by ID or slug.
+        
+        Args:
+            identifier (str): The product ID or slug to search for.
+        
+        Returns:
+            Product: The product object if found, otherwise None.
+        
+        Raises:
+            ValueError: If the identifier is empty.
+        """
+        if not identifier:
+            raise ValueError("Identifier cannot be empty")
+        
+        # Attempt to fetch the product by either ID or slug
+        product = db.session.query(Product).filter(
+            or_(Product.id == identifier, Product.slug == identifier)
+        ).first()
+        
+        return product
 
     def get_summary(self, include_user=False, include_page=False):
         data = {

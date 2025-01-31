@@ -26,6 +26,13 @@ def generate_random_id(k=8):
     """Generate a random alphanumeric ID."""
     return ''.join(random.choices(string.ascii_letters + string.digits, k=k)).lower()
 
+def generate_ref(prefix="TEC", num_digits=4, letters="???"):
+    """Generate a transaction reference."""
+    from web.extensions import fake
+    number_part = fake.random_number(digits=num_digits)
+    letter_part = fake.bothify(text=letters)
+    return f"{prefix}-{number_part}-{letter_part}"
+
 def make_slug(text):
     """
     Generate a slug from the given text with a random ID. 

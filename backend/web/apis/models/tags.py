@@ -24,19 +24,23 @@ class Tag(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False, default=func.now(), onupdate=func.now())
 
     products = db.relationship('Product', secondary=products_tags, back_populates='tags')  # Specify back_populates
+    pages = db.relationship('Page', secondary="pages_tags", back_populates='tags')  # Specify back_populates
 
     def __repr__(self):
         return self.name
 
-    def get_summary(self):
-        return {
+    def get_summary(self, include_products=False):
+        data = {
             'id': self.id,
             'name': self.name,
             'description': self.description,
             'image_urls': [image.file_path.replace('\\', '/') for image in self.images]
         }
+        if self.products and include_products:
+            data['products'] = [ product.get_summary() for product in self.products]
 
-
+        return data
+    
 @event.listens_for(Tag.name, 'set')
 def receive_set(target, value, oldvalue, initiator):
     target.slug = slugify(str(value))

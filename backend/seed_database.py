@@ -259,7 +259,7 @@ def seed_products():
     # tag_ids = [tag[0] for tag in db.session.query(Tag.id).all()]
     # category_ids = [category[0] for category in db.session.query(Category.id).all()]
 
-    for i in range(products_count, products_to_seed):
+    for _ in range(products_count, products_to_seed):
         name = fake.sentence()
         description = fake.text()
 
@@ -274,19 +274,19 @@ def seed_products():
         tags_for_product = []
         categories_for_product = []
 
-        for i in range(0, random.randint(1, 2)):
+        for _ in range(0, random.randint(1, 2)):
             tag_to_add = random.choice(tags)
             if tag_to_add.id not in tags_for_product:
                 product.tags.append(tag_to_add)
                 tags_for_product.append(tag_to_add.id)
 
-        for i in range(0, random.randint(1, 2)):
+        for _ in range(0, random.randint(1, 2)):
             category_to_add = random.choice(categories)
             if category_to_add.id not in categories_for_product:
                 product.categories.append(category_to_add)
                 categories_for_product.append(category_to_add.id)
 
-        for i in range(0, random.randint(1, 2)):
+        for _ in range(0, random.randint(1, 2)):
             product_image = generate_image(ProductImage)
             product.images.append(product_image)
 
@@ -307,7 +307,7 @@ def seed_comments():
     # user_ids = [user[0] for user in db.session.query(User.id).all()]
     # product_ids = [product[0] for product in db.session.query(Product.id).all()]
 
-    for i in range(comments_count, comments_to_seed):
+    for _ in range(comments_count, comments_to_seed):
         user_id = random.choice(user_ids)
         product_id = random.choice(product_ids)
         rating = fake.random_int(min=1, max=5) if fake.boolean(chance_of_getting_true=50) else None
@@ -324,7 +324,7 @@ def seed_addresses():
     addresses_to_seed = 30
     user_ids = [user[0] for user in db.session.query(User.id).all()]
 
-    for i in range(addresses_count, addresses_to_seed):
+    for _ in range(addresses_count, addresses_to_seed):
         user_id = random.choice(user_ids) if fake.boolean(chance_of_getting_true=80) else None
 
         first_name = fake.first_name()

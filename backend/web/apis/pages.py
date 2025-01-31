@@ -1,248 +1,449 @@
-import traceback, requests, secrets
-from flask_login import current_user
-from flask import current_app, render_template, request, Blueprint, url_for
-from web.models import Plan, db, User, Transaction
-from web.extensions import csrf
-from requests.exceptions import ConnectionError, Timeout, RequestException
-from jsonschema import validate, ValidationError
-from web.apis.utils.helpers import success_response, error_response, generate_random_id
-from web.apis.schemas.pay import pay_schema
+
+# API Endpoints for Page Management
+
+import os
+import re
+import traceback
+from flask import request
+from flask_jwt_extended import jwt_required, current_user
+from jsonschema import ValidationError, validate
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy import desc, exc
+from werkzeug.utils import secure_filename
+from web.apis.utils.uploader import uploader
+from web.extensions import db
+from web.apis.models.categories import Category
+from web.apis.models.pages import Page
+from web.apis.models.tags import Tag
+from web.apis.models.file_uploads import ProductImage
+from web.apis.schemas.pages import page_schema, page_update_schema
+from web.apis.utils.get_or_create import get_or_create
+from web.apis.utils.helpers import validate_file_upload
+from web.apis.utils.serializers import PageSerializer, error_response, success_response
+from web.apis import api_bp as pages_bp
 
-pay = Blueprint('pay', __name__)
+@pages_bp.route('/pages', methods=['GET'])
+@jwt_required()
+def get_pages():
+    """
+    Retrieve a paginated list of pages.
 
-@pay.route('/init-subscribe/<string:plan_type>', methods=['POST'])
-@csrf.exempt
-def subscribe_pay(plan_type):
+    Returns a list of pages, paginated by the specified page and page size.
+    If no pages are found, an empty list is returned.
+
+    :return: JSON response with paginated page data.
+    """
     try:
+        page = request.args.get('page', 1, type=int)  # Ensure 'page' is an integer
+        page_size = request.args.get('page_size', 5, type=int)  # Ensure 'page_size' is an integer
+
+        # Fetch pages with pagination
+        pages = Page.query.order_by(desc(Page.created_at)).paginate(page=page, per_page=page_size)
+        if pages:
+            # Serialize the paginated result using PageSerializer
+            data = PageSerializer(pagination_obj=pages, resource_name="pages").get_data()
+            return success_response("Pages fetched successfully.", data=data)
         
-        if request.method == "POST":
-            
-            if request.content_type == 'application/json':
-                data = request.get_json()
-                
-            elif 'multipart/form-data' in request.content_type:
-                data = request.form.to_dict()
-            else:
-                return error_response("Content-Type must be application/json or multipart/form-data")
-            
-            if not data:
-                return error_response("No data received to process transactions")
-            
-            # Validate the data against the schema
-            try:
-                validate(instance=data, schema=pay_schema)
-            except ValidationError as e:
-                return error_response(str(e.message))
-
-            # retrieve plan
-            plan = Plan.query.filter(Plan.plan_type == plan_type).first()
-            # plan = db.session.scalar(sa.select(Plan).where(Plan.plan_type == plan_type)).first()
-            
-            if not plan:
-                return error_response("Plan not found!")
-            
-            # amount = data.get('amount', plan.plan_amount).strip()
-            amount = data.get('amount', plan.plan_amount)
-            email = data.get('email', current_user.email if current_user.is_authenticated else None)
-            subscription = data.get('subscription', plan.plan_type)
-            currency = data.get('currency', plan.plan_currency) or "USD"
-            phone = data.get('phone', None)
-
-            if not email:
-                return error_response("A valid email address is required for receipt of transaction")
-
-            # if (not amount.isdigit() or int(amount) <= 0):
-            if (not str(amount).isdigit() or int(amount) <= 0):
-                return error_response("Kindly provide an amount > 0 to continue")
-            
-            headers = {
-                "accept": "application/json",
-                "Authorization": f"Bearer {current_app.config['RAVE_LIVE_SECRET_KEY']}",
-                "Content-Type": "application/json"
-            }
-            payment_url = "https://api.flutterwave.com/v3/payments"
-            payload = {
-                "tx_ref": f"Techa-{generate_random_id(k=5)}",
-                "amount": int(amount),
-                "currency": currency,  # Ensure this matches the currency in the transaction plan
-                "redirect_url": f"{request.referrer}",
-                # "redirect_url": f"{request.url_root}api/transaction-callback",
-                "customer": {
-                    "email": email,
-                    "phonenumber": current_user.phone if current_user.is_authenticated and current_user.phone else phone,
-                    "name": current_user.name or current_user.username if current_user.is_authenticated else email
-                },
-                
-                "payment_options": "card, ussd, banktransfer, credit, mobilemoneyghana",
-                "customizations": {
-                    "title": f"{data.get('title',  plan.plan_title)}",
-                    "logo": url_for('static', filename='images/logo_0.png', _external=True)
-                }
-            }
-
-            try:
-                if subscription:
-                    # step 0: Get n initiate subscription
-                    # plan_init_link = "https://api.flutterwave.com/v3/transaction-plans"
-                    plan_init_link = "https://api.flutterwave.com/v3/payment-plans"
-                    
-                    # Step 1: Create the transaction plan with the same currency
-                    plan_payload = {
-                        "amount": payload['amount'],
-                        "name": payload['customizations']["title"],
-                        "interval": subscription,
-                        "currency": payload['currency']  # Match the currency here as well
-                    }
-                    
-                    plan_response = requests.post(plan_init_link, headers=headers, json=plan_payload)
-                    plan_data = dict(plan_response.json().get('data', {}))
-                    if plan_response.status_code != 200 or not plan_data.get('id'):
-                        return error_response(f"Failed to create/initiate transaction plans - {plan_response.status_code}-{plan_data}")
-    
-                    # Step 2: Update the payload with the plan ID and initiate transaction
-                    payload['payment_plan'] = plan_data['id']
-
-                payment_response = requests.post(payment_url, json=payload, headers=headers)
-                # payment_response = requests.request(method="POST", url=payment_url, headers=headers, data=payload)
-
-                payment_data = dict(payment_response.json()) if payment_response else {}
-
-                payment_link = payment_data.get("data", {}).get("link")
-                
-                if not payment_link:
-                    return error_response("Failed to retrieve transaction link")
-
-                user = User.query.filter_by(email=email).first()
-                if not user:
-                    user_data = {
-                        'username': email,
-                        'email': email,
-                        'phone': data.get('phone', None),
-                    }
-                    
-                    new_user = User(**user_data)
-                    new_user.set_password(secrets.token_urlsafe(5))
-                    db.session.add(new_user)
-
-                    try:
-                        db.session.commit()
-                        user_id = new_user.id
-                    except IntegrityError:
-                        db.session.rollback()
-                        user = User.query.filter_by(email=email).first()
-                        user_id = user.id
-                else:
-                    user_id = user.id
-
-                payment_data = {
-                    'currency_code': payload['currency'],
-                    'tx_amount': payload['amount'],
-                    'tx_ref': payload['tx_ref'],
-                    'tx_status': 'pending',
-                    'provider': 'flutterwave',
-                    'tx_id': None,
-                    'user_id': user_id,
-                    'plan_id': plan.id,  # Link to the subscription plan
-                    'is_subscription': True if subscription else False,  # Mark as a subscription
-                    'tx_descr': f"Subscription for plan: {plan.plan_title}"
-                }
-
-                new_payment = Transaction(**payment_data)
-                db.session.add(new_payment)
-                db.session.commit()
-
-                data = {"redirect": payment_link}
-                return success_response("Continue to pay securely..", data=data)
-
-            except ConnectionError:
-                # print(traceback.print_exc())
-                print(traceback.format_exc())
-                return error_response("No internet connection. pls check your network and try again.")
-
-            except Timeout:
-                # print(traceback.print_exc())
-                print(traceback.format_exc())
-                return error_response("The request timed out. Please try again later.")
-
-            except RequestException as e:
-                print(traceback.print_exc())
-                # print(traceback.format_exc())
-                return error_response(f"error: {str(e)}")
-
-        return error_response("Invalid request method", status_code=405)
-
+        return success_response('No pages found.', {'pages': []}, status_code=200)
     except Exception as e:
-        print(traceback.print_exc())
-        print(traceback.format_exc())
-        
-        return error_response(f"error: {str(e)}", status_code=500)
+        return error_response(f"An error occurred: {str(e)}", status_code=500)
 
-@pay.route('/transaction-callback', methods=['GET'])
-@csrf.exempt
-def transaction_callback():
+@pages_bp.route('/pages/<page_id>/page', methods=['GET'])
+@jwt_required()
+def get_page_by_id(page_id):
+    """
+    Retrieve a page by its ID.
+
+    :param page_id: The ID of the page to retrieve.
+    :return: JSON response with page data or error message.
+    """
     try:
+        page = Page.query.get_or_404(page_id)
+        return success_response("Page fetched successfully", data=page.get_summary())
+    except Exception as e:
+        return error_response(f"An error occurred: {str(e)}", status_code=500)
+
+@pages_bp.route('/pages/<page_slug>/slug', methods=['GET'])
+@jwt_required()
+def get_page_by_slug(page_slug):
+    """
+    Retrieve a page by its slug.
+
+    :param page_slug: The slug of the page to retrieve.
+    :return: JSON response with page data or error message.
+    """
+    try:
+        page = Page.query.filter_by(slug=page_slug).first()
+        if not page:
+            return error_response(f"Page <{page_slug}> not found.", status_code=404)
+        return success_response("Page fetched successfully.", data=page.get_summary())
+    except Exception as e:
+        traceback.print_exc()
+        return error_response(f"An error occurred: {str(e)}", status_code=500)
+
+@pages_bp.route('/pages/<int:user_id>/user', methods=['GET'])
+@jwt_required()
+def get_pages_by_user(user_id):
+    """
+    Fetch pages associated with a specific user.
+
+    :param user_id: The ID of the user to filter pages.
+    :return: JSON response with paginated page data for the user.
+    """
+    try:
+        user = current_user
         
-        status = request.args.get('status')
-        transaction_id = request.args.get('transaction_id')
-        tx_ref = request.args.get('tx_ref')
+        if not user:
+            return error_response("User not found.", status_code=404)
 
-        transaction = Transaction.query.filter(Transaction.tx_ref == tx_ref).first()
+        page = request.args.get('page', 1, type=int)
+        page_size = request.args.get('page_size', 5, type=int)
 
-        if not transaction:
-            return error_response('Transaction record not found', status_code=404)
+        # Fetch pages associated with the user
+        pages = Page.query.filter(Page.users.any(id=user_id)).order_by(desc(Page.created_at)).paginate(page=page, per_page=page_size)
 
-        if status == 'successful':
-            headers = {
-                "accept": "application/json",
-                "Authorization": f"Bearer {current_app.config['RAVE_SECRET_KEY']}",
-                "Content-Type": "application/json"
-            }
+        # Serialize the paginated result using PageSerializer
+        data = PageSerializer(pagination_obj=pages, resource_name="pages", context_id=user_id, include_user=True).get_data()
 
-            verify_endpoint = f"https://api.flutterwave.com/v3/transactions/{transaction_id}/verify"
-            # response = requests.get(verify_endpoint, headers=headers)
-            # response = requests.request("POST", url, headers=headers, data=payload)
-            response = requests.request("POST", verify_endpoint, headers=headers)
-
-            if response.status_code == 200:
-                response_data = response.json().get('data', {})
-
-                if (
-                    response_data.get('status') == "successful"
-                    and response_data.get('amount') >= transaction.tx_amount 
-                    and response_data.get('currency') == transaction.currency
-                ):
-                    transaction.tx_status = response_data['status']
-                    transaction.tx_id = response_data['id']
-                    db.session.commit()
-                    
-                    return success_response('Transaction verified successfully', data=response_data)
-                
-                else:
-                    return error_response(f'Transaction verification failed->{response_data}')
-            else:
-                return error_response('Failed to verify transaction')
-
-        elif status == 'cancelled':
-            transaction.tx_status = status
-            db.session.commit()
-            return error_response('Transaction was cancelled')
-
-        else:
-            return error_response('Invalid transaction status')
+        return success_response("Pages fetched successfully.", data=data)
 
     except Exception as e:
         traceback.print_exc()
-        return error_response(str(e))
+        return error_response(f"An error occurred: {str(e)}", status_code=500)
 
+@pages_bp.route('/pages/<page_id>/page', methods=['GET'])
+@jwt_required()
+def get_associated_pages(page_id):
+    """
+    Fetch pages using a specific page.
 
-@pay.route("/transaction-successful")
-def success():
-    support_amount = "30, 40, 50, 70, 80, 90, 100, 200, 300, 400, 500"
-    support_interval = "daily, weekly, monthly, quarterly, yearly"
-    context = {
-        "title" :'Us . Intellect',
-        "support_amount" : support_amount, 
-        "support_interval" : support_interval, 
-    }
-    return render_template('incs/payment_successful.html', **context)
+    :param page_id: The ID of the page to filter pages.
+    :return: JSON response with paginated page data for the page.
+    """
+    try:
+        page = request.args.get('page', 1, type=int)
+        page_size = request.args.get('page_size', 5, type=int)
+
+        # Fetch pages associated with the page
+        pages = Page.query.filter(Page.pages.any(id=page_id)).order_by(desc(Page.created_at)).paginate(page=page, per_page=page_size)
+
+        # Serialize the paginated result using PageSerializer
+        data = PageSerializer(pagination_obj=pages, resource_name="pages", context_id=page_id, include_user=True, include_page=True).get_data()
+
+        return success_response("Pages fetched successfully.", data=data)
+
+    except Exception as e:
+        traceback.print_exc()
+        return error_response(f"An error occurred: {str(e)}", status_code=500)
+
+@pages_bp.route('/pages/<int:category_id>/category', methods=['GET'])
+@jwt_required()
+def get_pages_by_category(category_id):
+    """
+    Fetch pages associated with a specific category.
+
+    :param category_id: The ID of the category to filter pages.
+    :return: JSON response with paginated page data for the category.
+    """
+    try:
+        category = Category.query.get(category_id)
+        if not category:
+            return error_response("Category not found.", status_code=404)
+
+        page = request.args.get('page', 1, type=int)
+        page_size = request.args.get('page_size', 5, type=int)
+
+        # Fetch pages associated with the category
+        pages = Page.query.filter(Page.categories.any(id=category_id)).order_by(desc(Page.created_at)).paginate(page=page, per_page=page_size)
+
+        # Serialize the paginated result using PageSerializer
+        data = PageSerializer(pagination_obj=pages, resource_name="pages", context_id=category_id).get_data()
+
+        return success_response("Pages fetched successfully.", data=data)
+
+    except Exception as e:
+        traceback.print_exc()
+        return error_response(f"An error occurred: {str(e)}", status_code=500)
+
+@pages_bp.route('/pages', methods=['POST'])
+@jwt_required()
+def create_page():
+    """
+    Create a new page.
+
+    Accepts page data in JSON or multipart/form-data format and saves it to the database.
+
+    :return: JSON response indicating success or failure.
+    """
+    try:
+        if request.content_type == 'application/json':
+            data = request.get_json()
+        elif 'multipart/form-data' in request.content_type:
+            data = request.form.to_dict()
+        else:
+            return error_response("Content-Type must be application/json or multipart/form-data")
+        
+        if not data:
+            return error_response("No data received to create your page.")
+
+        # Validate page data
+        try:
+            validate(instance=data, schema=page_schema)
+        except ValidationError as e:
+            traceback.print_exc()
+            return error_response(f"Validation error: {e.message}")
+
+        # Retrieve page details from the request
+        page_name = data.get('name')
+        username = data.get('username')
+        avatar = data.get('avatar')
+        slug = data.get('slug')
+        description = data.get('description')
+        email = data.get('email')
+        phone = data.get('phone')
+        password = data.get('password')  # I'll Ensure to hash this before saving in production
+        about_me = data.get('about_me')
+        balance = data.get('balance', 0.0)  # Default to 0.0 if not provided
+        withdrawal_password = data.get('withdrawal_password')
+        valid_email = data.get('valid_email', False)  # Default to False if not provided
+        socials = data.get('socials', {})  # Default to empty dict if not provided
+        address = data.get('address', {})  # Default to empty dict if not provided
+        whats_app = data.get('whats_app')
+        bank = data.get('bank', {})  # Default to empty dict if not provided
+
+        tags = []
+        categories = []
+
+        # Process tags from the request
+        for header_key in data.keys():
+            if 'tags[' in header_key:
+                index = re.search(r'\[(\d+)\]', header_key).group(1)
+                if 'name' in header_key:
+                    tag_name = data[header_key]
+                    tag_description = data.get(f'tags[{index}][description]', tag_name)
+                    tags.append(get_or_create(db.session, Tag, {'description': tag_description}, name=tag_name)[0])
+
+        # Process categories from the request
+        for header_key in data.keys():
+            if 'categories[' in header_key:
+                index = re.search(r'\[(\d+)\]', header_key).group(1)
+                if 'name' in header_key:
+                    category_name = data[header_key]
+                    category_description = data.get(f'categories[{index}][description]', category_name)
+                    categories.append(get_or_create(db.session, Category, {'description': category_description}, name=category_name)[0])
+
+        # Create the page instance with all relevant fields
+        page = Page(
+            name=page_name,
+            username=username,
+            avatar=avatar,
+            # slug=slug, // comment to allow automatic slugging during insert
+            description=description,
+            email=email,
+            phone=phone,
+            password=password,  # Remember to hash this
+            about_me=about_me,
+            balance=balance,
+            withdrawal_password=withdrawal_password,
+            valid_email=valid_email,
+            socials=socials,
+            address=address,
+            whats_app=whats_app,
+            bank=bank,
+            is_deleted=data.get('is_deleted', False),
+            tags=tags,
+            categories=categories
+        )
+
+        # Assign the page to the current user
+        page.users.append(current_user)
+
+        # Handle image uploads
+        if 'images[]' in request.files:
+            dir_path = os.getenv('IMAGES_LOCATION')
+            dir_path = os.path.join(dir_path, 'pages')
+
+            for image in request.files.getlist('images[]'):
+                if image and validate_file_upload(image.filename):
+                    file_name = secure_filename(image.filename)
+                    file_path = uploader(image, upload_dir=dir_path)
+                    file_size = image.content_length or os.stat(file_path).st_size
+
+                    product_image = ProductImage(
+                        file_path=file_path,
+                        file_name=file_name,
+                        original_name=image.filename,
+                        file_size=file_size
+                    )
+
+                    page.images.append(product_image)
+
+        # Trigger slug generation
+        # receive_set(page, data['name'], None, None)
+    
+        # Save the page to the database
+        db.session.add(page)
+        db.session.commit()
+
+        data = page.get_summary()
+        return success_response('Page created successfully', data=data)
+    
+    except IntegrityError as e:
+        print(f"Database duplicate entry detected-> {e}")
+        if 'Duplicate entry' in str(e.orig):
+            return error_response(f"Duplicate entry. Page already exists.", status_code=409)
+        else:
+            return error_response("Database error. Please try again.")
+    
+    except Exception as e:
+        traceback.print_exc()
+        return error_response(f'Error creating page: {e}', status_code=400)
+
+@pages_bp.route('/pages/<page_slug>', methods=['PUT'])
+@jwt_required()
+def update_page(page_slug):
+    """
+    Update an existing page.
+
+    Accepts page data in JSON or multipart/form-data format and updates the page in the database.
+
+    :param page_slug: The slug of the page to update.
+    :return: JSON response indicating success or failure.
+    """
+    try:
+        # Determine the content type and retrieve data accordingly
+        if request.content_type == 'application/json':
+            data = request.get_json()
+        elif 'multipart/form-data' in request.content_type:
+            data = request.form.to_dict()
+        else:
+            return error_response("Content-Type must be application/json or multipart/form-data")
+
+        if not data:
+            return error_response("No data received to update your page.")
+
+        # Validate page data
+        try:
+            validate(instance=data, schema=page_update_schema)
+        except ValidationError as e:
+            return error_response(f"Validation error: {e.message}")
+
+        # Fetch the page to update
+        page = Page.get_page(page_slug)
+        
+        if page is None:
+            return error_response(f'Page not found <{data.get("name", page_slug)}>', status_code=404)
+
+        # Update page attributes with provided data
+        page.name = data.get('name', page.name)
+        page.username = data.get('username', page.username)
+        page.avatar = data.get('avatar', page.avatar)
+        page.slug = data.get('slug', page.slug)
+        page.description = data.get('description', page.description)
+        page.email = data.get('email', page.email)
+        page.phone = data.get('phone', page.phone)
+        page.about_me = data.get('about_me', page.about_me)
+        page.balance = data.get('balance', page.balance)
+        page.withdrawal_password = data.get('withdrawal_password', page.withdrawal_password)
+        page.valid_email = data.get('valid_email', page.valid_email)
+        page.whats_app = data.get('whats_app', page.whats_app)
+        page.bank = data.get('bank', page.bank)
+
+        # Process tags and categories
+        tags_input = data.get('tags', [])
+        categories_input = data.get('categories', [])
+        tags = []
+        categories = []
+
+        # Update categories
+        for category in categories_input:
+            category_obj = get_or_create(
+                db.session,
+                Category,
+                {'description': category.get('description', None)},
+                name=category['name']
+            )[0]
+            categories.append(category_obj)
+
+        # Update tags
+        for tag in tags_input:
+            tag_obj = get_or_create(
+                db.session,
+                Tag,
+                {'description': tag.get('description')},
+                name=tag['name']
+            )[0]
+            tags.append(tag_obj)
+
+        # Update relationships
+        page.tags = tags
+        page.categories = categories
+
+        # Handle image uploads
+        if 'images[]' in request.files:
+            dir_path = os.getenv('IMAGES_LOCATION')
+            dir_path = os.path.join(dir_path, 'pages')
+
+            # Clear existing images if needed (optional)
+            page.images.clear()
+
+            for image in request.files.getlist('images[]'):
+                if image and validate_file_upload(image.filename):
+                    file_name = secure_filename(image.filename)
+                    file_path = uploader(image, upload_dir=dir_path)
+                    file_size = image.content_length or os.stat(file_path).st_size
+
+                    page_image = ProductImage(
+                        file_path=file_path,
+                        file_name=file_name,
+                        original_name=image.filename,
+                        file_size=file_size
+                    )
+
+                    page.images.append(page_image)
+
+        # Commit the changes to the database
+        db.session.commit()
+
+        # Prepare and return the response
+        data = page.get_summary()
+        return success_response("Page updated successfully", data=data)
+
+    except exc.IntegrityError:
+        db.session.rollback()  # Rollback the session to prevent further issues
+        return error_response("A page with this slug already exists. Please choose a different name.", status_code=400)
+
+    except Exception as e:
+        db.session.rollback()  # Ensure rollback on any other exception
+        traceback.print_exc()
+        return error_response(f'Error updating page: {e}', status_code=400)
+
+@pages_bp.route('/pages/<identifier>', methods=['DELETE'])
+@jwt_required()
+def delete_page(identifier):
+    """
+    Delete a page by its slug or ID.
+
+    :param identifier: The page slug or ID.
+    :return: JSON response indicating success or failure.
+    """
+    try:
+        # Attempt to find the page by ID first
+        page = Page.query.get(identifier)
+        
+        # If no page is found by ID, try to find it by slug
+        if page is None:
+            page = Page.query.filter_by(slug=identifier).first()
+        
+        # If page is still None, return a 404 error
+        if page is None:
+            return error_response(f'Page not found <{identifier}>', status_code=404)
+
+        # Delete the page and commit the transaction
+        db.session.delete(page)
+        db.session.commit()
+        return success_response('Page deleted successfully')
+    
+    except Exception as e:
+        traceback.print_exc()
+        return error_response(f'Error deleting page: {e}', status_code=400)

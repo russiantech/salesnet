@@ -10,7 +10,7 @@ class OrderStatus(enum.IntEnum):
     reply = 4
     unknown = 5
 '''
-from sqlalchemy import func
+from sqlalchemy import func, or_
 from sqlalchemy.orm import relationship
 from web.extensions import db
 
@@ -60,7 +60,33 @@ class Order(db.Model):
 
         return dto
 
-
+    # Add this method to calculate the total amount
+    def calculate_total_amount(self):
+        total = sum(item.price * item.quantity for item in self.order_items if not item.is_deleted)
+        return total
+    
+    @staticmethod
+    def get_order(order_id: str):
+        """
+        Static method to fetch an order from the database by tracking_number or order ID.
+        
+        Args:
+            order_id (str or int): The order_id or order ID to search for.
+        
+        Returns:
+            Order: The order object if found, otherwise None.
+        
+        Raises:
+            ValueError: If the order_id is empty.
+        """
+        if not order_id:
+            raise ValueError("order_id cannot be empty")
+        
+        # Attempt to fetch the order by either username or order ID or email
+        order = db.session.query(Order).filter(or_(Order.id == int(order_id), Order.tracking_number == order_id)).first()
+        
+        return order
+    
 class OrderItem(db.Model):
     __tablename__ = 'order_items'
 

@@ -85,7 +85,7 @@ class ConnectionManager:
         if username is None:
             username = request.remote_addr  # Use user's IP address as a fallback
         socket_id = self.get_socket(username) or request.sid
-
+        # socket_id = self.get_socket(username)
         if socket_id:
             print(f"Emitting event '{event}' to socket ID: {socket_id} for user {username} with data {data}")
             try:

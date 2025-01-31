@@ -60,17 +60,15 @@ def config_app(app, config_name):
 from flask_socketio import SocketIO
 socketio = SocketIO(manage_session=False, cors_allowed_origins="*")
 
+# from elasticsearch import Elasticsearch
+# elastic_search=Elasticsearch(['http://localhost:9200'])
+
 def init_ext(app):
     """Initialize all extensions."""
     db.init_app(app)
     f_session.init_app(app)
     bcrypt.init_app(app)
     cors.init_app(app)
-    # # cors.init_app(app, resources={r"/*": {"origins": "*"}})  # Allow all origins; adjust as necessary
-    # cors.init_app(app, resources={r"/*": {"origins": "*"}})  # Allow all origins; adjust as necessary
-    # cors.init_app(app, resources={r"/socket.io/*": {"origins": "*"}})
-    # cors.init_app(app, resources={r"/socket.io/*": {"origins": "http://127.0.0.1:3002"}})
-    # CORS(app, resources={r"/socket.io/*": {"origins": "http://127.0.0.1:3002"}})
 
     # s_manager.init_app(app)
     jwt.init_app(app)
@@ -81,7 +79,7 @@ def init_ext(app):
     oauth.init_app(app)
     socketio.init_app(app)
     csrf.init_app(app)
-
+    
 def make_available():
     """Provide application metadata."""
     products_links = {

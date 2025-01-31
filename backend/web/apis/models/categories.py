@@ -25,6 +25,8 @@ class Category(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False, default=func.now(), onupdate=func.now())
     
     products = db.relationship('Product', secondary=products_categories, lazy='dynamic', back_populates='categories')
+    pages = db.relationship('Page', secondary="pages_categories", back_populates='categories')  # Specify back_populates
+    
     # Self-referential relationship + nested categorization using same table.
     parent_id = db.Column(db.Integer, db.ForeignKey('categories.id'), index=True, nullable=True)
     parent = db.relationship('Category', remote_side=[id], backref=backref('children', lazy='dynamic'))

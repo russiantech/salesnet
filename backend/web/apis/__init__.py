@@ -70,18 +70,19 @@ api_bp = Blueprint('apis', __name__)
 # from web.models.* import *
 # web/apis/models/__init__.py
 from . import products
-# from . import pages
+from . import pages
 from . import users
-# from . import baskets
+from . import baskets
 from . import orders
 from . import addresses
-# from .favorites import Favorite
-from . comments import Comment
+from . import favorites
+from . comments                                                                                                                                     import Comment
 # from .file_uploads import FileUpload, TagImage, CategoryImage, ProductImage
 # from .orders import Order, OrderItem
 from . import roles
+from . import tags 
 # from .tags import Tag, ProductTag, products_tags
-from . import chats_new
+from . import chats
 # from .categories import Category, products_categories
 from . import categories
 # from .transactions import Transaction

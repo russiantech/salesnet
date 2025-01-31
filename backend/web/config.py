@@ -22,8 +22,8 @@ class Config:
 
     # print("JWT_SECRET_KEY", JWT_SECRET_KEY)
     # Payment
-    RAVE_LIVE_SECRET_KEY = getenv('RAVE_LIVE_SECRET_KEY')
-    RAVE_TEST_SECRET_KEY = getenv('RAVE_TEST_SECRET_KEY')
+    FLUTTERWAVE_SK = getenv('FLUTTERWAVE_SK')
+    FLUTTERWAVE_TK = getenv('FLUTTERWAVE_TK')
     
     """Base configuration."""
     # TESTING = getenv('TESTING') == True # This would'nt allow flask-mail send actual email in real time.
@@ -51,6 +51,13 @@ class Config:
     MAIL_DEFAULT_SENDER = getenv('MAIL_DEFAULT_SENDER', 'Techa Support <support@techa.tech>')
     MAIL_DEBUG = 1
 
+    # payments
+    STRIPE_SECRET_KEY = getenv('STRIPE_SECRET_KEY')
+    PAYPAL_CLIENT_ID = getenv('PAYPAL_CLIENT_ID')
+    PAYPAL_SECRET = getenv('PAYPAL_SECRET')
+    PAYSTACK_SK = getenv('PAYSTACK_SK')
+    FLUTTERWAVE_SK = getenv('FLUTTERWAVE_SK')
+    
     # Miscellaneous
     LOG_TO_STDOUT = getenv('LOG_TO_STDOUT')
     ADMINS = ['jameschristo962@gmail.com', 'chrisjsmez@gmail.com']

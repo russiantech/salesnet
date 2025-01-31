@@ -8,7 +8,7 @@ from urllib.parse import urlencode
 from flask_jwt_extended import create_access_token, get_jwt, jwt_required, get_jwt_identity, current_user  # Instead of get_jwt_claims
 from jsonschema import validate, ValidationError
 from flask import (
-    abort, current_app, jsonify, make_response, session, render_template, 
+    abort, current_app, make_response, session, render_template, 
     url_for, request
 )
 
@@ -167,110 +167,16 @@ def signup():
         print(traceback.print_exc())
         return error_response(str(e))
 
-# @user_bp.route("/users/sign-in", methods=['POST'])
-# @csrf.exempt
-# @jwt_required(optional=True)
-# def signin():
-#     try:
-        
-#         # Check if the request content type is application/json
-#         if request.content_type != 'application/json' or not request.json:
-#             return error_response("Content-Type must be application/json & json payload expected.")
-        
-#         # Check if the user is already authenticated (using JWT token)
-#         user_identity = get_jwt_identity()  # Attempt to get the current user's identity from the JWT token
-#         if user_identity:
-#             claims = get_jwt()  # Get all claims
-#             # username = claims.get('username')
-#             # email = claims.get('email')
-#             user_id = claims.get('id')
-
-#             return success_response(f"signed in already as {current_user.username} ", data={"redirect": url_for('showcase.index')})
-
-#         # Parse JSON data from the request
-#         data = request.get_json()
-
-#         # Ensure that no fields are empty
-#         if not all(data.get(key) for key in ('username', 'password')):
-#             return error_response("All fields are required and must not be empty.")
-
-#         # Validate the data against the schema
-#         try:
-#             validate(instance=data, schema=signin_schema)
-#         except ValidationError as e:
-#             return error_response(e.message)
-
-#         # Authentication logic
-#         user = User.query.filter(
-#             sa.or_(
-#                 User.email == data['username'],
-#                 User.phone == data['username'],
-#                 User.username == data['username']
-#             )
-#         ).first()
-
-#         # If user exists and password matches
-#         if user and user.check_password(data['password']):
-
-#             access_token = user.make_token(token_type='access')
-#             refresh_token = user.make_token(token_type='refresh')
-#             # refresh_token = user.make_token(token_type='refresh', fresh=True)
-
-#             # Create response object
-#             response = make_response(
-#                 success_response(
-#                     "sign in successful", 
-#                     data={
-#                         "access_token": access_token,
-#                         "refresh_token": refresh_token,
-#                         "redirect": url_for('showcase.index')
-                        
-#             }))
-
-#             # Set cookies for web clients
-#             response.set_cookie('access_token_cookie', access_token, httponly=True, secure=True, samesite='Strict')
-#             response.set_cookie('refresh_token_cookie', refresh_token, httponly=True, secure=True, samesite='Strict')
-#             # response.headers['Authorization'] = f"Bearer {access_token}"
-            
-#             # For mobile or desktop clients, return tokens in the response body
-#             if data.get('client_type') in ['mobile', 'desktop', 'iot']:
-#                 return success_response("Sign in successful", data={
-#                     "access_token": access_token,
-#                     "refresh_token": refresh_token,
-#                     "redirect": url_for('showcase.index')
-#                 })
-                
-#             # return success_response("sign in successful", data=data)
-#             return response
-        
-#         # If authentication failed
-#         else:
-#             return error_response("Invalid username or password.")
-        
-#     except Exception as e:
-#         # Log the exception for debugging
-#         # traceback.print_exc()
-#         return error_response(f'Error signing in: {e}', status_code=400)
-
 @user_bp.route("/users/signin", methods=['POST'])
 @csrf.exempt
 @limiter.exempt
 @jwt_required(optional=True)
 def signin():
     try:
-        
         # Check if the request content type is application/json
         if request.content_type != 'application/json' or not request.json:
             return error_response("Content-Type must be application/json & JSON payload expected.")
         
-        # # Check if the user is already authenticated (using JWT token)
-        # user_identity = get_jwt_identity()  # Attempt to get the current user's identity from the JWT token
-        # if user_identity:
-        #     claims = get_jwt()  # Get all claims
-        #     return success_response(
-        #         f"signed in already as {claims.get('username')}",
-        #         data={"redirect": url_for('showcase.index')}
-        #     )
         if current_user:
             return success_response(
                 f"signed in already as {current_user.username}", data={"redirect": url_for('showcase.index')}
@@ -314,8 +220,8 @@ def signin():
             ))
 
             # Set cookies for web clients
-            response.set_cookie('access_token_cookie', access_token, httponly=True, secure=True, samesite='Strict')
-            response.set_cookie('refresh_token_cookie', refresh_token, httponly=True, secure=True, samesite='Strict')
+            # response.set_cookie('access_token_cookie', access_token, httponly=True, secure=True, samesite='Strict')
+            # response.set_cookie('refresh_token_cookie', refresh_token, httponly=True, secure=True, samesite='Strict')
 
             return response
 

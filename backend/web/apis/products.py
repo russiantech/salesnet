@@ -1,7 +1,7 @@
 import os
 import re
 import traceback
-from flask import current_app as app, request
+from flask import request
 from flask_jwt_extended import jwt_required, current_user
 from jsonschema import ValidationError, validate
 from sqlalchemy.exc import IntegrityError
@@ -284,7 +284,7 @@ def create():
             return error_response("Duplicate entry for slug. Product already exists.", status_code=409)
         else:
             return error_response("Database error. Please try again.")
-        
+
     except Exception as e:
         traceback.print_exc()
         return error_response(f'Error creating product: {e}', status_code=400)

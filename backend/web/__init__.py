@@ -5,6 +5,9 @@ from web.extensions import db, config_app, init_ext, make_available
 
 def create_app(config_name=None):
     app = Flask(__name__, instance_relative_config=False)
+    
+    # from elasticsearch import Elasticsearch
+    # app.elasticsearch = Elasticsearch(['http://localhost:9200']) 
 
     try:
         # Configure the app
@@ -15,6 +18,9 @@ def create_app(config_name=None):
         # Register Blueprints
         from web.apis import api_bp
         app.register_blueprint(api_bp, url_prefix='/api')
+        
+        from web.apis.transactions import transact_bp
+        app.register_blueprint(transact_bp, url_prefix='/api')
         
         # error-bp
         from web.apis.errors.handlers import error_bp

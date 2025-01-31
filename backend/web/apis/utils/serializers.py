@@ -1,140 +1,6 @@
 from flask import request, jsonify, url_for
 from flask_sqlalchemy.pagination import QueryPagination
 
-class PageSerializer_BAK:
-    def __init__(self, pagination_obj=None, items=None, resource_name=None, summary_func=None, **kwargs):
-        """
-        Initialize PageSerializer to handle paginated or non-paginated data.
-
-        :param pagination_obj: QueryPagination object for paginated results.
-        :param items: Non-paginated list of items to serialize.
-        :param resource_name: Name of the resource being serialized (e.g., 'users, products, addresses').
-        :param summary_func: Function to extract summary from each resource (defaults to `.get_summary`).
-        :param kwargs: Additional arguments for the summary function.
-        """
-        self.data = {}
-        self.resource_name = resource_name or "items"  # Default name for resource
-        self.summary_func = summary_func or (lambda item, **kw: item.get_summary(**kw))
-        
-        if pagination_obj:
-            self._serialize_pagination(pagination_obj, **kwargs)
-        elif items is not None:
-            self._serialize_items(items, **kwargs)
-        else:
-            raise ValueError("Either `pagination_obj` or `items` must be provided.")
-
-    def _serialize_pagination(self, pagination_obj, **kwargs):
-        if not isinstance(pagination_obj, QueryPagination):
-            raise TypeError(f"Expected Pagination object of {QueryPagination}, got {type(pagination_obj)}")
-        
-        self.items = [self.summary_func(resource, **kwargs) for resource in pagination_obj.items]
-        self.data['total_items_count'] = pagination_obj.total
-        self.data['offset'] = (pagination_obj.page - 1) * pagination_obj.per_page
-        self.data['requested_page_size'] = pagination_obj.per_page
-        self.data['current_page_number'] = pagination_obj.page
-        self.data['total_pages_count'] = pagination_obj.pages
-        self.data['has_next_page'] = pagination_obj.has_next
-        self.data['has_prev_page'] = pagination_obj.has_prev
-
-        # Construct URLs dynamically
-        base_url = request.path
-        self.data['next_page_url'] = (
-            url_for(request.endpoint, page=pagination_obj.next_num, page_size=pagination_obj.per_page)
-            if pagination_obj.has_next else None
-        )
-        
-        self.data['prev_page_url'] = (
-            url_for(request.endpoint, page=pagination_obj.prev_num, page_size=pagination_obj.per_page)
-            if pagination_obj.has_prev else None
-        )
-
-    def _serialize_items(self, items, **kwargs):
-        self.items = [self.summary_func(resource, **kwargs) for resource in items]
-        self.data['total_items_count'] = len(items)
-        self.data['offset'] = 0
-        self.data['requested_page_size'] = len(items)
-        self.data['current_page_number'] = 1
-        self.data['total_pages_count'] = 1
-        self.data['has_next_page'] = False
-        self.data['has_prev_page'] = False
-        self.data['next_page_url'] = None
-        self.data['prev_page_url'] = None
-
-    def get_data(self):
-        return {
-            'success': True,
-            'page_meta': self.data,
-            self.resource_name: self.items,
-        }
-
-class PageSerializer_BAK_a:
-    def __init__(self, pagination_obj=None, items=None, resource_name=None, summary_func=None, category_id=None, **kwargs):
-        """
-        Initialize PageSerializer to handle paginated or non-paginated data.
-
-        :param pagination_obj: QueryPagination object for paginated results.
-        :param items: Non-paginated list of items to serialize.
-        :param resource_name: Name of the resource being serialized (e.g., 'users, products, addresses').
-        :param summary_func: Function to extract summary from each resource (defaults to `.get_summary`).
-        :param category_id: Optional category ID for URL construction.
-        :param kwargs: Additional arguments for the summary function.
-        """
-        self.data = {}
-        self.resource_name = resource_name or "items"  # Default name for resource
-        self.summary_func = summary_func or (lambda item, **kw: item.get_summary(**kw))
-        self.category_id = category_id  # Store category_id for URL construction
-        
-        if pagination_obj:
-            self._serialize_pagination(pagination_obj, **kwargs)
-        elif items is not None:
-            self._serialize_items(items, **kwargs)
-        else:
-            raise ValueError("Either `pagination_obj` or `items` must be provided.")
-
-    def _serialize_pagination(self, pagination_obj, **kwargs):
-        if not isinstance(pagination_obj, QueryPagination):
-            raise TypeError(f"Expected Pagination object of {QueryPagination}, got {type(pagination_obj)}")
-        
-        self.items = [self.summary_func(resource, **kwargs) for resource in pagination_obj.items]
-        self.data['total_items_count'] = pagination_obj.total
-        self.data['offset'] = (pagination_obj.page - 1) * pagination_obj.per_page
-        self.data['requested_page_size'] = pagination_obj.per_page
-        self.data['current_page_number'] = pagination_obj.page
-        self.data['total_pages_count'] = pagination_obj.pages
-        self.data['has_next_page'] = pagination_obj.has_next
-        self.data['has_prev_page'] = pagination_obj.has_prev
-
-        # Construct URLs dynamically, including category_id if provided
-        base_url = request.path
-        self.data['next_page_url'] = (
-            url_for(request.endpoint, page=pagination_obj.next_num, page_size=pagination_obj.per_page, category_id=self.category_id)
-            if pagination_obj.has_next else None
-        )
-        
-        self.data['prev_page_url'] = (
-            url_for(request.endpoint, page=pagination_obj.prev_num, page_size=pagination_obj.per_page, category_id=self.category_id)
-            if pagination_obj.has_prev else None
-        )
-
-    def _serialize_items(self, items, **kwargs):
-        self.items = [self.summary_func(resource, **kwargs) for resource in items]
-        self.data['total_items_count'] = len(items)
-        self.data['offset'] = 0
-        self.data['requested_page_size'] = len(items)
-        self.data['current_page_number'] = 1
-        self.data['total_pages_count'] = 1
-        self.data['has_next_page'] = False
-        self.data['has_prev_page'] = False
-        self.data['next_page_url'] = None
-        self.data['prev_page_url'] = None
-
-    def get_data(self):
-        return {
-            'success': True,
-            'page_meta': self.data,
-            self.resource_name: self.items,
-        }
-
 class PageSerializer:
     def __init__(self, pagination_obj=None, items=None, resource_name=None, summary_func=None, context_id=None, **kwargs):
         """
@@ -252,7 +118,7 @@ def success_response(messages, data=None, status_code=200, include_status_code=F
     if data:
         response.update(data)
     
-        # Include the status code as a member only if it's provided and needed
+    # Include the status code as a member only if it's provided and needed
     if status_code is not None and include_status_code:
         response['status_code'] = status_code
 

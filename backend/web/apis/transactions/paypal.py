@@ -1,23 +1,25 @@
+from flask_jwt_extended import current_user, jwt_required
 import traceback, requests, secrets
-from flask_login import current_user
-from flask import current_app, render_template, request, Blueprint, url_for
-from web.models import Plan, db, User, Transaction
-from web.extensions import csrf
+from flask import current_app, request, Blueprint, url_for
+from web.apis.utils.serializers import error_response, success_response
+from web.apis.models.transactions import Transaction
+from sqlalchemy.exc import IntegrityError
 from requests.exceptions import ConnectionError, Timeout, RequestException
 from jsonschema import validate, ValidationError
-from web.apis.utils.helpers import success_response, error_response, generate_random_id
-from web.apis.schemas.pay import pay_schema
-from sqlalchemy.exc import IntegrityError
+from web.apis.schemas.transactions import pay_schema
+from web.extensions import db, csrf
+from web.apis.models.users import User
+from web.apis.models.orders import Order
+from web.apis.utils.helpers import generate_ref
 
 pay = Blueprint('pay', __name__)
 
-@pay.route('/init-subscribe/<string:plan_type>', methods=['POST'])
-@csrf.exempt
-def subscribe_pay(plan_type):
+@pay.route('/transactions/flutterwave', methods=['POST'])
+# @csrf.exempt
+@jwt_required(optional=True)
+def initiate(order_id):
     try:
-        
         if request.method == "POST":
-            
             if request.content_type == 'application/json':
                 data = request.get_json()
                 
@@ -29,41 +31,35 @@ def subscribe_pay(plan_type):
             if not data:
                 return error_response("No data received to process transactions")
             
-            # Validate the data against the schema
             try:
                 validate(instance=data, schema=pay_schema)
             except ValidationError as e:
                 return error_response(str(e.message))
 
-            # retrieve plan
-            plan = Plan.query.filter(Plan.plan_type == plan_type).first()
-            # plan = db.session.scalar(sa.select(Plan).where(Plan.plan_type == plan_type)).first()
+            order = Order.query.filter(Order.id == order_id).first()
             
-            if not plan:
-                return error_response("Plan not found!")
+            if not order:
+                return error_response(f"Order <{order_id}> not found!")
             
-            # amount = data.get('amount', plan.plan_amount).strip()
-            amount = data.get('amount', plan.plan_amount)
-            email = data.get('email', current_user.email if current_user.is_authenticated else None)
-            subscription = data.get('subscription', plan.plan_type)
-            currency = data.get('currency', plan.plan_currency) or "USD"
+            amount = data.get('amount', order.amout)
+            email = data.get('email', current_user.email if current_user else None)
+            currency = data.get('currency', order.currency) or "USD"
             phone = data.get('phone', None)
 
             if not email:
                 return error_response("A valid email address is required for receipt of transaction")
 
-            # if (not amount.isdigit() or int(amount) <= 0):
             if (not str(amount).isdigit() or int(amount) <= 0):
                 return error_response("Kindly provide an amount > 0 to continue")
             
             headers = {
                 "accept": "application/json",
-                "Authorization": f"Bearer {current_app.config['RAVE_LIVE_SECRET_KEY']}",
+                "Authorization": f"Bearer {current_app.config['FLUTTERWAVE_SK']}",
                 "Content-Type": "application/json"
             }
             payment_url = "https://api.flutterwave.com/v3/payments"
             payload = {
-                "tx_ref": f"Techa-{generate_random_id(k=5)}",
+                "tx_ref": generate_ref(prefix="TEC", num_digits=4, letters="???"),
                 "amount": int(amount),
                 "currency": currency,  # Ensure this matches the currency in the transaction plan
                 "redirect_url": f"{request.referrer}",
@@ -71,7 +67,7 @@ def subscribe_pay(plan_type):
                 "customer": {
                     "email": email,
                     "phonenumber": current_user.phone if current_user.is_authenticated and current_user.phone else phone,
-                    "name": current_user.name or current_user.username if current_user.is_authenticated else email
+                    "name": current_user.name or current_user.username if current_user else email
                 },
                 
                 "payment_options": "card, ussd, banktransfer, credit, mobilemoneyghana",
@@ -82,32 +78,9 @@ def subscribe_pay(plan_type):
             }
 
             try:
-                if subscription:
-                    # step 0: Get n initiate subscription
-                    # plan_init_link = "https://api.flutterwave.com/v3/transaction-plans"
-                    plan_init_link = "https://api.flutterwave.com/v3/payment-plans"
-                    
-                    # Step 1: Create the transaction plan with the same currency
-                    plan_payload = {
-                        "amount": payload['amount'],
-                        "name": payload['customizations']["title"],
-                        "interval": subscription,
-                        "currency": payload['currency']  # Match the currency here as well
-                    }
-                    
-                    plan_response = requests.post(plan_init_link, headers=headers, json=plan_payload)
-                    plan_data = dict(plan_response.json().get('data', {}))
-                    if plan_response.status_code != 200 or not plan_data.get('id'):
-                        return error_response(f"Failed to create/initiate transaction plans - {plan_response.status_code}-{plan_data}")
-    
-                    # Step 2: Update the payload with the plan ID and initiate transaction
-                    payload['payment_plan'] = plan_data['id']
 
                 payment_response = requests.post(payment_url, json=payload, headers=headers)
-                # payment_response = requests.request(method="POST", url=payment_url, headers=headers, data=payload)
-
                 payment_data = dict(payment_response.json()) if payment_response else {}
-
                 payment_link = payment_data.get("data", {}).get("link")
                 
                 if not payment_link:
@@ -143,8 +116,8 @@ def subscribe_pay(plan_type):
                     'provider': 'flutterwave',
                     'tx_id': None,
                     'user_id': user_id,
-                    'plan_id': plan.id,  # Link to the subscription plan
-                    'is_subscription': True if subscription else False,  # Mark as a subscription
+                    # 'plan_id': plan.id,  # Link to the subscription plan
+                    # 'is_subscription': True if subscription else False,  # Mark as a subscription
                     'tx_descr': f"Subscription for plan: {plan.plan_title}"
                 }
 
@@ -178,9 +151,9 @@ def subscribe_pay(plan_type):
         
         return error_response(f"error: {str(e)}", status_code=500)
 
-@pay.route('/transaction-callback', methods=['GET'])
+@pay.route('/callback', methods=['GET'])
 @csrf.exempt
-def transaction_callback():
+def callback():
     try:
         
         status = request.args.get('status')
@@ -203,6 +176,8 @@ def transaction_callback():
             # response = requests.get(verify_endpoint, headers=headers)
             # response = requests.request("POST", url, headers=headers, data=payload)
             response = requests.request("POST", verify_endpoint, headers=headers)
+            # rresponse = requests.post(verify_endpoint, json=payload, headers=headers)
+            response = requests.post(verify_endpoint, headers=headers)
 
             if response.status_code == 200:
                 response_data = response.json().get('data', {})
@@ -234,3 +209,29 @@ def transaction_callback():
     except Exception as e:
         traceback.print_exc()
         return error_response(str(e))
+
+
+# ===============
+# app/controllers/payment_controller.py
+from flask import Blueprint, request, jsonify
+# from web.services.payment_service import PaymentService
+from web.apis.utils.transactions import PaymentService
+
+payment_bp = Blueprint('payment', __name__)
+payment_service = PaymentService()
+
+@payment_bp.route('/payment/stripe', methods=['POST'])
+def stripe_payment():
+    data = request.json
+    amount = data['amount']
+    currency = data['currency']
+    source = data['source']
+    
+    charge = payment_service.process_stripe_payment(amount, currency, source)
+    if 'error' in charge:
+        return jsonify(charge), 400
+
+    payment_service.save_transaction(data['user_id'], amount, currency, 'stripe', charge['id'])
+    return jsonify({'status': 'success', 'charge': charge}), 200
+
+# Similar routes for PayPal, Paystack, and Flutterwave
