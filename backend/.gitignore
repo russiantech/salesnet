@@ -5,8 +5,15 @@ __pycache__/
 
 # C extensions
 *.so
+*.dump
+*.sql
+*.sqlite3
+*.csv
+*.conf
+*.sql
 
 # Distribution / packaging
+from_db/
 flask_session/
 tmp/
 migrations/

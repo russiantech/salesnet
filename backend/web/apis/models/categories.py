@@ -9,8 +9,8 @@ from web.extensions import db
 products_categories = \
     db.Table(
         "products_categories",
-        db.Column("category_id", db.Integer, db.ForeignKey("categories.id")),
-        db.Column("product_id", db.Integer, db.ForeignKey("products.id"))
+        db.Column("category_id", db.Integer, db.ForeignKey("categories.id"), primary_key=True),
+        db.Column("product_id", db.Integer, db.ForeignKey("products.id"), primary_key=True)
         )
 
 class Category(db.Model):

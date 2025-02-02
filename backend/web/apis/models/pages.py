@@ -5,31 +5,30 @@ from web.extensions import db
 products_pages = \
     db.Table(
         "products_pages",
-        db.Column("page_id", db.Integer, db.ForeignKey("pages.id") ),
-        db.Column("product_id", db.Integer, db.ForeignKey("products.id") )
+        db.Column("page_id", db.Integer, db.ForeignKey("pages.id"), primary_key=True),
+        db.Column("product_id", db.Integer, db.ForeignKey("products.id"), primary_key=True)
         )
 
 users_pages = \
     db.Table(
         "users_pages",
-        db.Column("user_id", db.Integer, db.ForeignKey("users.id") ),
-        db.Column("page_id", db.Integer, db.ForeignKey("pages.id") )
+        db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
+        db.Column("page_id", db.Integer, db.ForeignKey("pages.id"), primary_key=True)
         )
 
 pages_tags = db.Table(
     'pages_tags',
-    db.Column('page_id', db.Integer, db.ForeignKey('pages.id')),
-    db.Column('tag_id', db.Integer, db.ForeignKey('tags.id')),
+    db.Column('page_id', db.Integer, db.ForeignKey('pages.id'), primary_key=True),
+    db.Column('tag_id', db.Integer, db.ForeignKey('tags.id'), primary_key=True),
     keep_existing=True
 )
 
 pages_categories = db.Table(
     'pages_categories',
-    db.Column('page_id', db.Integer, db.ForeignKey('pages.id')),
-    db.Column('category_id', db.Integer, db.ForeignKey('categories.id')),
+    db.Column('page_id', db.Integer, db.ForeignKey('pages.id'), primary_key=True),
+    db.Column('category_id', db.Integer, db.ForeignKey('categories.id'), primary_key=True),
     keep_existing=True
 )
-
 
 class Page(db.Model):
     __tablename__ = 'pages'

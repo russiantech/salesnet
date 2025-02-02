@@ -15,8 +15,8 @@ from web.apis.models.pages import users_pages
 products_users = \
     db.Table(
         "products_users",
-        db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
-        db.Column("product_id", db.Integer, db.ForeignKey("products.id"))
+        db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
+        db.Column("product_id", db.Integer, db.ForeignKey("products.id"), primary_key=True)
         )
     
 class User(db.Model):

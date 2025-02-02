@@ -31,6 +31,7 @@ def create_app(config_name=None):
         # app.register_blueprint(showcase_bp)
         
         with app.app_context():
+            # db.drop_all()  # This will drop all tables; use with caution
             db.create_all()  # Create all tables
 
         return app

@@ -7,10 +7,17 @@ from web.extensions import db
 
 products_tags = db.Table(
     'products_tags',
-    db.Column('product_id', db.Integer, db.ForeignKey('products.id')),
-    db.Column('tag_id', db.Integer, db.ForeignKey('tags.id')),
+    db.Column('product_id', db.Integer, db.ForeignKey('products.id'), primary_key=True),
+    db.Column('tag_id', db.Integer, db.ForeignKey('tags.id'), primary_key=True),
     keep_existing=True
 )
+
+# products_tags = db.Table(
+#     'products_tags',
+#     db.Column('product_id', db.Integer, db.ForeignKey('products.id'), primary_key=True),
+#     db.Column('tag_id', db.Integer, db.ForeignKey('tags.id'), primary_key=True),
+#     db.UniqueConstraint('product_id', 'tag_id', name='same_tag_for_same_product')
+# )
 
 class Tag(db.Model):
     __tablename__ = 'tags'
@@ -49,8 +56,8 @@ def receive_set(target, value, oldvalue, initiator):
 class ProductTag(db.Model):
     __tablename__ = 'product_tags'
 
-    product_id = Column(Integer, ForeignKey("products.id"), nullable=False)
-    tag_id = Column(Integer, ForeignKey("tags.id"), nullable=False)
+    product_id = Column(Integer, ForeignKey("products.id"), primary_key=True, nullable=False)
+    tag_id = Column(Integer, ForeignKey("tags.id"), primary_key=True, nullable=False)
 
     product = db.relationship("Product", foreign_keys=[product_id], backref='product_tags')
     tag = db.relationship("Tag", foreign_keys=[tag_id], backref='product_tags')

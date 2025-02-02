@@ -1,6 +1,27 @@
 from sqlalchemy import CheckConstraint, Enum, func
 from web.extensions import db
 
+# class Chat(db.Model):
+#     __tablename__ = 'chats'
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     text = db.Column(db.Text)
+#     media_url = db.Column(db.String(140))  # This is the correct column name
+#     sticker = db.Column(db.String(140))
+#     last_seen = db.Column(db.DateTime)
+#     seen = db.Column(db.Boolean)
+#     from_deleted = db.Column(db.Boolean, nullable=False)
+#     to_deleted = db.Column(db.Boolean, nullable=False)
+#     reply_on_id = db.Column(db.Integer, db.ForeignKey('chats.id'))
+#     group_id = db.Column(db.Integer, db.ForeignKey('groups.id'), nullable=False)
+#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     is_deleted = db.Column(db.Boolean, nullable=False)
+#     created_at = db.Column(db.DateTime, nullable=False, default=func.now())
+#     updated_at = db.Column(db.DateTime, nullable=False, default=func.now(), onupdate=func.now())
+
+#     __table_args__ = (
+#         db.CheckConstraint('text IS NOT NULL OR sticker IS NOT NULL OR media_url IS NOT NULL', name='at_least_one_content_check'),
+#     )
+
 class Chat(db.Model):
     __tablename__ = 'chats'
 
@@ -25,9 +46,14 @@ class Chat(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, index=True, default=func.now())
     updated_at = db.Column(db.DateTime, nullable=False, default=func.now(), onupdate=func.now())
 
+    # __table_args__ = (
+    #     db.CheckConstraint(
+    #         'text IS NOT NULL OR sticker IS NOT NULL OR media_url IS NOT NULL', 
+    #         name='at_least_one_content_check'),
+    # )
     __table_args__ = (
         CheckConstraint(
-            "text IS NOT NULL OR sticker IS NOT NULL OR media IS NOT NULL",
+            "text IS NOT NULL OR sticker IS NOT NULL OR media_url IS NOT NULL",
             name="at_least_one_content_check",
         ),
     )
