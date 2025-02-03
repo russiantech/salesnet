@@ -14,6 +14,16 @@ def site_map():
         links.append({'url': rule.rule, 'view': rule.endpoint})
     return jsonify(links), 200
 
+@app.route("/redis-test")
+def test_render_redis():
+    import redis
+    try:
+        r = redis.Redis(host='red-cug0gotsvqrc73fukjn0', port=6379)
+        r.ping()  # Test connection
+        print("Connected to Redis!")
+    except redis.exceptions.ConnectionError as e:
+        print(f"Connection error: {e}")
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(getenv("PORT", 5000)))
     
