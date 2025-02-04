@@ -14,6 +14,7 @@ def create_app(config_name=None):
         config_app(app, config_name)
         init_ext(app)
         app.context_processor(make_available) # make some-data available in the context through-out
+        # app.redis = redis
         
         # Register Blueprints
         from web.apis import api_bp
@@ -27,8 +28,8 @@ def create_app(config_name=None):
         app.register_blueprint(error_bp)
 
         # front-pages blueprints
-        # from web.showcase.routes import showcase_bp
-        # app.register_blueprint(showcase_bp)
+        from web.showcase.routes import showcase_bp
+        app.register_blueprint(showcase_bp)
         
         with app.app_context():
             # db.drop_all()  # This will drop all tables; use with caution

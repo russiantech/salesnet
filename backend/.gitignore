@@ -5,38 +5,32 @@ __pycache__/
 
 # C extensions
 *.so
-*.dump
-*.sql
-*.sqlite3
-*.csv
-*.conf
-*.sql
 
 # Distribution / packaging
-from_db/
-flask_session/
-tmp/
-migrations/
-.Python
 build/
 develop-eggs/
 downloads/
 eggs/
 .eggs/
+flask_session/
+from_db/
 lib/
 lib64/
+migrations/
+.Python
 parts/
 sdist/
+tmp/
 var/
 wheels/
 *.egg-info/
-.installed.cfg
 *.egg
+.installed.cfg
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script from a templates
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+# Usually these files are written by a python script from a templates
+# before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
 
@@ -45,32 +39,32 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-htmlcov/
-.tox/
+.cache
 .coverage
 .coverage.*
-.cache
+htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
 .pytest_cache/
+.tox/
 
 # Translations
 *.mo
 *.pot
 
-# Django stuff:
+# Django stuff
 *.log
 *.dump
 local_settings.py
 db.sqlite3
 
-# Flask stuff:
+# Flask stuff
 instance/
 .webassets-cache
 
-# Scrapy stuff:
+# Scrapy stuff
 .scrapy
 
 # Sphinx documentation
@@ -85,7 +79,7 @@ target/
 # pyenv
 .python-version
 
-# celery beat schedule file
+# Celery beat schedule file
 celerybeat-schedule
 
 # SageMath parsed files
@@ -101,21 +95,18 @@ env.bak/
 venv.bak/
 _/
 
-# Spyder project settings
-.spyderproject
-.spyproject
+# IDE and editor settings
+.idea/              # PyCharm
+.vscode/           # Visual Studio Code
+.spyderproject/    # Spyder
+.spyproject/       # Spyder
+.ropeproject/      # Rope
+.mypy_cache/       # mypy
+.DS_Store          # macOS Finder
 
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-
-# DS Store
-.DS_Store
-
-# Pycharm
-.idea
+# Additional file types
+*.sql              # SQL files
+*.json             # JSON files
+*.csv              # CSV files
+# *.conf             # Configuration files
+*.sqlite3          # SQLite database files

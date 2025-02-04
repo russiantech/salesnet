@@ -274,7 +274,8 @@ def unauthorized_callback(error):
     if 'socketio' in request.environ:
         # Handle WebSocket specific logic if needed
         connection_manager.notify('socket_response', data=error)
-    return error_response(f'valid token required - {error}', status_code=401)
+    # return error_response(f'valid token required - {error}', status_code=401)
+    return error_response(f'Missing Authorization Header [Missing JWT in headers, cookies, query_string or json].', status_code=401)
 
 # Custom error response for expired token
 @jwt.expired_token_loader

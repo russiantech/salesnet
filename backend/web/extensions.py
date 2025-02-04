@@ -1,15 +1,16 @@
 from flask_migrate import Migrate
 from flask_mail import Mail
 from flask_moment import Moment
-from flask_session import Session
+# from flask_session import Session
 
 # Load environment variables
 from dotenv import load_dotenv
+from redis import Redis
 load_dotenv()
 from os import getenv
 
 # Initialize extensions
-f_session = Session()
+# f_session = Session()
 mail = Mail()
 migrate = Migrate()
 moment = Moment()
@@ -29,20 +30,23 @@ bcrypt = Bcrypt()
 from flask_cors import CORS
 cors = CORS()
 
-from redis import Redis
-# Initialize Redis client
-redis = Redis.from_url(getenv('REDIS_URL', 'redis://localhost:6379/0'))
+# Determine the environment and set the Redis URL accordingly
+if getenv('FLASK_ENV') == 'production':
+    redis_url = getenv('REDIS_URL', 'redis://localhost:6379/0')  # Fallback if not set
+else:
+    redis_url = getenv('REDIS_URL_DEV', 'redis://localhost:6379/0')  # Fallback if not set
 
-# Initialize Flask-Limiter with IP-based rate limiting
+# Initialize Redis client
+redis = Redis.from_url(redis_url)
+
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+# Initialize Flask-Limiter with IP-based rate limiting
 limiter = Limiter(
     key_func=get_remote_address,
-    # default_limits=["200 per day", "50 per hour"]
     default_limits=["1 per second", "5 per minute"],  # Allow up to 1 request per second or a burst of 5 in a minute
-    storage_uri=getenv('REDIS_URL', 'redis://localhost:6379/0')  # Ensure the Redis URL is correct
+    storage_uri=redis_url  # Use the same Redis URL for limiting
 )
-
 
 from flask_jwt_extended import JWTManager #, create_access_token, jwt_required, get_jwt_identity
 jwt = JWTManager()
@@ -66,7 +70,8 @@ socketio = SocketIO(manage_session=False, cors_allowed_origins="*")
 def init_ext(app):
     """Initialize all extensions."""
     db.init_app(app)
-    f_session.init_app(app)
+    # f_session.init_app(app)
+    # redis.init_app(app)
     bcrypt.init_app(app)
     cors.init_app(app)
 
@@ -91,7 +96,7 @@ def make_available():
     }
     app_data = {
         'app_name': 'Salesnet',
-        'hype': 'Your Digital Learning Companion.',
+        'hype': 'Internet of sales.',
         'app_desc': 'Elite software engr team with special interest in artificial intelligence, data and hacking..',
         'app_desc_long': 'Elite software engr team with special interest in artificial intelligence, data and hacking..\n\
             Salesnet m-powers people & powers businesses to stay relevant with technologies and advancements.',

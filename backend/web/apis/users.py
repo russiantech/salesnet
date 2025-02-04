@@ -271,7 +271,7 @@ def refresh_token():
                 data={
                     "access_token": new_access_token,
                     # "refresh_token": new_access_token,
-                    "redirect": url_for('showcase.index')
+                    "redirect": url_for('apis.index')
                 }
             ))
 

@@ -31,7 +31,6 @@ from flask import Blueprint, make_response
 from web.apis.utils.serializers import error_response, success_response
 api_bp = Blueprint('apis', __name__)
 
-
 # from datetime import datetime, timezone
 # from flask import g
 # from flask_jwt_extended import current_user, jwt_required, get_jwt

@@ -1,0 +1,2923 @@
+{
+	"info": {
+		"name": "Salesnet API Documentation Online",
+		"description": "Salesnet API Online",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_collection_link": "https://orange-water-477324.postman.co/workspace/Russian-developers-(Salesnet-AP~ef1161fe-1bef-4d33-b182-53abb26abd96/collection/31696103-f3878fb4-27ed-4ae3-90eb-f376999bab00?action=share&source=collection_link&creator=31696103"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "users - change-password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjA5MzQxOCwianRpIjoiYmZjMzViOTYtZjkzYy00MDRmLTgyZGYtMTVhNjJhMDBjNjk4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MDkzNDE4LCJjc3JmIjoiOWJlYjUwY2UtNjBhZC00NTY4LWE3ZTgtNzM3ZGVkODViYzU5IiwiZXhwIjoxNzM2MDk3MDE4LCJpZCI6NTUsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTM4OTU4NjQ1IiwiYWJvdXRfbWUiOm51bGwsImNyZWF0ZWRfYXQiOiJGcmksIDAzIEphbiAyMDI1IDEyOjI2OjM0IEdNVCIsInVwZGF0ZWRfYXQiOiJTYXQsIDA0IEphbiAyMDI1IDE1OjQyOjEyIEdNVCIsInJvbGVzIjpbInVzZXIiXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.Uo-YaemudLUjc_Nr9zIPLgFkD5QjWT88KXkghn_jZeA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"current_password\":\"12345\", \"new_password\":\"12345\",  \"confirm_password\":\"12345\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users/change-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - reset-password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"chrisjsmez@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users/reset-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - process token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjAwMTI2OCwianRpIjoiMDI0Njk3MzItODdjMC00YTQ3LWJjNDgtMmYyNWYyYmQ5MGViIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MDAxMjY4LCJjc3JmIjoiY2E4MGY5N2QtNjk5ZS00ZTEzLWJjMTEtMDk3ZTZkNzNjNzRkIiwiZXhwIjoxNzM2MDA0ODY4LCJpZCI6NTUsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTM4OTU4NjQ1IiwiYWJvdXRfbWUiOm51bGwsImNyZWF0ZWRfYXQiOiJGcmksIDAzIEphbiAyMDI1IDEyOjI2OjM0IEdNVCIsInVwZGF0ZWRfYXQiOiJGcmksIDAzIEphbiAyMDI1IDE5OjQ3OjEyIEdNVCIsInJvbGVzIjpbInVzZXIiXSwidG9rZW5fdHlwZSI6InJlc2V0X3Bhc3N3b3JkIn0.Ga0e0YEDvlUUiZbNAuxrlOK4JRVEIdyf288w2rLPU6M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users/process-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"process-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users/david62",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"david62"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - sign out",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjA3OTc4MSwianRpIjoiYmYyNGU4YzktNTM1OS00MTU3LWE3ZTMtMzcxZDExY2UzZmFjIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MDc5NzgxLCJjc3JmIjoiZDI3MzI5MmUtYzgwNy00MTRhLTg0MDAtNmE5MzcxYmM4MGI4IiwiZXhwIjoxNzM2MDgzMzgxLCJpZCI6NTUsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTM4OTU4NjQ1IiwiYWJvdXRfbWUiOm51bGwsImNyZWF0ZWRfYXQiOiJGcmksIDAzIEphbiAyMDI1IDEyOjI2OjM0IEdNVCIsInVwZGF0ZWRfYXQiOiJTYXQsIDA0IEphbiAyMDI1IDE1OjQyOjEyIEdNVCIsInJvbGVzIjpbInVzZXIiXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.lo3SBv81iFF6YCTKy4bWlhB4Q8C5w2ITq_hp1lXA6Eo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users/signout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"signout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - sign up",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"edet\", \"email\":\"chrisjsmez@gmail.com\", \"password\":\"12345\", \"phone\":\"081234441\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - sign in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type header is 'text/html'\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.equal(\"text/html\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response status is 500\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is text/html\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The response should be an HTML document\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"<!doctype html>\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\"username\":\"edet\", \"email\":\"chrisjsmez@gmail.com\", \"password\":\"12345\", \"phone\":\"081234441\"}\r\n{\"username\":\"edet\", \"password\":\"12345\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - send-message-via-email",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"edet\", \"email\":\"chrisjsmez@gmail.com\", \"details\":\"12345\", \"phone\":\"081234441\", \"concern\":\"12345\", \"budget\":3400}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users/message",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - get users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzg1Mzc0NywianRpIjoiZmMwYTNjZTQtNzdiMi00MWNiLWE1MWUtNTdkYTRmMWZkMDg4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3ODUzNzQ3LCJjc3JmIjoiZWQ5NzQ2Y2YtNjg2My00YmVkLWFlNDktMWIyMzdiOTA0N2U2IiwiZXhwIjoxNzM3ODU0NjQ3LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.TjoOcsYX-RfGlcSj3Ke7AGLSSPVN5vw7E7BqPxj5zjA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users?page=4&include_products=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "4"
+								},
+								{
+									"key": "include_products",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjA4OTk2MCwianRpIjoiZjM3YTU4YTEtYTAwZC00MTE4LTllMjUtOTNhM2UxMjhjZTYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MDg5OTYwLCJjc3JmIjoiYzliZWRmMDgtYTkyNi00MDU3LTlkODUtNTU3OWVkMDc3MGQwIiwiZXhwIjoxNzM2MDkzNTYwLCJpZCI6NTUsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTM4OTU4NjQ1IiwiYWJvdXRfbWUiOm51bGwsImNyZWF0ZWRfYXQiOiJGcmksIDAzIEphbiAyMDI1IDEyOjI2OjM0IEdNVCIsInVwZGF0ZWRfYXQiOiJTYXQsIDA0IEphbiAyMDI1IDE1OjQyOjEyIEdNVCIsInJvbGVzIjpbInVzZXIiXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.m5__dwVMFf18cvNjvcPb-K_GDv8aBuFGhshYogf6Zag",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"username\":\"lare\",\r\n\"password\":\"password\",\r\n\"phone\":\"12345\",\r\n \"email\":\"leelydia@gmail.com\",\r\n \"name\": \"Larry Gaga\"\r\n}\r\n// {\"username\":\"rita\", \"password\":\"rita\",  \"email\":\"rita@gmail.com\", \"phone\":\"081389863\", \"password\":\"rita\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users/lare",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"lare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - get user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjI3OTM1MSwianRpIjoiZmYwYjU5ZjMtNTBiOC00MDBmLWEzN2YtYjVhYzY4YWI0NGUyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2Mjc5MzUxLCJjc3JmIjoiOWVlMzFhMGUtYzg2Yi00MTYyLWExNDctMjE0MDI5Y2E5NzY2IiwiZXhwIjoxNzM2MjgyOTUxLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.OzVAewsM1DsYk0qTZ2LsOp3vIFcs2Djm1bEqI7NpWz0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users/edet",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"edet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - init-oauth sign in",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users/authorize/google",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"authorize",
+								"google"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - oauth sign in callback",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users/callback/google?error=access_denied&state=xq9YtJHtr5wGdtm9fzMawQ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"callback",
+								"google"
+							],
+							"query": [
+								{
+									"key": "error",
+									"value": "access_denied"
+								},
+								{
+									"key": "state",
+									"value": "xq9YtJHtr5wGdtm9fzMawQ"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users - oauth2 sign in call-back ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://accounts.google.com/o/oauth2/auth?client_id=450748279780-p81pj4pdkjv48rve0g7npcn63orifi3g.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fusers%2Fcallback%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&state=xq9YtJHtr5wGdtm9fzMawQ",
+							"protocol": "https",
+							"host": [
+								"accounts",
+								"google",
+								"com"
+							],
+							"path": [
+								"o",
+								"oauth2",
+								"auth"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "450748279780-p81pj4pdkjv48rve0g7npcn63orifi3g.apps.googleusercontent.com"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fusers%2Fcallback%2Fgoogle"
+								},
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "scope",
+									"value": "https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email"
+								},
+								{
+									"key": "state",
+									"value": "xq9YtJHtr5wGdtm9fzMawQ"
+								}
+							]
+						},
+						"description": "After initializing oauth authentication at /api/users/authorize/<provider>, you'll get a response such as one below upon successsful operation:\r\n{\r\n    \"message\": \"redirecting for google sign in\",\r\n    \"redirect\": \"https://accounts.google.com/o/oauth2/auth?client_id=450748279780-p81pj4pdkjv48rve0g7npcn63orifi3g.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fusers%2Fcallback%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&state=MmI5sGMogvAfH3WJleBAVg\",\r\n    \"success\": true\r\n}\r\n\r\nYou can always redirect your users to the redirect link given in the response so they can authenticate themselves with the such providers."
+					},
+					"response": []
+				},
+				{
+					"name": "get users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNTIyNTI5NSwianRpIjoiODhiOTgwYWQtY2EwMS00N2I5LWI1ZjQtYTE0NDkzNWI1NTFiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NiwibmJmIjoxNzM1MjI1Mjk1LCJjc3JmIjoiNzczZTBhMTUtY2JmYi00Y2I2LTgwMGQtZDI3MjQ4OTE0MzhhIiwiZXhwIjo4ODEzNTIyNTI5NX0.NW7JINgQEkbTkHNErgjLTOwExgbp7cAFsUMNMjVpTBA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "products - get products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczODIxMjg0MiwianRpIjoiM2JjYWRiOGEtN2FiOC00MGE1LThhZDAtMGYzZWQ5MGQ5ZDA3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM4MjEyODQyLCJjc3JmIjoiNWVhYmFmODktYTExYy00MWQ4LTgzYWMtMDU0ZWUzN2NjZWU0IiwiZXhwIjoxNzM4MjEzNzQyLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.KUVUzCtZaBR7oL_fbo4mQtU_g96pUgbbqTqVsYv5Sjg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/products?page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products - get a single product by slug",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjQyOTIxMiwianRpIjoiY2IzOGU2MjYtNzE2Yi00ZTU0LWJhMjMtMDcxZTA4NjgzNTdmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NDI5MjEyLCJjc3JmIjoiMDlkN2E1YWItMmU5NC00NjE2LThiOWItZWYwMmY3ZjVhNTUwIiwiZXhwIjoxNzM2NDMyODEyLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.e5CNhlN9e98v2mZ896drWc9V2f4RmL0a1vRNHIxgZc4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/products/bananas-flavor-more/slug",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"bananas-flavor-more",
+								"slug"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products - get products by user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjQyNjg5MiwianRpIjoiMjBmNDE1YTQtNTJiZC00NTc4LTlmOTItMzQxZmVmY2U2ODU0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NDI2ODkyLCJjc3JmIjoiZjVmZDg0MDItNTZmMC00ODFhLWFhNjItNmRjMGIxYjBmOThiIiwiZXhwIjoxNzM2NDMwNDkyLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.qJJytdPZrW4H7neS0Dx9nbyd2orQe5N1sOyaQpOUxkg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/products/60/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"60",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products - get products by page",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjQzMDYyOCwianRpIjoiOTBmMWI2NTctNmUxZS00ODE1LThlZmItMmM3YWNhYWY1MTBjIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NDMwNjI4LCJjc3JmIjoiMzlkNGFjNzUtZjdjZS00MmQ3LTg1ZjktMDdiMDRmN2RkZjE2IiwiZXhwIjoxNzM2NDM0MjI4LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.au8UU1VdO7UW82LzmSwf4ugG1gSAx-zMgvMTHlZKB3M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/products/60/page",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"60",
+								"page"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products - get a single product by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjQyNjg5MiwianRpIjoiMjBmNDE1YTQtNTJiZC00NTc4LTlmOTItMzQxZmVmY2U2ODU0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NDI2ODkyLCJjc3JmIjoiZjVmZDg0MDItNTZmMC00ODFhLWFhNjItNmRjMGIxYjBmOThiIiwiZXhwIjoxNzM2NDMwNDkyLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.qJJytdPZrW4H7neS0Dx9nbyd2orQe5N1sOyaQpOUxkg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/products/23/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"23",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products - get products by category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjQyNzg2NywianRpIjoiZjUzMDk0MzQtYjIxNy00MTc1LWI4YTctM2U1ZjYxZTIyNmNkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NDI3ODY3LCJjc3JmIjoiOTgzYTFhMjctYzllZC00NjU4LTk5MzQtZGYxZGUzOTZlNzM1IiwiZXhwIjoxNzM2NDMxNDY3LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.AA5A1gHQHMKbVUJsK4nJTHCp2R3wncyHDT-l9ZYaliw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/products/2/category?page_size=18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"2",
+								"category"
+							],
+							"query": [
+								{
+									"key": "page_size",
+									"value": "18"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products- create product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczODI1MzQxOCwianRpIjoiYTYwNGE0ZWYtOTk1My00NTQ4LTliZjgtYTFlMDJjMGMwNDljIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM4MjUzNDE4LCJjc3JmIjoiMjkxMWY1OWItYWE3OC00ZGNjLTlhYTgtMTYwMDI3ODMzMmE3IiwiZXhwIjoxNzM4MjU0MzE4LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6W10sInRva2VuX3R5cGUiOiJhY2Nlc3MifQ.tGq6-ZaG5j6sEwH20TrK1iQPgLnzsafZghAn3lCC2NU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"name\": \"Smartwatch COPE HMM\",\r\n//   \"slug\": \"smartphone-xyz\",\r\n  \"description\": \"A feature-packed smartphone with a large screen and excellent camera.\",\r\n  \"price\": 49999,\r\n  \"stock\": 150,\r\n  \"publish_on\": \"2025-01-06T14:30:00Z\",\r\n  \"is_deleted\": false,\r\n  \"created_at\": \"2025-01-06T14:30:00Z\",\r\n  \"updated_at\": \"2025-01-06T14:30:00Z\",\r\n  \"tags\": [\r\n    {\r\n      \"id\": 1,\r\n      \"name\": \"electronics\"\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"name\": \"smartphone\"\r\n    }\r\n  ],\r\n  \"categories\": [\r\n    {\r\n      \"id\": 1,\r\n      \"name\": \"Mobile Phones\"\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"name\": \"Gadgets\"\r\n    }\r\n  ],\r\n  \"image_urls\": [\r\n    \"https://example.com/images/smartphone-xyz-front.jpg\",\r\n    \"https://example.com/images/smartphone-xyz-back.jpg\"\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products- update product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjI2MzAzNCwianRpIjoiNGVlZjVmZGMtMzBkZS00ZDU3LTk2ODAtMmNiMjgyNDJiYmEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MjYzMDM0LCJjc3JmIjoiZjk2YzQ1MGUtOWYxOC00ZDEzLWFiMGMtYTAzNGVjY2Y5MDYwIiwiZXhwIjoxNzM2MjY2NjM0LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.gJfYZ28TdM_oiNN2oT0Bi8gXtQDNU0_jhwty65ZzWYA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"name\": \"Smartphone XYZ\",\r\n  \"slug\": \"smartphone-xyz\",\r\n  \"description\": \"A feature-packed smartphone with a large screen and excellent camera.\",\r\n  \"price\": 49999,\r\n  \"stock\": 150,\r\n  \"publish_on\": \"2025-01-06T14:30:00Z\",\r\n  \"is_deleted\": false,\r\n  \"created_at\": \"2025-01-06T14:30:00Z\",\r\n  \"updated_at\": \"2025-01-06T14:30:00Z\",\r\n  \"tags\": [\r\n    {\r\n      \"id\": 1,\r\n      \"name\": \"electronics\"\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"name\": \"smartphone\"\r\n    }\r\n  ],\r\n  \"categories\": [\r\n    {\r\n      \"id\": 1,\r\n      \"name\": \"Mobile Phones\"\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"name\": \"Gadgets\"\r\n    }\r\n  ],\r\n  \"image_urls\": [\r\n    \"https://example.com/images/smartphone-xyz-front.jpg\",\r\n    \"https://example.com/images/smartphone-xyz-back.jpg\"\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/products/rice-bag",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"rice-bag"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products - delete product by product_slug",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjI2MzAzNCwianRpIjoiNGVlZjVmZGMtMzBkZS00ZDU3LTk2ODAtMmNiMjgyNDJiYmEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MjYzMDM0LCJjc3JmIjoiZjk2YzQ1MGUtOWYxOC00ZDEzLWFiMGMtYTAzNGVjY2Y5MDYwIiwiZXhwIjoxNzM2MjY2NjM0LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.gJfYZ28TdM_oiNN2oT0Bi8gXtQDNU0_jhwty65ZzWYA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/products/150",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"150"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products - delete product by product_id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjI2MzAzNCwianRpIjoiNGVlZjVmZGMtMzBkZS00ZDU3LTk2ODAtMmNiMjgyNDJiYmEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MjYzMDM0LCJjc3JmIjoiZjk2YzQ1MGUtOWYxOC00ZDEzLWFiMGMtYTAzNGVjY2Y5MDYwIiwiZXhwIjoxNzM2MjY2NjM0LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.gJfYZ28TdM_oiNN2oT0Bi8gXtQDNU0_jhwty65ZzWYA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/products/by_id/52",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"by_id",
+								"52"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Documentation of the product API endpoints, detailing their structure, valid data, and interaction methods.  \n\nProduct API Documentation  \n\nOverviewThe Product API provides endpoints to manage products in the system, allowing users to create, retrieve, update, and delete products. All endpoints require user authentication via JWT.  \n\nBase URL  \napi/products\n\nEndpoints  \n1\\. Retrieve a List of ProductsMethod: \\`GET\\` URL: \\`/products\\` Authentication: Required  \nQuery Parameters:- \\`page\\` (optional, integer): The page number to retrieve (default is 1).- \\`page_size\\` (optional, integer): The number of products per page (default is 5).  \nResponse:- Success: Returns a paginated list of products.- Error: Returns an error message if an exception occurs.  \nExample Request:  \nGET /products?page=1&page_size=5\n\n\\---  \n2\\. Retrieve a Product by IDMethod: \\`GET\\` URL: \\`/products//product\\` Authentication: Required  \nPath Parameters:- \\`product_id\\` (required, integer): The ID of the product to retrieve.  \nResponse:- Success: Returns the product details.- Error: Returns an error if the product is not found.  \nExample Request:  \nGET /products/123/product\n\n\\---  \n3\\. Retrieve a Product by SlugMethod: \\`GET\\` URL: \\`/products//slug\\` Authentication: Required  \nPath Parameters:- \\`product_slug\\` (required, string): The slug of the product to retrieve.  \nResponse:- Success: Returns the product details.- Error: Returns an error if the product is not found.  \nExample Request:  \nGET /products/sample-product/slug\n\n\\---  \n4\\. Fetch Products by UserMethod: \\`GET\\` URL: \\`/products//user\\` Authentication: Required  \nPath Parameters:- \\`user_id\\` (required, integer): The ID of the user whose products to fetch.  \nQuery Parameters:- \\`page\\` (optional, integer): The page number to retrieve (default is 1).- \\`page_size\\` (optional, integer): The number of products per page (default is 5).  \nResponse:- Success: Returns a paginated list of products associated with the user.- Error: Returns an error if the user is not found.  \nExample Request:  \nGET /products/456/user?page=1&page_size=5\n\n\\---  \n5\\. Fetch Products by PageMethod: \\`GET\\` URL: \\`/products//page\\` Authentication: Required  \nPath Parameters:- \\`page_id\\` (required, integer): The ID of the page to filter products.  \nQuery Parameters:- \\`page\\` (optional, integer): The page number to retrieve (default is 1).- \\`page_size\\` (optional, integer): The number of products per page (default is 5).  \nResponse:- Success: Returns a paginated list of products associated with the page.- Error: Returns an error if the page is not found.  \nExample Request:  \nGET /products/789/page?page=1&page_size=5\n\n\\---  \n6\\. Fetch Products by CategoryMethod: \\`GET\\` URL: \\`/products//category\\` Authentication: Required  \nPath Parameters:- \\`category_id\\` (required, integer): The ID of the category to filter products.  \nQuery Parameters:- \\`page\\` (optional, integer): The page number to retrieve (default is 1).- \\`page_size\\` (optional, integer): The number of products per page (default is 5).  \nResponse:- Success: Returns a paginated list of products associated with the category.- Error: Returns an error if the category is not found.  \nExample Request:  \nGET /products/12/category?page=1&page_size=5\n\n\\---  \n7\\. Create a New ProductMethod: \\`POST\\` URL: \\`/products\\` Authentication: Required  \nRequest Body:- Must be in JSON or \\`multipart/form-data\\` format.- Required Fields: - \\`name\\` (string): The name of the product. - \\`description\\` (string): A description of the product. - \\`price\\` (integer): The price of the product. - \\`stock\\` (integer): The stock quantity of the product.- Optional Fields: - \\`tags\\[\\]\\` (array): An array of tags for the product. - \\`categories\\[\\]\\` (array): An array of categories for the product. - \\`images\\[\\]\\` (file): An array of images to upload.  \nResponse:- Success: Returns the created product details.- Error: Returns an error if validation fails or if the product already exists.  \nExample Request:  \nPOST /productsContent-Type: application/json  \n{ \"name\": \"Sample Product\", \"description\": \"This is a sample product.\", \"price\": 100, \"stock\": 50, \"tags\": \\[{\"name\": \"tag1\", \"description\": \"First tag\"}\\], \"categories\": \\[{\"name\": \"category1\", \"description\": \"First category\"}\\]}\n\n\\---  \n8\\. Update an Existing ProductMethod: \\`PUT\\` URL: \\`/products/\\` Authentication: Required  \nPath Parameters:- \\`product_slug\\` (required, string): The slug of the product to update.  \nRequest Body:- Must be in JSON or \\`multipart/form-data\\` format.- Optional Fields: - \\`name\\` (string): The name of the product. - \\`description\\` (string): A description of the product. - \\`price\\` (integer): The price of the product. - \\`stock\\` (integer): The stock quantity of the product. - \\`tags\\[\\]\\` (array): An array of tags for the product. - \\`categories\\[\\]\\` (array): An array of categories for the product.  \nResponse:- Success: Returns the updated product details.- Error: Returns an error if the product is not found or validation fails.  \nExample Request:  \nPUT /products/sample-productContent-Type: application/json  \n{ \"price\": 120, \"stock\": 30, \"tags\": \\[{\"name\": \"updated-tag\", \"description\": \"Updated tag\"}\\], \"categories\": \\[{\"name\": \"updated-category\", \"description\": \"Updated category\"}\\]}\n\n\\---  \n9\\. Delete a ProductMethod: \\`DELETE\\` URL: \\`/products/\\` Authentication: Required  \nPath Parameters:- \\`identifier\\` (required, string): The product slug or ID.  \nResponse:- Success: Returns a message indicating the product was deleted.- Error: Returns an error if the product is not found.  \nExample Request:  \nDELETE /products/sample-product\n\n\\---  \nError HandlingAll endpoints return JSON responses with the following structure in case of errors:  \n{ \"error\": \"Error message.\", \"status_code\": HTTP_STATUS_CODE}  \nSuccess Response StructureSuccessful responses include a message and data:  \n{ \"message\": \"Success message.\", \"data\": { // response data here }}\n\nThis documentation provides a clear structure for interacting with the product API, detailing required and optional parameters for each endpoint. Adjust the examples and descriptions further based on your specific implementation and business logic!EndFragment",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNTIyNTI5NSwianRpIjoiODhiOTgwYWQtY2EwMS00N2I5LWI1ZjQtYTE0NDkzNWI1NTFiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NiwibmJmIjoxNzM1MjI1Mjk1LCJjc3JmIjoiNzczZTBhMTUtY2JmYi00Y2I2LTgwMGQtZDI3MjQ4OTE0MzhhIiwiZXhwIjo4ODEzNTIyNTI5NX0.NW7JINgQEkbTkHNErgjLTOwExgbp7cAFsUMNMjVpTBA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "comments - get product comments by slug",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjMxMjA5OSwianRpIjoiZDkyNDQ5YTctMGNhNi00MzQxLWFmNDUtNTcyOThlYzU3MzgyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MzEyMDk5LCJjc3JmIjoiNDcwZWNmNmItMjRkYi00YzIzLWIzYTMtNTk2N2Q2NjRhMTI1IiwiZXhwIjoxNzM2MzE1Njk5LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.v5jd7GvL8hMwR3X_ZAQHdrki4bwOoKKg1DUBLXxBzVY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/comments/products/establish-center-employee-blue",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"comments",
+								"products",
+								"establish-center-employee-blue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comments - get a comment by it's id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjA4OTk2MCwianRpIjoiZjM3YTU4YTEtYTAwZC00MTE4LTllMjUtOTNhM2UxMjhjZTYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MDg5OTYwLCJjc3JmIjoiYzliZWRmMDgtYTkyNi00MDU3LTlkODUtNTU3OWVkMDc3MGQwIiwiZXhwIjoxNzM2MDkzNTYwLCJpZCI6NTUsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTM4OTU4NjQ1IiwiYWJvdXRfbWUiOm51bGwsImNyZWF0ZWRfYXQiOiJGcmksIDAzIEphbiAyMDI1IDEyOjI2OjM0IEdNVCIsInVwZGF0ZWRfYXQiOiJTYXQsIDA0IEphbiAyMDI1IDE1OjQyOjEyIEdNVCIsInJvbGVzIjpbInVzZXIiXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.m5__dwVMFf18cvNjvcPb-K_GDv8aBuFGhshYogf6Zag",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/comments/39",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"comments",
+								"39"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products - get all product comments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjA4OTk2MCwianRpIjoiZjM3YTU4YTEtYTAwZC00MTE4LTllMjUtOTNhM2UxMjhjZTYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MDg5OTYwLCJjc3JmIjoiYzliZWRmMDgtYTkyNi00MDU3LTlkODUtNTU3OWVkMDc3MGQwIiwiZXhwIjoxNzM2MDkzNTYwLCJpZCI6NTUsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTM4OTU4NjQ1IiwiYWJvdXRfbWUiOm51bGwsImNyZWF0ZWRfYXQiOiJGcmksIDAzIEphbiAyMDI1IDEyOjI2OjM0IEdNVCIsInVwZGF0ZWRfYXQiOiJTYXQsIDA0IEphbiAyMDI1IDE1OjQyOjEyIEdNVCIsInJvbGVzIjpbInVzZXIiXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.m5__dwVMFf18cvNjvcPb-K_GDv8aBuFGhshYogf6Zag",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/comments/products?page=2&page_size=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"comments",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "page_size",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comments- create comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjMyNDg2NywianRpIjoiODY3ZjU1ZWQtOWQzYi00YWQ4LThkYWItODVkZGI0NzYyMmM4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MzI0ODY3LCJjc3JmIjoiMjIzMTYxYTgtMDBjNy00ZTdiLTk3ODMtMzYxZmFmZDM1YzkzIiwiZXhwIjoxNzM2MzI4NDY3LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.iG5u35MEOACoxTqTNusjldvmv9Z5uULCdKLzIg8cs54",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"Updated my review after using this product more and again. It's even better than I thought!, quite amazing\",\r\n  \"rating\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/comments/safe-toward-guy-bed-sell-gas/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"comments",
+								"safe-toward-guy-bed-sell-gas",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comments- update comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjMyNDg2NywianRpIjoiODY3ZjU1ZWQtOWQzYi00YWQ4LThkYWItODVkZGI0NzYyMmM4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MzI0ODY3LCJjc3JmIjoiMjIzMTYxYTgtMDBjNy00ZTdiLTk3ODMtMzYxZmFmZDM1YzkzIiwiZXhwIjoxNzM2MzI4NDY3LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.iG5u35MEOACoxTqTNusjldvmv9Z5uULCdKLzIg8cs54",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"It's even better than I thought!, quite amazing\",\r\n  \"rating\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/comments/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"comments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comments- delete comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjMyNDg2NywianRpIjoiODY3ZjU1ZWQtOWQzYi00YWQ4LThkYWItODVkZGI0NzYyMmM4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MzI0ODY3LCJjc3JmIjoiMjIzMTYxYTgtMDBjNy00ZTdiLTk3ODMtMzYxZmFmZDM1YzkzIiwiZXhwIjoxNzM2MzI4NDY3LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.iG5u35MEOACoxTqTNusjldvmv9Z5uULCdKLzIg8cs54",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"It's even better than I thought!, quite amazing\",\r\n  \"rating\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/comments/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"comments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://salesnet.onrender.com/api/comments/products?page=1&page_size=5",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/comments/products?page=1&page_size=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"comments",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://salesnet.onrender.com/api/comments/products?page=3&page_size=5",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/comments/products?page=3&page_size=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"comments",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "3"
+								},
+								{
+									"key": "page_size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNTIyNTI5NSwianRpIjoiODhiOTgwYWQtY2EwMS00N2I5LWI1ZjQtYTE0NDkzNWI1NTFiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NiwibmJmIjoxNzM1MjI1Mjk1LCJjc3JmIjoiNzczZTBhMTUtY2JmYi00Y2I2LTgwMGQtZDI3MjQ4OTE0MzhhIiwiZXhwIjo4ODEzNTIyNTI5NX0.NW7JINgQEkbTkHNErgjLTOwExgbp7cAFsUMNMjVpTBA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "routes / endpoints",
+			"item": [
+				{
+					"name": "routes - all endpoint routes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/routes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"routes"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Rreturns all routes registered in the app.",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNTIyNTI5NSwianRpIjoiODhiOTgwYWQtY2EwMS00N2I5LWI1ZjQtYTE0NDkzNWI1NTFiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NiwibmJmIjoxNzM1MjI1Mjk1LCJjc3JmIjoiNzczZTBhMTUtY2JmYi00Y2I2LTgwMGQtZDI3MjQ4OTE0MzhhIiwiZXhwIjo4ODEzNTIyNTI5NX0.NW7JINgQEkbTkHNErgjLTOwExgbp7cAFsUMNMjVpTBA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "addresses",
+			"item": [
+				{
+					"name": "addresses - get address(es)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjQ0Mjk2NywianRpIjoiODc5MzE3NjYtZjRlNC00NWNmLTk2MGItNDk0ZjAxNWYzODhjIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NDQyOTY3LCJjc3JmIjoiNzk1M2ZiNTgtZTcwNC00YTIwLTkxMWMtOTZlZjVmNGQzNTliIiwiZXhwIjoxNzM2NDQ2NTY3LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.x4uIbgZK70gnRbIQ3fDY35i0T7lax6NGSiHjylKkSP4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/addresses?page_size=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"addresses"
+							],
+							"query": [
+								{
+									"key": "page_size",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addresses - create an address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjI4NDA5NSwianRpIjoiODIxMmUwYTctMmE4Ny00NTVjLWI2ZGQtZDAwMzRmOWJmMjcxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2Mjg0MDk1LCJjc3JmIjoiMDJjOTg3MjUtY2Q1ZC00ZTZiLWJmOWQtZTA2ZmVjNTg3N2E5IiwiZXhwIjoxNzM2Mjg3Njk1LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.GxzsvTz76ApJQuIrTQPYh2MEqv1O9O5FgCU09ameZZg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"first_name\": \"John\",\r\n  \"last_name\": \"Doe\",\r\n  \"zip_code\": \"10001\",\r\n  \"phone_number\": \"+1234567890\",\r\n  \"address\": \"123 Elm St\",\r\n  \"city\": \"New York\",\r\n  \"country\": \"USA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/addresses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addresses - update an address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjI4NzUyOSwianRpIjoiMzNkMzdmZDItOTcyYi00NjEyLTlmZmItNDdhODM2ZjM0OWQyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImxlZWx5ZGlhQGdtYWlsLmNvbSIsIm5iZiI6MTczNjI4NzUyOSwiY3NyZiI6IjFkNTE5NTNlLWEyODAtNDliYy04NmVjLTI0NjIwZGRmOTgwMiIsImV4cCI6MTczNjI5MTEyOSwiaWQiOjE5LCJuYW1lIjoiTGFycnkgR2FnYSIsInVzZXJuYW1lIjoibGFyZSIsImVtYWlsIjoibGVlbHlkaWFAZ21haWwuY29tIiwicGhvbmUiOiIxMjM0NSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiRnJpLCAyNyBEZWMgMjAyNCAwNjo1Mjo1MSBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxNjoxOTowNSBHTVQiLCJyb2xlcyI6WyJ1c2VyIl0sInRva2VuX3R5cGUiOiJhY2Nlc3MifQ.Ivu1qEMMcxwAND1KVEJzAxba3z6p6iw7YpBJL9FXxY8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"first_name\": \"Lekki zone 4\",\r\n  \"last_name\": \"Peter\",\r\n  \"zip_code\": \"10002\", \r\n  \"phone_number\": \"+1234567890\",\r\n  \"address\": \"124 Elm St\",\r\n  \"city\": \"Calabar\",\r\n  \"country\": \"Lagos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/addresses/36",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"addresses",
+								"36"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addresses - delete an address by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjI4ODM4OSwianRpIjoiMjFhYWNkOTEtMmU0OS00YWJmLThjZTItMGY3Y2Y2MDU4ZDk3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2Mjg4Mzg5LCJjc3JmIjoiYzg3NDVlYjAtOWU4Yy00ZDNkLWE2MGYtMzcxMjU0ZmNhZWNjIiwiZXhwIjoxNzM2MjkxOTg5LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.8pvpKjYEMlA8_8uC0SHl3kqhKDrZhuub7sx0PXAymTA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"first_name\": \"Lekki zone 4\",\r\n  \"last_name\": \"Peter\",\r\n  \"zip_code\": \"10002\", \r\n  \"phone_number\": \"+1234567890\",\r\n  \"address\": \"124 Elm St\",\r\n  \"city\": \"Calabar\",\r\n  \"country\": \"Lagos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/addresses/36",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"addresses",
+								"36"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addresses - get single address by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjI4NDA5NSwianRpIjoiODIxMmUwYTctMmE4Ny00NTVjLWI2ZGQtZDAwMzRmOWJmMjcxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2Mjg0MDk1LCJjc3JmIjoiMDJjOTg3MjUtY2Q1ZC00ZTZiLWJmOWQtZTA2ZmVjNTg3N2E5IiwiZXhwIjoxNzM2Mjg3Njk1LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.GxzsvTz76ApJQuIrTQPYh2MEqv1O9O5FgCU09ameZZg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/addresses/38",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"addresses",
+								"38"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addresses - get address by user id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjI4NDA5NSwianRpIjoiODIxMmUwYTctMmE4Ny00NTVjLWI2ZGQtZDAwMzRmOWJmMjcxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2Mjg0MDk1LCJjc3JmIjoiMDJjOTg3MjUtY2Q1ZC00ZTZiLWJmOWQtZTA2ZmVjNTg3N2E5IiwiZXhwIjoxNzM2Mjg3Njk1LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.GxzsvTz76ApJQuIrTQPYh2MEqv1O9O5FgCU09ameZZg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/addresses/19/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"addresses",
+								"19",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Address Management API Documentation  \nThis document provides details for the Address Management API routes, which allow users to manage their addresses,  \nincluding creating, retrieving, updating, and deleting addresses. These routes are secured by JWT-based authentication and provide pagination where necessary.  \nGet User Addresses (with pagination)\n\nEndpoint:  \nGET /addresses//user  \nDescription:  \nThis endpoint retrieves all addresses for a specified user. It supports pagination by allowing the client to specify the page number and page size.  \nRequest Parameters:  \npage: The page number for pagination (default is 1).  \npage_size: The number of items per page (default is 5).\n\nResponse:  \n\"addresses\": \\[ /\\* List of addresses \\*/ \\], \"pagination\": { \"page\": 1, \"page_size\": 5, \"total\": 10, \"total_pages\": 2 }  \n{  \n\"message\": \"Addresses fetched successfully.\",  \n\"data\": {  \n}  \n}  \nError (500):  \nIn case of unexpected errors.  \n{  \n\"error\": \"Unexpected error: \",  \n\"status_code\": 500  \n}\n\nList All or One Address for the Authenticated User\n\nEndpoint:  \nGET /addresses or GET /addresses/  \nDescription:  \nThis endpoint allows the authenticated user to list all their addresses or fetch a specific address by ID.  \nPagination is supported for the list of addresses.  \nRequest Parameters:  \npage: The page number for pagination (default is 1).  \npage_size: The number of items per page (default is 5).\n\nResponse:  \nSuccess (200):  \nIf a specific address is requested, returns that address.\n\n{  \n\"message\": \"Address fetched successfully.\",  \n\"data\": {  \n\"id\": 1,  \n\"first_name\": \"John\",  \n\"last_name\": \"Doe\",  \n\"street_address\": \"123 Elm St\",  \n\"city\": \"New York\",  \n\"country\": \"USA\",  \n\"zip_code\": \"10001\",  \n\"phone_number\": \"+1234567890\",  \n\"created_at\": \"2025-01-01T12:00:00Z\"\n\nPlain Text\n\n}  \n}\n\nError (404):  \nIf the specified address is not found.  \n{  \n\"message\": \"Address not found.\",  \n\"status_code\": 404  \n}\n\nCreate a New Address\n\nEndpoint:  \nPOST /addresses  \nDescription:  \nThis endpoint allows the authenticated user to create a new address.  \nRequest Body:  \n{  \n\"first_name\": \"John\",  \n\"last_name\": \"Doe\",  \n\"zip_code\": \"10001\",  \n\"phone_number\": \"+1234567890\",  \n\"address\": \"123 Elm St\",  \n\"city\": \"New York\",  \n\"country\": \"USA\"  \n}  \nResponse:  \n\"id\": 1, \"first_name\": \"Edet\", \"last_name\": \"James\", \"street_address\": \"123 Elm St\", \"city\": \"New York\", \"country\": \"USA\", \"zip_code\": \"10001\", \"phone_number\": \"+1234567890\", \"created_at\": \"2025-01-01T12:00:00Z\"  \n{  \n\"message\": \"Address created successfully.\",  \n\"data\": {  \n}  \n}  \nError (400):  \nIf the request body doesn't meet validation requirements.  \n{  \n\"message\": \"Validation error: \",  \n\"status_code\": 400  \n}\n\nUpdate an Existing Address\n\nEndpoint:  \nPUT /addresses/  \nDescription:  \nThis endpoint allows the authenticated user to update an existing address.  \nRequest Body:  \n{  \n\"first_name\": \"John\",  \n\"last_name\": \"Doe\",  \n\"zip_code\": \"10002\",  \n\"phone_number\": \"+1234567890\",  \n\"address\": \"124 Elm St\",  \n\"city\": \"New York\",  \n\"country\": \"USA\"  \n}  \nResponse:  \n\"id\": 1, \"first_name\": \"John\", \"last_name\": \"Doe\", \"street_address\": \"124 Elm St\", \"city\": \"New York\", \"country\": \"USA\", \"zip_code\": \"10002\", \"phone_number\": \"+1234567890\", \"created_at\": \"2025-01-01T12:00:00Z\"  \n{  \n\"message\": \"Address updated successfully.\",  \n\"data\": {  \n}  \n}  \nError (403):  \nIf the user is not authorized to update the address (not the owner or admin).  \n{  \n\"message\": \"Access forbidden: insufficient permissions.\",  \n\"status_code\": 403  \n}  \nError (404):  \nIf the address ID is not found.  \n{  \n\"message\": \"Address not found\",  \n\"status_code\": 404  \n}\n\nDelete an Address\n\nEndpoint:  \nDELETE /addresses/  \nDescription:  \nThis endpoint allows the authenticated user to delete an existing address.  \nResponse:  \nSuccess (200):  \nReturns a success message.  \n{  \n\"message\": \"Address deleted successfully.\"  \n}  \nError (403):  \nIf the user is not authorized to delete the address (not the owner or admin).  \n{  \n\"message\": \"Permission denied.\",  \n\"status_code\": 403  \n}  \nError (404):  \nIf the address ID is not found.  \n{  \n\"message\": \"Address not found\",  \n\"status_code\": 404  \n}\n\nError Handling:  \nIn the event of an unexpected error, the API will return a 500 status code along with a message indicating the error:  \n{  \n\"message\": \"Unexpected error: \",  \n\"status_code\": 500  \n}  \nAuthentication:  \nAll endpoints require JWT-based authentication, which must be included in the request headers as follows:  \nAuthorization: Bearer  \nValidation:  \nRequests for creating or updating addresses will be validated using a predefined schema (address_schema). If validation fails, a 400 status code will be returned along with the validation error message.  \nConclusion:  \nThis documentation covers all necessary routes for managing user addresses.  \nIt includes endpoint descriptions, request parameters, response formats, error handling, and authentication details.  \nIt is important to follow the structure and requirements outlined in the documentation to ensure successful interaction with the API."
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "categories - get categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categories - create category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjYxMTEzNywianRpIjoiYWYwOTA3NjktMjUzNy00N2IxLTgzODEtZDI5NDIwZTI1YjRkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NjExMTM3LCJjc3JmIjoiNjE1NzY2NzYtMmM5Mi00OGY2LWE5MTctYzM5OGY2NmJkOTUxIiwiZXhwIjoxNzM2NjE0NzM3LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6InJlZnJlc2gifQ.CnrbQFelXWCxvjgf2DsikIviSD0fxb58YoFV_ykkDjg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mechanical Keyboards\",\r\n    \"description\": \"Keyboards with mechanical switches\",\r\n    \"parent_id\": 66\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categories - get one category by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/categories/33",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"categories",
+								"33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categories - update category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Women & Men\",\r\n  \"description\": \"Updated description of the category for clothes for men\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/categories/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categories - delete category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjM0NTY3MSwianRpIjoiYjUwZGIyNDYtYzYwMS00OWRiLTgyMzUtYWE1MTc3M2I3NTI2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MzQ1NjcxLCJjc3JmIjoiZDM1NjkyODItYTU4ZC00NWZhLWI3NjQtMzk1Njk1NGZjNmQ4IiwiZXhwIjoxNzM2MzQ5MjcxLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.KTJ-N4bNuHUDD4uWWFtf-3fG0-1RQw7atFm7GEnzaws",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Women & Men\",\r\n  \"description\": \"Updated description of the category for clothes for men\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/categories/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "# Category Management API Documentation\n\nThis API provides endpoints for managing categories, including creating, retrieving, updating, and deleting categories. Categories may also include images uploaded via multipart form data.\n\n## Base URL:\n\n`/categories`\n\n#1. **Create Category**\n\n**Endpoint**: `POST /categories`  \n**Description**: This endpoint allows the creation of a new category. A category can include a name, description, and images. Images should be uploaded as files in a `multipart/form-data` request.\n\n#### Request Body:\n\n- **Content-Type**: `application/json` or `multipart/form-data`\n    \n- **Request Payload (JSON)**:\n    \n    ``` json\n      {\n        \"name\": \"string\",\n        \"description\": \"string (optional)\"\n      }\n    \n     ```\n    \n- **Request Payload (Multipart Form-Data)**:\n    \n    - `name` (required): The name of the category.\n        \n    - `description` (optional): A description of the category.\n        \n    - `images[]` (optional): A list of image files to be uploaded.\n        \n\n#### Response:\n\n- **Success**:\n    \n    - **HTTP Status**: `201 Created`\n        \n    - **Body**:\n        \n        ``` json\n          {\n            \"message\": \"Category created successfully.\",\n            \"data\": {\n              \"id\": 1,\n              \"name\": \"string\",\n              \"description\": \"string\",\n              \"images\": [\n                {\n                  \"file_path\": \"string\",\n                  \"file_name\": \"string\",\n                  \"original_name\": \"string\",\n                  \"file_size\": \"integer\"\n                }\n              ]\n            }\n          }\n        \n         ```\n        \n- **Error**:\n    \n    - **HTTP Status**: `400 Bad Request`\n        \n    - **Body**:\n        \n        ``` json\n          {\n            \"message\": \"Content-Type must be application/json or multipart/form-data\"\n          }\n        \n         ```\n        \n\n```\nOther possible errors include validation and database errors, for which appropriate messages will be provided.\n\n ```\n\n---\n\n### 2\\. **Get Categories**\n\n**Endpoint**: `GET /categories`  \n**Description**: This endpoint retrieves a paginated list of all categories. Pagination is supported via query parameters `page` and `per_page`.\n\n#### Query Parameters:\n\n- `page` (optional, default: 1): The page number to retrieve.\n    \n- `per_page` (optional, default: 10): The number of categories per page.\n    \n\n#### Response:\n\n- **Success**:\n    \n    - **HTTP Status**: `200 OK`\n        \n    - **Body**:\n        \n        ``` json\n          {\n            \"message\": \"Categories fetched successfully.\",\n            \"data\": {\n              \"page\": 1,\n              \"per_page\": 10,\n              \"total\": 100,\n              \"categories\": [\n                {\n                  \"id\": 1,\n                  \"name\": \"string\",\n                  \"description\": \"string\",\n                  \"created_at\": \"string\",\n                  \"updated_at\": \"string\"\n                }\n              ]\n            }\n          }\n        \n         ```\n        \n- **Error**:\n    \n    - **HTTP Status**: `500 Internal Server Error`\n        \n    - **Body**:\n        \n        ``` json\n          {\n            \"message\": \"Error fetching categories: string\"\n          }\n        \n         ```\n        \n\n---\n\n### 3\\. **Get Single Category**\n\n**Endpoint**: `GET /categories/{category_id}`  \n**Description**: This endpoint retrieves details of a specific category identified by its `category_id`. It returns the category with its associated images and optionally includes product data.\n\n#### Path Parameter:\n\n- `category_id` (required): The ID of the category to retrieve.\n    \n\n#### Response:\n\n- **Success**:\n    \n    - **HTTP Status**: `200 OK`\n        \n    - **Body**:\n        \n        ``` json\n          {\n            \"message\": \"Category fetched successfully.\",\n            \"data\": {\n              \"id\": 1,\n              \"name\": \"string\",\n              \"description\": \"string\",\n              \"images\": [\n                {\n                  \"file_path\": \"string\",\n                  \"file_name\": \"string\",\n                  \"original_name\": \"string\",\n                  \"file_size\": \"integer\"\n                }\n              ],\n              \"products\": [\n                {\n                  \"id\": 1,\n                  \"name\": \"string\",\n                  \"description\": \"string\"\n                }\n              ]\n            }\n          }\n        \n         ```\n        \n- **Error**:\n    \n    - **HTTP Status**: `404 Not Found`\n        \n    - **Body**:\n        \n        ``` json\n          {\n            \"message\": \"Category not found.\"\n          }\n        \n         ```\n        \n\n### 4\\. **Update Category**\n\n**Endpoint**: `PUT /categories/{category_id}`  \n**Description**: This endpoint allows an admin or dev user to update the details of a category identified by its `category_id`. Only the name and description can be updated.\n\n#### Path Parameter:\n\n- `category_id` (required): The ID of the category to update.\n    \n\n#### Request Body:\n\n- **Content-Type**: `application/json`\n    \n- **Request Payload**:\n    \n    ``` json\n      {\n        \"name\": \"string (optional)\",\n        \"description\": \"string (optional)\"\n      }\n    \n     ```\n    \n\n#### Response:\n\n- **Success**:\n    \n    - **HTTP Status**: `200 OK`\n        \n    - **Body**:\n        \n        ``` json\n          {\n            \"message\": \"Category updated successfully.\"\n          }\n        \n         ```\n        \n- **Error**:\n    \n    - **HTTP Status**: `404 Not Found`\n        \n    - **Body**:\n        \n        ``` json\n          {\n            \"message\": \"Category not found.\"\n          }\n        \n         ```\n        \n\n```\nOther possible errors include database issues, leading to appropriate error responses.\n\n ```\n\n---\n\n### 5\\. **Delete Category**\n\n**Endpoint**: `DELETE /categories/{category_id}`  \n**Description**: This endpoint allows an admin or dev user to delete a category identified by its `category_id`.\n\n#### Path Parameter:\n\n- `category_id` (required): The ID of the category to delete.\n    \n\n#### Response:\n\n- **Success**:\n    \n    - **HTTP Status**: `200 OK`\n        \n    - **Body**:\n        \n        ``` json\n          {\n            \"message\": \"Category deleted successfully.\"\n          }\n        \n         ```\n        \n- **Error**:\n    \n    - **HTTP Status**: `404 Not Found`\n        \n    - **Body**:\n        \n        ``` json\n          {\n            \"message\": \"Category not found.\"\n          }\n        \n         ```\n        \n\n```\nOther possible errors include database issues, leading to appropriate error responses.\n\n ```\n\n---\n\n## Authentication & Permissions:\n\n- **JWT Authentication**: Required for the `PUT` and `DELETE` methods. Use the `jwt_required()` decorator to ensure the request is authorized.\n    \n- **Access Control**: The `access_required()` decorator ensures only users with roles `admin` or `dev` can update or delete categories.\n    \n\n---\n\n## Error Handling:\n\n- **Validation Errors**: If the incoming data doesn't conform to the defined schema, a `400 Bad Request` response is returned with a description of the error.\n    \n- **Database Errors**: On database issues (e.g., IntegrityError), a `500 Internal Server Error` is returned.\n    \n- **Unexpected Errors**: Any other errors are caught and returned as `500 Internal Server Error` with a description.\n    \n\nThis documentation provides a comprehensive guide for interacting with the category management API, outlining the expected behaviors and responses for each endpoint."
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "orders - get * orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczODA3OTgzMSwianRpIjoiN2E4ODA2ZTctZWU5Zi00M2FlLWE0NTMtZGNiZGYwZTllOTFmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM4MDc5ODMxLCJjc3JmIjoiZDk2ZGQ3YTYtNTUzMC00MTNiLTlkNTQtNWExZGMxN2MxODExIiwiZXhwIjoxNzM4MDgwNzMxLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.mRByxA9rP15bqKU4YMpnGdTeowlfXqbgaFNg_2ogj3o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders - get user orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjU4NTUzNCwianRpIjoiMGUyMDY0ZjEtNjM1Zi00Njg0LWE5ZTQtNzgyZmNmYmJiNzgxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NTg1NTM0LCJjc3JmIjoiYWViYTA3ZTYtZjY2NC00N2JmLWJiNzQtYmM2NzkwMjQyMDk2IiwiZXhwIjoxNzM2NTg5MTM0LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6InJlZnJlc2gifQ.zMYBsklroMUUXmXHIUA8f6TkBXU-FQ9QCTakggDsWiM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/orders/26/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"orders",
+								"26",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders - get specific order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjU4NTUzNCwianRpIjoiMGUyMDY0ZjEtNjM1Zi00Njg0LWE5ZTQtNzgyZmNmYmJiNzgxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NTg1NTM0LCJjc3JmIjoiYWViYTA3ZTYtZjY2NC00N2JmLWJiNzQtYmM2NzkwMjQyMDk2IiwiZXhwIjoxNzM2NTg5MTM0LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6InJlZnJlc2gifQ.zMYBsklroMUUXmXHIUA8f6TkBXU-FQ9QCTakggDsWiM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/orders/22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"orders",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders - create order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjU4NTUzNCwianRpIjoiMGUyMDY0ZjEtNjM1Zi00Njg0LWE5ZTQtNzgyZmNmYmJiNzgxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NTg1NTM0LCJjc3JmIjoiYWViYTA3ZTYtZjY2NC00N2JmLWJiNzQtYmM2NzkwMjQyMDk2IiwiZXhwIjoxNzM2NTg5MTM0LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6InJlZnJlc2gifQ.zMYBsklroMUUXmXHIUA8f6TkBXU-FQ9QCTakggDsWiM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cart_items\": [\r\n        {\r\n            \"product_id\": 1,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"product_id\": 2,\r\n            \"quantity\": 1\r\n        }\r\n    ],\r\n    \"address_id\": null,  // Use this if specifying an existing address\r\n    \"address\": {\r\n        \"first_name\": \"Edet\",\r\n        \"last_name\": \"Edikan\",\r\n        \"zip_code\": \"12345\",\r\n        \"street_address\": \"123 Main St\",\r\n        \"country\": \"USA\",\r\n        \"city\": \"New York\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders - update order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjU4NTUzNCwianRpIjoiMGUyMDY0ZjEtNjM1Zi00Njg0LWE5ZTQtNzgyZmNmYmJiNzgxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NTg1NTM0LCJjc3JmIjoiYWViYTA3ZTYtZjY2NC00N2JmLWJiNzQtYmM2NzkwMjQyMDk2IiwiZXhwIjoxNzM2NTg5MTM0LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6InJlZnJlc2gifQ.zMYBsklroMUUXmXHIUA8f6TkBXU-FQ9QCTakggDsWiM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cart_items\": [\r\n    {\r\n      \"id\": 1,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"id\": 3,\r\n      \"quantity\": 1\r\n    }\r\n  ],\r\n\r\n  \"address_id\": 39,\r\n//   \"address_id\": 39,\r\n   \"order_status\": 2,\r\n  \"first_name\": \"Edet\",\r\n  \"last_name\": \"James\",\r\n  \"street_address\": \"39 Main St\",\r\n  \"city\": \"Anytown\",\r\n  \"zip_code\": \"12345\",\r\n  \"country\": \"Nigeria\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/orders/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"orders",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders - delete order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjU4NTUzNCwianRpIjoiMGUyMDY0ZjEtNjM1Zi00Njg0LWE5ZTQtNzgyZmNmYmJiNzgxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NTg1NTM0LCJjc3JmIjoiYWViYTA3ZTYtZjY2NC00N2JmLWJiNzQtYmM2NzkwMjQyMDk2IiwiZXhwIjoxNzM2NTg5MTM0LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6InJlZnJlc2gifQ.zMYBsklroMUUXmXHIUA8f6TkBXU-FQ9QCTakggDsWiM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cart_items\": [\r\n    {\r\n      \"id\": 1,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"id\": 3,\r\n      \"quantity\": 1\r\n    }\r\n  ],\r\n\r\n  \"address_id\": 39,\r\n//   \"address_id\": 39,\r\n   \"order_status\": 2,\r\n  \"first_name\": \"Edet\",\r\n  \"last_name\": \"James\",\r\n  \"street_address\": \"39 Main St\",\r\n  \"city\": \"Anytown\",\r\n  \"zip_code\": \"12345\",\r\n  \"country\": \"Nigeria\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/orders/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"orders",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "baskets",
+			"item": [
+				{
+					"name": "fetch basket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzk2ODc3MSwianRpIjoiOGY5M2U4N2ItYzM5ZS00MjE5LTlhMTgtNTc1MzIwODM5NzBkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3OTY4NzcxLCJjc3JmIjoiNWM4OWQwZjktNDM1Zi00NDlhLWE3YzMtNmI4ZTgxOTQxMjA0IiwiZXhwIjoxNzM3OTY5NjcxLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.z3Mmm1zQcUV3ii9mLq183uG3WBZmJUGewvRe3ELpHZY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/basket?user_id=23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"basket"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "23"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add to basket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjU4NTUzNCwianRpIjoiMGUyMDY0ZjEtNjM1Zi00Njg0LWE5ZTQtNzgyZmNmYmJiNzgxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NTg1NTM0LCJjc3JmIjoiYWViYTA3ZTYtZjY2NC00N2JmLWJiNzQtYmM2NzkwMjQyMDk2IiwiZXhwIjoxNzM2NTg5MTM0LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6InJlZnJlc2gifQ.zMYBsklroMUUXmXHIUA8f6TkBXU-FQ9QCTakggDsWiM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"user_id\": 23,\r\n  \"product_id\": 12,\r\n  \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/basket",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"basket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove basket item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjU4NTUzNCwianRpIjoiMGUyMDY0ZjEtNjM1Zi00Njg0LWE5ZTQtNzgyZmNmYmJiNzgxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2NTg1NTM0LCJjc3JmIjoiYWViYTA3ZTYtZjY2NC00N2JmLWJiNzQtYmM2NzkwMjQyMDk2IiwiZXhwIjoxNzM2NTg5MTM0LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6InJlZnJlc2gifQ.zMYBsklroMUUXmXHIUA8f6TkBXU-FQ9QCTakggDsWiM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cart_items\": [\r\n    {\r\n      \"id\": 1,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"id\": 3,\r\n      \"quantity\": 1\r\n    }\r\n  ],\r\n\r\n  \"address_id\": 39,\r\n//   \"address_id\": 39,\r\n   \"order_status\": 2,\r\n  \"first_name\": \"Edet\",\r\n  \"last_name\": \"James\",\r\n  \"street_address\": \"39 Main St\",\r\n  \"city\": \"Anytown\",\r\n  \"zip_code\": \"12345\",\r\n  \"country\": \"Nigeria\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/orders/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"orders",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Professional documentation for Basket API endpoints related to basket management. This includes descriptions, expected inputs, responses, and example test cases for each endpoint.\n\n---\n\n# Basket Management API Documentation\n\n## Overview\n\nThis API allows users to manage their shopping baskets. Users can retrieve their basket, add items to it, and remove items from it. The API supports both authenticated and non-authenticated users.\n\n## Base URL\n\n```\nhttp://<your-domain>/api/basket\n\n ```\n\n## Endpoints\n\n### 1\\. Get Basket\n\n**Endpoint:** `GET /basket`\n\n#### Description\n\nRetrieves the current user's basket. If the user is authenticated, it fetches the basket from the database; otherwise, it retrieves it from the session.\n\n#### Parameters\n\n- `user_id` (optional): The ID of the authenticated user. If not provided, the session basket is returned.\n    \n\n#### Responses\n\n- **200 OK**\n    \n    - **Description:** Successfully retrieved the basket.\n        \n    - { \"message\": \"Basket retrieved successfully\", \"data\": { \"basket_items\": \\[ /\\* Array of basket items \\*/ \\] }}\n        \n- **500 Internal Server Error**\n    \n    - **Description:** An error occurred while retrieving the basket.\n        \n    - { \"message\": \"Error retrieving basket: \"}\n        \n\n#### Example Request\n\n``` http\nGET /basket?user_id=1\n\n ```\n\n#### Example Response\n\n``` json\n{\n  \"message\": \"Basket retrieved successfully\",\n  \"data\": {\n    \"basket_items\": []\n  }\n}\n\n ```\n\n---\n\n### 2\\. Add to Basket\n\n**Endpoint:** `POST /basket`\n\n#### Description\n\nAdds an item to the user's basket. If the user is authenticated, it updates the database; otherwise, it updates the session.\n\n#### Request Body\n\n- `user_id` (optional): The ID of the authenticated user.\n    \n- `product_id` (required): The ID of the product to add.\n    \n- `quantity` (optional): The quantity of the product. Defaults to 1.\n    \n\n#### Responses\n\n- **201 Created**\n    \n    - **Description:** Item added to the basket successfully.\n        \n    - { \"message\": \"Item added to basket successfully\"}\n        \n- **500 Internal Server Error**\n    \n    - **Description:** An error occurred while adding the item.\n        \n    - { \"message\": \"Error adding item to basket: \"}\n        \n\n#### Example Request\n\n``` http\nPOST /basket\nContent-Type: application/json\n{\n  \"user_id\": 1,\n  \"product_id\": 101,\n  \"quantity\": 2\n}\n\n ```\n\n#### Example Response\n\n``` json\n{\n  \"message\": \"Item added to basket successfully\"\n}\n\n ```\n\n---\n\n### 3\\. Remove from Basket\n\n**Endpoint:** `DELETE /basket/`\n\n#### Description\n\nRemoves an item from the user's basket. If the user is authenticated, it updates the database; otherwise, it updates the session.\n\n#### Parameters\n\n- `product_id` (required): The ID of the product to remove.\n    \n\n#### Responses\n\n- **200 OK**\n    \n    - **Description:** Item removed from the basket successfully.\n        \n    - { \"message\": \"Item removed from basket successfully\"}\n        \n- **404 Not Found**\n    \n    - **Description:** The item or basket was not found.\n        \n    - { \"message\": \"Item not found in basket\"}\n        \n- **500 Internal Server Error**\n    \n    - **Description:** An error occurred while removing the item.\n        \n    - { \"message\": \"Error removing item from basket: \"}\n        \n\n#### Example Request\n\n``` http\nDELETE /basket/101?user_id=1\n\n ```\n\n#### Example Response\n\n``` json\n{\n  \"message\": \"Item removed from basket successfully\"\n}\n\n ```\n\n---\n\n## Testing the API\n\n### Tools\n\nYou can use tools like Postman, cURL, or any REST client to test the API endpoints.\n\n### Test Cases\n\n1. **Get Basket for Authenticated User**\n    \n    - **Request:** `GET /basket?user_id=1`\n        \n    - **Expected Response:** `200 OK` with basket items.\n        \n2. **Get Basket for Non-Authenticated User**\n    \n    - **Request:** `GET /basket`\n        \n    - **Expected Response:** `200 OK` with session basket items.\n        \n3. **Add Item to Basket for Authenticated User**\n    \n    - POST /basketContent-Type: application/json{ \"user_id\": 1, \"product_id\": 101, \"quantity\": 2}\n        \n    - **Expected Response:** `201 Created`\n        \n4. **Add Item to Basket for Non-Authenticated User**\n    \n    - POST /basketContent-Type: application/json{ \"product_id\": 101, \"quantity\": 2}\n        \n    - **Expected Response:** `201 Created`\n        \n5. **Remove Item from Basket**\n    \n    - **Request:** `DELETE /basket/101?user_id=1`\n        \n    - **Expected Response:** `200 OK`\n        \n\n---\n\nThis documentation provides a comprehensive guide to the basket management API, including examples and expected behavior for each endpoint."
+		},
+		{
+			"name": "Favorites",
+			"item": [
+				{
+					"name": "fetch favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzk3NjMwMywianRpIjoiYzNiM2Y2Y2QtZTA0OS00MzVhLTk1NzUtYzU3OWU2OWI4OWUyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3OTc2MzAzLCJjc3JmIjoiMjczN2I4NTktMmYzZC00ZWQzLThiNDYtZjEwZDkzMWFlYTBkIiwiZXhwIjoxNzM3OTc3MjAzLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.WGC4DlstprzGiNS-2gbR8bVULf0kpnPwf3etzK6cpSc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/favorite",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"favorite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzk3NjMwMywianRpIjoiYzNiM2Y2Y2QtZTA0OS00MzVhLTk1NzUtYzU3OWU2OWI4OWUyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3OTc2MzAzLCJjc3JmIjoiMjczN2I4NTktMmYzZC00ZWQzLThiNDYtZjEwZDkzMWFlYTBkIiwiZXhwIjoxNzM3OTc3MjAzLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.WGC4DlstprzGiNS-2gbR8bVULf0kpnPwf3etzK6cpSc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"user_id\": 23,\r\n  \"product_id\": 16\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/favorite",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"favorite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzk3NzA1OCwianRpIjoiNzFjMDY4NWUtZTM4Mi00M2E2LWEyOGYtYzQwODQwMDEwMzViIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3OTc3MDU4LCJjc3JmIjoiYmVhOTM0OWYtYWJhMy00YjQxLWEzY2UtNzNjMDkyNWE5YzVmIiwiZXhwIjoxNzM3OTc3OTU4LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.CcS9PlJsH_0Jq0NVH9Mm93FjdHT_psaTzfrPaXUzR84",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/favorite/16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"favorite",
+								"16"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Professional documentation for Favoriting Products. API that handles favorite items, along with complete test data for each endpoint.\n\n## API Documentation: Favorite Items Management\n\n### Overview\n\nThis API allows users to manage their favorite products on Salenet, an eCommerce application. It supports both authenticated and non-authenticated users, storing favorites in a database for authenticated users and in session storage for guests.\n\n### Endpoints\n\n#### 1\\. Retrieve Favorite Items\n\n**Endpoint:** `GET /favorite`  \n**Authentication:** Optional (JWT)  \n**Description:** Retrieves favorite items for a user. Authenticated users get favorites from the database, while non-authenticated users get them from the session.\n\n**Request Parameters:**\n\n- `user_id` (optional): The ID of the user. If not provided, it defaults to the current user's ID if authenticated.\n    \n\n**Response:**\n\n- **Success (200):**\n    \n    - Message: \"Favorite products fetched successfully.\"\n        \n    - Data: A list of favorite products.\n        \n- **Error (404):**\n    \n    - Message: \"User not found.\"\n        \n- **Error (500):**\n    \n    - Message: \"Error retrieving favorite products: \"\n        \n\n**Example Request:**\n\n``` http\nGET /favorite?user_id=1\nAuthorization: Bearer <token>\n\n ```\n\n**Example Success Response:**\n\n``` json\n{\n  \"status\": \"success\",\n  \"message\": \"Favorite products fetched successfully.\",\n  \"data\": {\n    \"favorites\": [\n      {\n        \"id\": 1,\n        \"product_id\": 101,\n        \"user_id\": 1\n      },\n      {\n        \"id\": 2,\n        \"product_id\": 102,\n        \"user_id\": 1\n      }\n    ]\n  }\n}\n\n ```\n\n---\n\n#### 2\\. Add a Product to Favorites\n\n**Endpoint:** `POST /favorite`  \n**Authentication:** Optional (JWT)  \n**Description:** Adds a product to the user's favorites. Supports both authenticated and non-authenticated users.\n\n**Request Body:**\n\n- `product_id` (required): The ID of the product to be added to favorites.\n    \n\n**Response:**\n\n- **Success (201):**\n    \n    - Message: \"Product added to favorites successfully.\"\n        \n- **Error (400):**\n    \n    - Message: \"Product ID is required.\"\n        \n- **Error (404):**\n    \n    - Message: \"Product not found.\"\n        \n    - Message: \"User not found.\"\n        \n- **Error (500):**\n    \n    - Message: \"Error adding product to favorites: \"\n        \n\n**Example Request:**\n\n``` http\nPOST /favorite\nAuthorization: Bearer <token>\nContent-Type: application/json\n{\n  \"product_id\": 101\n}\n\n ```\n\n**Example Success Response:**\n\n``` json\n{\n  \"status\": \"success\",\n  \"message\": \"Product added to favorites successfully.\"\n}\n\n ```\n\n---\n\n#### 3\\. Remove a Product from Favorites\n\n**Endpoint:** `DELETE /favorite/`  \n**Authentication:** Optional (JWT)  \n**Description:** Removes a product from the user's favorites.\n\n**Response:**\n\n- **Success (200):**\n    \n    - Message: \"Product removed from favorites successfully.\"\n        \n- **Error (404):**\n    \n    - Message: \"User not found.\"\n        \n    - Message: \"Product not found in favorites.\"\n        \n    - Message: \"Product not found in favorites (guest).\"\n        \n- **Error (500):**\n    \n    - Message: \"Error removing product from favorites: \"\n        \n\n**Example Request:**\n\n``` http\nDELETE /favorite/101\nAuthorization: Bearer <token>\n\n ```\n\n**Example Success Response:**\n\n``` json\n{\n  \"status\": \"success\",\n  \"message\": \"Product removed from favorites successfully.\"\n}\n\n ```\n\n---\n\n### Test Data\n\n#### 1\\. Test Data for `GET /favorite`\n\n- **Authenticated User (User ID: 1)**\n    \n    - **Request:** `GET /favorite?user_id=1`\n        \n    - { \"status\": \"success\", \"message\": \"Favorite products fetched successfully.\", \"data\": { \"favorites\": \\[ {\"id\": 1, \"product_id\": 101, \"user_id\": 1}, {\"id\": 2, \"product_id\": 102, \"user_id\": 1} \\] }}\n        \n- **Non-Authenticated User**\n    \n    - **Request:** `GET /favorite`\n        \n    - { \"status\": \"success\", \"message\": \"Favorite products fetched successfully (guest).\", \"data\": { \"favorites\": \\[\\] }}\n        \n\n#### 2\\. Test Data for `POST /favorite`\n\n- **Authenticated User (User ID: 1)**\n    \n    - POST /favoriteAuthorization: Bearer Content-Type: application/json{ \"product_id\": 101}\n        \n    - { \"status\": \"success\", \"message\": \"Product added to favorites successfully.\"}\n        \n- **Non-Authenticated User**\n    \n    - POST /favoriteContent-Type: application/json{ \"product_id\": 101}\n        \n    - { \"status\": \"success\", \"message\": \"Product added to favorites successfully (guest).\"}\n        \n\n#### 3\\. Test Data for `DELETE /favorite/`\n\n- **Authenticated User (User ID: 1)**\n    \n    - DELETE /favorite/101Authorization: Bearer\n        \n    - { \"status\": \"success\", \"message\": \"Product removed from favorites successfully.\"}\n        \n- **Non-Authenticated User**\n    \n    - DELETE /favorite/101\n        \n    - { \"status\": \"success\", \"message\": \"Product removed from favorites successfully (guest).\"}\n        \n\n### Conclusion\n\nThis documentation provides a clear overview of the favorite items management API, including detailed endpoint descriptions, request and response formats, and comprehensive test data. This structure ensures that developers can easily implement and test the API functionality in their applications."
+		},
+		{
+			"name": "chats",
+			"item": [
+				{
+					"name": "chats - get * chats",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzkwNzQ0MSwianRpIjoiM2Q3NjhjMTctZDg0Yi00NjIxLThiNjMtMjNkOWE3MzI5ODdkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3OTA3NDQxLCJjc3JmIjoiMDFhMDE5YWEtMDUwYy00OGYyLWI3YWUtNmQyYjcwMDVmM2YwIiwiZXhwIjoxNzM3OTA4MzQxLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.Y01pzS8tHi_SoxsjAWALnlk4dz_pOeSoSm6RUb7FY20",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/chats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"chats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "roles - get * roles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzg1Mzc0NywianRpIjoiZmMwYTNjZTQtNzdiMi00MWNiLWE1MWUtNTdkYTRmMWZkMDg4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3ODUzNzQ3LCJjc3JmIjoiZWQ5NzQ2Y2YtNjg2My00YmVkLWFlNDktMWIyMzdiOTA0N2U2IiwiZXhwIjoxNzM3ODU0NjQ3LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.TjoOcsYX-RfGlcSj3Ke7AGLSSPVN5vw7E7BqPxj5zjA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "roles - get 1 role",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/roles/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"roles",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "roles - update role",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"admin\",\r\n    \"description\": \"Administrator role with full access\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/roles/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"roles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "roles - create role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"marketers\",\r\n    \"description\": \"for sellers\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Here's a professional documentation for the provided Flask API resource that manages roles. This documentation outlines the purpose of the API, the available endpoints, request and response formats, and authentication requirements.\n\n---\n\n# Role Management API Documentation\n\n## Overview\n\nThe Role Management API provides endpoints to create, retrieve, update, and delete roles within the application. This API is secured and requires JWT authentication and specific access permissions for certain actions.\n\n## Base URL\n\n```\nhttp://<your-domain>/api/roles\n\n ```\n\n## Authentication\n\nAll endpoints require JWT authentication. Additionally, the `create`, `get`, `update`, and `delete` operations require the user to have specific access rights (`admin` or `dev`).\n\n## Endpoints\n\n### 1\\. Create Role\n\n- **Endpoint**: `/roles`\n    \n- **Method**: `POST`\n    \n- **Authentication**: Required\n    \n- **Access**: `admin`, `dev`\n    \n\n#### Request\n\n- **Headers**:\n    \n    - `Content-Type: application/json`\n        \n    - `Authorization: Bearer`\n        \n- { \"name\": \"string\", // Required: Name of the role \"description\": \"string\" // Optional: Description of the role}\n    \n\n#### Response\n\n- **Success**:\n    \n    - **Status Code**: `201 Created`\n        \n    - {\"message\": \"Role created successfully.\",\"data\": { // Role summary details}}\n        \n- **Error**:\n    \n    - **Status Code**: `400 Bad Request` or `500 Internal Server Error`\n        \n    - {\"message\": \"Error message here.\"}\n        \n\n---\n\n### 2\\. Get Roles\n\n- **Endpoint**: `/roles` or `/roles/`\n    \n- **Method**: `GET`\n    \n- **Authentication**: Required\n    \n- **Access**: `admin`, `dev`\n    \n\n#### Request\n\n- **Headers**:\n    \n    - `Authorization: Bearer`\n        \n- **Query Parameters** (for listing roles):\n    \n    - `page`: (Optional) Page number for pagination (default: 1)\n        \n    - `page_size`: (Optional) Number of roles per page (default: 5)\n        \n\n#### Response\n\n- **Success**:\n    \n    - **Status Code**: `200 OK`\n        \n    - {\"message\": \"Roles fetched successfully.\",\"data\": { // Paginated roles data}}\n        \n- { \"message\": \"Role fetched successfully.\", \"data\": { // Role summary details }}\n    \n- **Error**:\n    \n    - **Status Code**: `404 Not Found` or `500 Internal Server Error`\n        \n    - {\"message\": \"Error message here.\"}\n        \n\n---\n\n### 3\\. Update Role\n\n- **Endpoint**: `/roles/`\n    \n- **Method**: `PUT`\n    \n- **Authentication**: Required\n    \n- **Access**: `admin`, `dev`\n    \n\n#### Request\n\n- **Headers**:\n    \n    - `Content-Type: application/json`\n        \n    - `Authorization: Bearer`\n        \n- { \"name\": \"string\", // Optional: New name for the role \"description\": \"string\" // Optional: New description for the role}\n    \n\n#### Response\n\n- **Success**:\n    \n    - **Status Code**: `200 OK`\n        \n    - {\"message\": \"Role updated successfully.\",\"data\": { // Updated role summary details}}\n        \n- **Error**:\n    \n    - **Status Code**: `404 Not Found` or `500 Internal Server Error`\n        \n    - {\"message\": \"Error message here.\"}\n        \n\n---\n\n### 4\\. Delete Role\n\n- **Endpoint**: `/roles/`\n    \n- **Method**: `DELETE`\n    \n- **Authentication**: Required\n    \n- **Access**: `admin`, `dev`\n    \n\n#### Request\n\n- **Headers**:\n    \n    - `Authorization: Bearer`\n        \n\n#### Response\n\n- **Success**:\n    \n    - **Status Code**: `204 No Content`\n        \n- **Error**:\n    \n    - **Status Code**: `404 Not Found` or `500 Internal Server Error`\n        \n    - {\"message\": \"Error message here.\"}\n        \n\n---\n\n## Error Handling\n\nThe API responds with appropriate error messages and HTTP status codes for various failure scenarios, including:\n\n- **IntegrityError**: When a role with the same name already exists.\n    \n- **SQLAlchemyError**: For general database-related issues.\n    \n- **Unexpected Errors**: Caught by a generic exception handler.\n    \n\n## Conclusion\n\nThis API provides a robust interface for managing roles within the application, ensuring that only authorized users can modify role data. Proper error handling and response formatting enhance the user experience and facilitate debugging.\n\n---\n\nFeel free to adjust any sections based on your specific needs or additional features of your API!"
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "tags - get * tags",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzkwNjEyMiwianRpIjoiYmRhM2ZmODItMzgwZC00NjYxLTgwMGMtODExYzFhOWUyOGUyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3OTA2MTIyLCJjc3JmIjoiYWU1ZWRmZTktY2QxYy00YTQwLWEzZTktNjBmNDFiOGEyMTUwIiwiZXhwIjoxNzM3OTA3MDIyLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.yT2Kaa-B_M0NAWVrY22MCoWk50KdLyFkEwFTXsdBeLE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/tags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tags- get 1 tag",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzkwMDAwNCwianRpIjoiNWU4M2M1YTAtYTUwMC00OGI4LWFlZDktNjNlZjZlMTJkNjRhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3OTAwMDA0LCJjc3JmIjoiMzIwNDFkZGEtYjc1ZC00MjE0LTlmYzUtYmJkYjJhMmY2Mzg5IiwiZXhwIjoxNzM3OTAwOTA0LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.40ksz1Q3bsw6leVcgiWLGeQFyt7eC5x6mdEHb28BI3o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/tags/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tags",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tags- delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzkwNjEyMiwianRpIjoiYmRhM2ZmODItMzgwZC00NjYxLTgwMGMtODExYzFhOWUyOGUyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3OTA2MTIyLCJjc3JmIjoiYWU1ZWRmZTktY2QxYy00YTQwLWEzZTktNjBmNDFiOGEyMTUwIiwiZXhwIjoxNzM3OTA3MDIyLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.yT2Kaa-B_M0NAWVrY22MCoWk50KdLyFkEwFTXsdBeLE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/tags/29",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tags",
+								"29"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update tag",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzkwNjEyMiwianRpIjoiYmRhM2ZmODItMzgwZC00NjYxLTgwMGMtODExYzFhOWUyOGUyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3OTA2MTIyLCJjc3JmIjoiYWU1ZWRmZTktY2QxYy00YTQwLWEzZTktNjBmNDFiOGEyMTUwIiwiZXhwIjoxNzM3OTA3MDIyLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.yT2Kaa-B_M0NAWVrY22MCoWk50KdLyFkEwFTXsdBeLE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Winter Collection\",\r\n    \"description\": \"A collection of winter outfits.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/tags/28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tags",
+								"28"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create tag",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzkwNjEyMiwianRpIjoiYmRhM2ZmODItMzgwZC00NjYxLTgwMGMtODExYzFhOWUyOGUyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM3OTA2MTIyLCJjc3JmIjoiYWU1ZWRmZTktY2QxYy00YTQwLWEzZTktNjBmNDFiOGEyMTUwIiwiZXhwIjoxNzM3OTA3MDIyLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.yT2Kaa-B_M0NAWVrY22MCoWk50KdLyFkEwFTXsdBeLE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Summer Collection\",\r\n    \"description\": \"A collection of summer outfits.\",\r\n    \"images[]\": \"[<image files>]\" // Use multipart/form-data for image uploads\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/tags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Professional documentation of the tags API code for managing tags, including test data examples where necessary.\n\n---\n\n# Tag Management API Documentation\n\n## Overview\n\nThis API provides endpoints for creating, retrieving, updating, and deleting tags. It supports image uploads associated with tags and requires JWT authentication for access control.\n\n## Endpoints\n\n### 1\\. Create Tag\n\n**Endpoint:** `POST /tags`  \n**Authentication:** Required (JWT)  \n**Access:** Admin, Dev\n\n#### Request Body\n\nThe request can be sent in either `application/json` or `multipart/form-data` format.\n\n**JSON Example:**\n\n``` json\n{\n    \"name\": \"Summer Collection\",\n    \"description\": \"A collection of summer outfits.\",\n    \"images[]\": [<image files>] // Use multipart/form-data for image uploads\n}\n\n ```\n\n**Multipart Form-Data Example:**\n\n- Key: `name`, Value: `Summer Collection`\n    \n- Key: `description`, Value: `A collection of summer outfits.`\n    \n- Key: `images[]`, Value: (file upload)\n    \n\n#### Response\n\n- { \"message\": \"Tag created successfully.\", \"data\": { \"id\": 1, \"name\": \"Summer Collection\", \"description\": \"A collection of summer outfits.\", \"created_at\": \"2023-01-26T12:00:00Z\" }}\n    \n- { \"message\": \"Failed to create tag: Integrity error.\"}\n    \n\n### 2\\. Get Tags\n\n**Endpoint:** `GET /tags`  \n**Authentication:** Required (JWT)  \n**Access:** Admin, Dev\n\n#### Query Parameters\n\n- `page` (optional): Page number for pagination (default: 1)\n    \n- `page_size` (optional): Number of tags per page (default: 5)\n    \n\n#### Response\n\n- { \"message\": \"Tags fetched successfully.\", \"data\": { \"total\": 10, \"page\": 1, \"page_size\": 5, \"tags\": \\[ { \"id\": 1, \"name\": \"Summer Collection\", \"description\": \"A collection of summer outfits.\" }, // Additional tags... \\] }}\n    \n- { \"message\": \"Error fetching tags: Tag not found.\"}\n    \n\n### 3\\. Get Tag by ID\n\n**Endpoint:** `GET /tags/`  \n**Authentication:** Required (JWT)  \n**Access:** Admin, Dev\n\n#### Response\n\n- { \"message\": \"Tag fetched successfully.\", \"data\": { \"id\": 1, \"name\": \"Summer Collection\", \"description\": \"A collection of summer outfits.\" }}\n    \n- { \"message\": \"Tag not found.\"}\n    \n\n### 4\\. Update Tag\n\n**Endpoint:** `PUT /tags/`  \n**Authentication:** Required (JWT)  \n**Access:** Admin, Dev\n\n#### Request Body\n\n**JSON Example:**\n\n``` json\n{\n    \"name\": \"Winter Collection\",\n    \"description\": \"A collection of winter outfits.\"\n}\n\n ```\n\n#### Response\n\n- { \"message\": \"Tag updated successfully.\", \"data\": { \"id\": 1, \"name\": \"Winter Collection\", \"description\": \"A collection of winter outfits.\" }}\n    \n- { \"message\": \"Tag not found.\"}\n    \n\n### 5\\. Delete Tag\n\n**Endpoint:** `DELETE /tags/`  \n**Authentication:** Required (JWT)  \n**Access:** Admin, Dev\n\n#### Response\n\n- { \"message\": \"Tag deleted successfully.\"}\n    \n- { \"message\": \"Tag not found.\"}\n    \n\n## Error Handling\n\nThe API uses structured error responses. Common error messages include:\n\n- **Integrity Error:** Occurs when a unique constraint is violated.\n    \n- **Database Error:** General database-related issues.\n    \n- **Unexpected Error:** Any other exceptions that were not handled.\n    \n\n## Test Data\n\n### Creating a Tag\n\nTo test the creation of a tag, you can use the following example:\n\n**Curl Command:**\n\n``` bash\ncurl -X POST https://salesnet.onrender.com/tags \\\n-H \"Authorization: Bearer <your_jwt_token>\" \\\n-H \"Content-Type: multipart/form-data\" \\\n-F \"name=Summer Collection\" \\\n-F \"description=A collection of summer outfits.\" \\\n-F \"images[]=path/to/image1.jpg\" \\\n-F \"images[]=path/to/image2.jpg\"\n\n ```\n\n### Retrieving Tags\n\nTo retrieve tags, use the following example:\n\n**Curl Command:**\n\n``` bash\ncurl -X GET https://salesnet.onrender.com/tags \\\n-H \"Authorization: Bearer <your_jwt_token>\"\n\n ```\n\n### Updating a Tag\n\nTo update an existing tag, use the following example:\n\n**Curl Command:**\n\n``` bash\ncurl -X PUT https://salesnet.onrender.com/tags/1 \\\n-H \"Authorization: Bearer <your_jwt_token>\" \\\n-H \"Content-Type: application/json\" \\\n-d '{\"name\": \"Updated Collection\", \"description\": \"Updated description.\"}'\n\n ```\n\n### Deleting a Tag\n\nTo delete a tag, use the following example:\n\n**Curl Command:**\n\n``` bash\ncurl -X DELETE https://salesnet.onrender.com/tags/1 \\\n-H \"Authorization: Bearer <your_jwt_token>\"\n\n ```\n\n## Conclusion\n\nThis API provides a robust way to manage tags with support for images, ensuring that only authorized users can make changes. Proper error handling and structured responses facilitate easy integration and debugging.\n\n---\n\nThis documentation provides a comprehensive overview of the tag management API, including endpoints, request and response formats, error handling, and test data."
+		},
+		{
+			"name": "transactions",
+			"item": [
+				{
+					"name": "flutterwave payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczODEwODYzMiwianRpIjoiMDMyYzQ2OWMtZWQ3Ni00NDNlLWEyNjMtNzUzMzFlYTBkMjYzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM4MTA4NjMyLCJjc3JmIjoiNjQ1NTE1NzAtNGE1MC00NDE2LTg5YzktNjQ4ZWFkM2IwNzU0IiwiZXhwIjoxNzM4MTA5NTMyLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.MAaJ7ZgqmGXWwIM5LvGlF832c2LWyhWT3LzUKT0PFkg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": \"37\",\r\n    \"amount\": 800,\r\n    \"currency\": \"USD\",\r\n    \"email\": \"chrisjsmez@gmail.com\",\r\n    \"phone\": \"08138958645\",\r\n    \"name\": \"Edet James\"  // optional\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/transactions/flutterwave",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"transactions",
+								"flutterwave"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "paystack payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczODEzODY5NywianRpIjoiZmUwZTNiM2EtYTVlOS00ZDEwLTlmNGItZjc5YjZlNmU0NjUwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM4MTM4Njk3LCJjc3JmIjoiNzJlNDYxYjItMmNiNC00MjEwLTkzNzctOWExOWRiNWQ3Mjc3IiwiZXhwIjoxNzM4MTM5NTk3LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.UQa4YR6cNdebZwEpvtQWK6YUcETWX0H6DaaDIlM1ZbM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": \"37\",\r\n    \"amount\": 800,\r\n    \"currency\": \"USD\",\r\n    \"email\": \"chrisjsmez@gmail.com\",\r\n    \"phone\": \"08138958645\",\r\n    \"name\": \"Edet James\"  // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/transactions/paystack",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"transactions",
+								"paystack"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Professional documentation outline for Salesnet API, along with suggested tests to ensure its functionality. This documentation will cover the endpoints, their expected inputs and outputs, as well as error handling.\n\n## API Documentation\n\n### Overview\n\nThis API provides endpoints for initiating a payment through Flutterwave and handling the payment callback. It uses JWT for authentication and supports both authenticated and guest users.\n\n### Endpoints\n\n#### 1\\. Initiate Payment\n\n- **Endpoint**: `/payment/flutterwave`\n    \n- **Method**: `POST`\n    \n- **Authentication**: JWT (optional)\n    \n\n##### Request Headers\n\n- `Content-Type`: `application/json` or `multipart/form-data`\n    \n- `Authorization`: `Bearer` (optional)\n    \n\n##### Request Body\n\nThe request body should be in JSON format or `multipart/form-data`:\n\n``` json\n{\n    \"order_id\": \"string\",\n    \"amount\": \"number\",\n    \"currency\": \"string\",\n    \"email\": \"string\",\n    \"phone\": \"string\",\n    \"name\": \"string\"  // optional\n}\n\n ```\n\n##### Response\n\n- **Success**:\n    \n    - Status Code: `200 OK`\n        \n    - { \"message\": \"Continue to pay securely..\", \"data\": { \"redirect\": \"string\" // Payment link }}\n        \n- **Error**:\n    \n    - Status Code: Varies (e.g., `400`, `404`, `500`)\n        \n    - { \"error\": \"string\"}\n        \n\n---\n\n#### 2\\. Payment Callback\n\n- **Endpoint**: `/callback`\n    \n- **Method**: `GET`\n    \n- **Authentication**: JWT (optional)\n    \n\n##### Request Parameters\n\n- `status`: The status of the transaction (`successful`, `cancelled`, etc.)\n    \n- `transaction_id`: The ID of the transaction from Flutterwave.\n    \n- `tx_ref`: Transaction reference generated during the payment initiation.\n    \n\n##### Response\n\n- **Success**:\n    \n    - Status Code: `200 OK`\n        \n    - { \"message\": \"Transaction verified successfully\", \"data\": { // Transaction details }}\n        \n- **Error**:\n    \n    - Status Code: Varies (e.g., `404`, `500`)\n        \n    - { \"error\": \"string\"}\n        \n\n---\n\n### Error Handling\n\nThe API handles various exceptions, including:\n\n- **Validation Errors**: If the input data does not conform to the defined schema.\n    \n- **Connection Errors**: Issues with network connectivity.\n    \n- **Timeouts**: Requests taking too long to respond.\n    \n- **General Exceptions**: Any unforeseen errors that occur during processing.\n    \n\n### Tests\n\n#### Unit Tests\n\n1. **Test Successful Payment Initiation**\n    \n    - Input: Valid JSON with required fields.\n        \n    - Expected Output: `200 OK` with a payment link.\n        \n2. **Test Payment Initiation with Missing Fields**\n    \n    - Input: JSON without `order_id`.\n        \n    - Expected Output: `400 Bad Request` with an appropriate error message.\n        \n3. **Test Payment Initiation with Invalid Amount**\n    \n    - Input: JSON with `amount` set to `0`.\n        \n    - Expected Output: `400 Bad Request` with an appropriate error message.\n        \n4. **Test Successful Callback Handling**\n    \n    - Input: Valid callback parameters with `status` set to `successful`.\n        \n    - Expected Output: `200 OK` with transaction verification details.\n        \n5. **Test Callback with Non-Existing Transaction**\n    \n    - Input: Callback request with a non-existent `tx_ref`.\n        \n    - Expected Output: `404 Not Found` with an appropriate error message.\n        \n6. **Test Callback with Cancelled Transaction**\n    \n    - Input: Callback request with `status` set to `cancelled`.\n        \n    - Expected Output: `200 OK` with a message indicating the transaction was cancelled.\n        \n\n#### Integration Tests\n\n1. **Test End-to-End Payment Flow**\n    \n    - Simulate a complete payment flow from initiation to callback verification.\n        \n    - Verify that the transaction status is correctly updated in the database.\n        \n2. **Test Error Handling for Network Issues**\n    \n    - Simulate a network failure during the payment request.\n        \n    - Ensure the API returns a `500 Internal Server Error` with an appropriate message.\n        \n3. **Test Schema Validation**\n    \n    - Ensure that invalid payloads trigger validation errors.\n        \n\n### Conclusion\n\nThis documentation provides a comprehensive overview of the API endpoints, expected inputs and outputs, error handling, and testing strategies. It is essential to implement the tests to ensure the API functions correctly under various scenarios and edge cases.\n\nIf you need further details or specific examples of tests, feel free to ask me  \n(Chris James - 0706561327(whatsapp)!"
+		},
+		{
+			"name": "pages",
+			"item": [
+				{
+					"name": "create page",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczODI1MzQxOCwianRpIjoiYTYwNGE0ZWYtOTk1My00NTQ4LTliZjgtYTFlMDJjMGMwNDljIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM4MjUzNDE4LCJjc3JmIjoiMjkxMWY1OWItYWE3OC00ZGNjLTlhYTgtMTYwMDI3ODMzMmE3IiwiZXhwIjoxNzM4MjU0MzE4LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6W10sInRva2VuX3R5cGUiOiJhY2Nlc3MifQ.tGq6-ZaG5j6sEwH20TrK1iQPgLnzsafZghAn3lCC2NU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Fashionation\",\r\n  \"username\": \"fashionation_user0\",\r\n  \"description\": \"Description of the new page.\",\r\n  \"avatar\": \"https://example.com/path/to/avatar.jpg\",  // Optional avatar URL\r\n  \"email\": \"contact@fashionation.ng\",  // Unique email\r\n  \"valid_email\": true,  // Set to true if the email is verified\r\n  \"phone\": \"+1234567891\",  // Unique phone number\r\n  \"password\": \"securepassword123\",  // Ensure this is hashed in production\r\n  \"image\": \"https://example.com/path/to/page-image.jpg\",  // Optional image URL\r\n  \"about_me\": \"Welcome to Fashionation, your go-to place for fashion trends.\",\r\n  \"balance\": 0.0,  // Default balance\r\n  \"withdrawal_password\": \"withdrawalpass123\",  // Ensure this is hashed in production\r\n  \"socials\": {                                                                  // Example of social media links\r\n    \"facebook\": \"https://facebook.com/fashionation\",\r\n    \"instagram\": \"https://instagram.com/fashionation\"\r\n  },\r\n  \"address\": {  // Example of address details\r\n    \"street\": \"123 Fashion St\",\r\n    \"city\": \"Fashion City\",\r\n    \"state\": \"Fashion State\",\r\n    \"zipcode\": \"12345\"\r\n  },\r\n  \"whats_app\": \"+1234567891\",  // Unique WhatsApp number\r\n  \"bank\": {  // Example bank details\r\n    \"bank_name\": \"Fashion Bank\",\r\n    \"account_number\": 123456789,\r\n    \"ifsc_code\": \"FASHION123\"\r\n  },\r\n  \"tags\": [\r\n    {\"name\": \"Fashion\", \"description\": \"All about fashion trends.\"},\r\n    {\"name\": \"Style\", \"description\": \"Stylish outfits and tips.\"}\r\n  ],\r\n  \"categories\": [\r\n    {\"name\": \"Clothing\", \"description\": \"Fashion clothing for all.\"},\r\n    {\"name\": \"Accessories\", \"description\": \"Fashion accessories.\"}\r\n  ],\r\n  \"images[]\": [\r\n    \"C:/_/pythonic/flask/salesnet/backend/web/static/images/products/india_poverty.jpg\",\r\n    \"C:/_/pythonic/flask/salesnet/backend/web/static/images/products/l7.png\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/pages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get pages",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczODI1NTQ5NSwianRpIjoiNjA5NWExNjQtMzM4My00ZDhlLTk5NDEtMWZkZjNkMzY5MzVkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM4MjU1NDk1LCJjc3JmIjoiZGYxMWQ3MjItOWQxMC00YWRlLWE2MDQtNDY1ZjMwZmI1MzkxIiwiZXhwIjoxNzM4MjU2Mzk1LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6W10sInRva2VuX3R5cGUiOiJhY2Nlc3MifQ.kKWw30718_qnCoqnbkrjgPcSE_Uo05tHC2kxnup5eMQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/pages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get page",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczODI1NzE4NSwianRpIjoiMDFmOTBmY2EtNzgwMy00M2M3LWFhOWMtZmFiMjA1ZDdmZWYwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM4MjU3MTg1LCJjc3JmIjoiZWJmMjNiM2ItMmUzNS00NzhkLWFjYjgtZWRmNWQwOGE1NzA3IiwiZXhwIjoxNzM4MjU4MDg1LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6W10sInRva2VuX3R5cGUiOiJhY2Nlc3MifQ.O1MGcvsp78EsgKIiJnGe2dnKp-G8fos64vJH07c1JOA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/pages/1/page",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pages",
+								"1",
+								"page"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove page",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczODI1NTQ5NSwianRpIjoiNjA5NWExNjQtMzM4My00ZDhlLTk5NDEtMWZkZjNkMzY5MzVkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM4MjU1NDk1LCJjc3JmIjoiZGYxMWQ3MjItOWQxMC00YWRlLWE2MDQtNDY1ZjMwZmI1MzkxIiwiZXhwIjoxNzM4MjU2Mzk1LCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6W10sInRva2VuX3R5cGUiOiJhY2Nlc3MifQ.kKWw30718_qnCoqnbkrjgPcSE_Uo05tHC2kxnup5eMQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/pages/15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pages",
+								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update page",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczODI1NjU0MSwianRpIjoiYTRkM2IxZWEtYTAyYS00ZWFhLWJmZjYtYzFmOWMwNTRlM2Q3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM4MjU2NTQxLCJjc3JmIjoiYjJiNDE3NWQtNTVkNy00MGJhLWE2YzItYTI3MWYzZDI3Zjc3IiwiZXhwIjoxNzM4MjU3NDQxLCJpZCI6NjAsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTIzNDQ0MSIsImFib3V0X21lIjpudWxsLCJjcmVhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJ1cGRhdGVkX2F0IjoiU3VuLCAwNSBKYW4gMjAyNSAxODoxMDoxMiBHTVQiLCJyb2xlcyI6W10sInRva2VuX3R5cGUiOiJhY2Nlc3MifQ.1v7RPMgdlAmkUs4YpOP72jsOb6oEleOLzTpxa24xR7o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"name\": \"Fashionation\",\r\n    \"description\": \"Updated description.\",\r\n    \"tags\": [{\"name\": \"tag2\", \"description\": \"Second tag\"}]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://salesnet.onrender.com/api/pages/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pages",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "API documentation outline for the provided Salesnet Python Resource/Endpoiints, along with suggested tests to ensure its functionality. This documentation will cover the endpoints, their expected inputs and outputs, as well as error handling.\n\n## API Documentation\n\n### Overview\n\nThis API provides endpoints for initiating a payment through Flutterwave and handling the payment callback. It uses JWT for authentication and supports both authenticated and guest users.\n\n### Endpoints\n\n#### 1\\. Initiate Payment\n\n- **Endpoint**: `/payment/flutterwave`\n    \n- **Method**: `POST`\n    \n- **Authentication**: JWT (optional)\n    \n\n##### Request Headers\n\n- `Content-Type`: `application/json` or `multipart/form-data`\n    \n- `Authorization`: `Bearer` (optional)\n    \n\n##### Request Body\n\nThe request body should be in JSON format or `multipart/form-data`:\n\n``` json\n{\n    \"order_id\": \"string\",\n    \"amount\": \"number\",\n    \"currency\": \"string\",\n    \"email\": \"string\",\n    \"phone\": \"string\",\n    \"name\": \"string\"  // optional\n}\n\n ```\n\n##### Response\n\n- **Success**:\n    \n    - Status Code: `200 OK`\n        \n    - { \"message\": \"Continue to pay securely..\", \"data\": { \"redirect\": \"string\" // Payment link }}\n        \n- **Error**:\n    \n    - Status Code: Varies (e.g., `400`, `404`, `500`)\n        \n    - { \"error\": \"string\"}\n        \n\n---\n\n#### 2\\. Payment Callback\n\n- **Endpoint**: `/callback`\n    \n- **Method**: `GET`\n    \n- **Authentication**: JWT (optional)\n    \n\n##### Request Parameters\n\n- `status`: The status of the transaction (`successful`, `cancelled`, etc.)\n    \n- `transaction_id`: The ID of the transaction from Flutterwave.\n    \n- `tx_ref`: Transaction reference generated during the payment initiation.\n    \n\n##### Response\n\n- **Success**:\n    \n    - Status Code: `200 OK`\n        \n    - { \"message\": \"Transaction verified successfully\", \"data\": { // Transaction details }}\n        \n- **Error**:\n    \n    - Status Code: Varies (e.g., `404`, `500`)\n        \n    - { \"error\": \"string\"}\n        \n\n---\n\n### Error Handling\n\nThe API handles various exceptions, including:\n\n- **Validation Errors**: If the input data does not conform to the defined schema.\n    \n- **Connection Errors**: Issues with network connectivity.\n    \n- **Timeouts**: Requests taking too long to respond.\n    \n- **General Exceptions**: Any unforeseen errors that occur during processing.\n    \n\n### Tests\n\n#### Unit Tests\n\n1. **Test Successful Payment Initiation**\n    \n    - Input: Valid JSON with required fields.\n        \n    - Expected Output: `200 OK` with a payment link.\n        \n2. **Test Payment Initiation with Missing Fields**\n    \n    - Input: JSON without `order_id`.\n        \n    - Expected Output: `400 Bad Request` with an appropriate error message.\n        \n3. **Test Payment Initiation with Invalid Amount**\n    \n    - Input: JSON with `amount` set to `0`.\n        \n    - Expected Output: `400 Bad Request` with an appropriate error message.\n        \n4. **Test Successful Callback Handling**\n    \n    - Input: Valid callback parameters with `status` set to `successful`.\n        \n    - Expected Output: `200 OK` with transaction verification details.\n        \n5. **Test Callback with Non-Existing Transaction**\n    \n    - Input: Callback request with a non-existent `tx_ref`.\n        \n    - Expected Output: `404 Not Found` with an appropriate error message.\n        \n6. **Test Callback with Cancelled Transaction**\n    \n    - Input: Callback request with `status` set to `cancelled`.\n        \n    - Expected Output: `200 OK` with a message indicating the transaction was cancelled.\n        \n\n#### Integration Tests\n\n1. **Test End-to-End Payment Flow**\n    \n    - Simulate a complete payment flow from initiation to callback verification.\n        \n    - Verify that the transaction status is correctly updated in the database.\n        \n2. **Test Error Handling for Network Issues**\n    \n    - Simulate a network failure during the payment request.\n        \n    - Ensure the API returns a `500 Internal Server Error` with an appropriate message.\n        \n3. **Test Schema Validation**\n    \n    - Ensure that invalid payloads trigger validation errors.\n        \n\n### Conclusion\n\nThis documentation provides a comprehensive overview of the API endpoints, expected inputs and outputs, error handling, and testing strategies. It is essential to implement the tests to ensure the API functions correctly under various scenarios and edge cases."
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNjA3OTk3MSwianRpIjoiNzY4ODhmYjctOTc5NS00NTU3LTk2NDYtYjZjNTg4OWI4NWVlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNocmlzanNtZXpAZ21haWwuY29tIiwibmJmIjoxNzM2MDc5OTcxLCJjc3JmIjoiNDVkZGViOTEtNDIyYy00ZjExLWEzNDctYjdhZmY1OWYyMDU0IiwiZXhwIjoxNzM2MDgzNTcxLCJpZCI6NTUsIm5hbWUiOm51bGwsInVzZXJuYW1lIjoiZWRldCIsImVtYWlsIjoiY2hyaXNqc21lekBnbWFpbC5jb20iLCJwaG9uZSI6IjA4MTM4OTU4NjQ1IiwiYWJvdXRfbWUiOm51bGwsImNyZWF0ZWRfYXQiOiJGcmksIDAzIEphbiAyMDI1IDEyOjI2OjM0IEdNVCIsInVwZGF0ZWRfYXQiOiJTYXQsIDA0IEphbiAyMDI1IDE1OjQyOjEyIEdNVCIsInJvbGVzIjpbInVzZXIiXSwidG9rZW5fdHlwZSI6ImFjY2VzcyJ9.9Ml-tunBRtOTVOl967AGM_Z38CQzKsBhYX-ZnNbHkBE",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://farming-simulator.pstmn.io"
+		}
+	]
+}
